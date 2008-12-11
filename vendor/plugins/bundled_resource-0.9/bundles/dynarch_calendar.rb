@@ -61,7 +61,7 @@ module BundledResource::DynarchCalendar
       initial_date = datetime.strftime("%m/%d/%Y %H:%M")
       initial_display = datetime.strftime(date_format)
       buffer = ""
-      buffer << content_tag('span', date_select(object_name, method_name, options) + "\n", :id => container_id)
+      buffer << content_tag('span', date_select(object_name, method_name) + "\n", :id => container_id)
       buffer << "<script>convert_date_container_to_dynarch_calendar('#{object_name}', '#{method_name}', #{index}, '#{initial_date}', '#{initial_display}', '#{image_url}')</script>\n"
     end
 
