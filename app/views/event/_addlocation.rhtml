@@ -1,0 +1,213 @@
+<script type="text/javascript" charset="utf-8">
+	function selectMetro(field, li) {
+		var metro_id = li.id.sub('metroid_','');
+		if (metro_id != null && metro_id != "") {
+			new Ajax.Updater('selected_metro', '/event/selected_metro', 
+				{ parameters: 'id=' + metro_id,
+				onComplete: function() {
+					$('selected_metro').show();
+					$('find_metro').hide();
+					new Effect.Highlight('selected_metro');
+				}
+				});
+		} else {
+			$('tmpmetro_name').value = "";
+			$('addMetro').show();
+			$('addLocation').hide();
+		}
+		
+		return true;
+	} // End of selectMetro
+	
+	function addMetroFailure(response) {
+		$('addMetroErrorList').innerHTML = response.responseText;
+		$('addMetroErrors').show();
+		return true;
+	} // End of addMetroFailure
+	
+	function addMetroComplete(response) {
+		
+		return true;
+	} // End of addMetroComplete
+	
+	function addMetroSuccess(response) {
+		$('selected_metro').innerHTML = response.responseText;
+		$('selected_metro').show();
+		$('find_metro').hide();
+		cancelAddMetro();
+		new Effect.Highlight('selected_metro');
+		return true;
+	} // End of addMetroSuccess
+	
+	function cancelAddMetro() {
+		Form.reset("addMetroForm");
+		$('addMetro').hide();
+		$('addLocation').show();
+		return true;
+	} // End of cancelNewMetro
+	
+	function addLocationFailure(response) {
+		$('addLocationErrorList').innerHTML = response.responseText;
+		$('addLocationErrors').show();
+		return true;
+	} // End of addLocationFailure
+	
+	function addLocationComplete(response) {
+		
+		return true;
+	} // End of addLocationComplete
+	
+	function addLocationSuccess(response) {
+		$('selected_venue_content').innerHTML = response.responseText;
+		$('event_location_id').value = $('selected_location_id').innerHTML;
+		cancelAddLocation();
+		$('selected_venue').show();
+		$('find_venue').hide();
+		new Effect.Highlight('selected_venue_content');
+		return true;
+	} // End of addLocationSuccess
+	
+	function showMetroTab()
+	{
+		$("newLocationData","newLocationDescription","addLocationErrors").invoke('hide');
+		$("newLocationMetroData").show();
+		Element.addClassName("metro_link","active");
+		Element.removeClassName("venue_link", "active");
+		Element.removeClassName("extra_link", "active");
+	} // End of showMetroTab
+	
+	function showVenueTab()
+	{
+		$("newLocationMetroData","newLocationDescription","addLocationErrors").invoke('hide');
+		$("newLocationData").show();
+		Element.removeClassName("metro_link","active");
+		Element.addClassName("venue_link", "active");
+		Element.removeClassName("extra_link", "active");
+	} // End of showVenueTab
+	
+	function showExtraTab()
+	{
+		$("newLocationMetroData","newLocationData","addLocationErrors").invoke('hide');
+		$("newLocationDescription").show();
+		Element.removeClassName("metro_link","active");
+		Element.removeClassName("venue_link", "active");
+		Element.addClassName("extra_link", "active");
+	} // End of showExtraTab
+	
+	function cancelAddLocation()
+	{
+		showMetroTab();
+		$("selected_metro").innerHTML = "";
+		$("selected_metro","addLocationCont","addlocation_description").invoke('hide');
+		$("find_metro","find_venue","choose_category","mainCont").invoke('show');
+		Form.reset("addLocationForm");
+	} // End of cancelAddLocation
+</script>
+
+<div id="addMetro" class="newLocation" style="display:none">
+	
+	<ul id="addLocationTabs" class="tabs">
+		<li><%= link_to_function("Add Metro", nil, :id => "addmetro_link", :class => "active", :onclick => "Void(0)") %></li>
+	</ul>
+	
+	<div class="tabContent">
+		
+		<div id="addMetroErrors" class="errorExplanation" style="display:none;padding:0px;">
+			<ul id="addMetroErrorList"></ul>
+		</div>
+			
+		<% form_remote_tag( :url => url_for(:controller => 'metro', :action => 'ajax_create'),
+							:html => {:id => "addMetroForm", :action => url_for(:controller => 'metro', :action => 'create')}, 
+							:complete => "addMetroComplete(request)",
+							:failure => "addMetroFailure(request)",
+							:success => "addMetroSuccess(request)") do -%>
+	
+			<div id="newMetro">
+			
+				<%= render :partial => "metro_data" %>
+				
+				<div>
+					<%= submit_tag 'Save' %> 
+					<%= button_to_function 'Cancel', :onclick => "cancelAddMetro()" %>
+				</div>
+				
+			</div>
+			
+		<% end -%>
+		
+	</div>
+
+</div>
+
+<div id="addLocation" class="newLocation">
+
+	<ul id="addLocationTabs" class="tabs">
+		<li><%= link_to_function("Metro", nil, :id => "metro_link", :class => "active", :onclick => "showMetroTab()") %></li>
+		<li><%= link_to_function("Venue", nil, :id => "venue_link", :onclick => "showVenueTab()") %></li>
+		<li><%= link_to_function("Extra", nil, :id => "extra_link", :onclick => "showExtraTab()") %></li>
+	</ul>
+
+	<div class="tabContent">
+	
+		<div id="addLocationErrors" class="errorExplanation" style="display:none;padding:0px;">
+			<ul id="addLocationErrorList"></ul>
+		</div>
+		
+	
+		<% form_remote_tag( :url => url_for(:controller => 'location', :action => 'ajax_create'),
+							:html => {:id => "addLocationForm", :action => url_for(:controller => 'location', :action => 'create')}, 
+							:complete => "addLocationComplete(request)",
+							:failure => "addLocationFailure(request)",
+							:success => "addLocationSuccess(request)") do -%>
+
+			<div class="tabData">
+			
+				<div id="newLocationMetroData">
+					
+					<div class="form_field" id="find_metro"><label for="tmpmetro_name">Metro Name</label><br/>
+					<%= text_field_with_auto_complete :tmpmetro, :name, {:style => 'width:95%'}, {:skip_style => true, :min_chars => 1, :after_update_element => 'selectMetro', :indicator => 'find_metro_spinner'} %>
+					<img id="find_metro_spinner" src="/images/spinner_moz.gif" width="16" height="16" style="display:none" />
+					</div>
+					
+					<div id="selected_metro" style="display:none">
+						
+					</div>
+					
+					<div>
+						<%= button_to_function 'Next &gt;', :onclick => "showVenueTab()" %>
+						<%= button_to_function 'Cancel', :onclick => "cancelAddLocation()" %>
+					</div>
+									
+				</div>		
+						
+				<div id="newLocationData" style="display:none">
+				
+					<%= render :partial => "location_data" %>
+
+					<div>
+						<%= button_to_function '&lt; Prev', :onclick => "showMetroTab()" %>
+						<%= button_to_function 'Next &gt;', :onclick => "showExtraTab()" %>
+						<%= submit_tag 'Save' %> 
+						<%= button_to_function 'Cancel', :onclick => "cancelAddLocation()" %>
+					</div>
+					
+				</div>
+				
+				<div id="newLocationDescription" style="display:none">
+					
+					<%= render :partial => "location_descr" %>
+
+					<div>
+						<%= button_to_function '&lt; Prev', :onclick => "showVenueTab()" %>
+						<%= submit_tag 'Save' %> 
+						<%= button_to_function 'Cancel', :onclick => "cancelAddLocation()" %>
+					</div>
+										
+				</div>
+			</div>
+		
+		<% end -%>
+		
+	</div>
+		
+</div>

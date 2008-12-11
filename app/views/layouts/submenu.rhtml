@@ -1,0 +1,12 @@
+﻿<div id="submenu">
+	<ul>
+		<% ranges.each do |range| %>
+			<li <%= 'class="active"' if params[:range] == range[:key] %>>
+				<%= link_to range[:title], events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => range[:key]) %>
+			</li>
+		<% end %>
+		<li class="newEvent">
+			<%= link_to 'Add Event', :controller => 'event', :action => 'new' %>
+		</li>
+	</ul>
+</div>

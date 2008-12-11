@@ -1,0 +1,32 @@
+<% content_for("title") do %>
+	Signup
+<% end %>
+
+<% content_for("sidebox") do %>
+    Please enter your desired username and password.<br />
+    If you are already registered with eventicus you can login here:<br />
+    <br />
+    <%= link_to "Login now", { :controller => "account", :action => "login"} %>
+<% end %>
+
+
+<%= form_tag :action=> "signup" %>
+
+  <%= error_messages_for 'user' %><br/>
+  
+  <div class="form_field"><label for="user_login">Desired login:</label><br/>
+  <%= text_field "user", "login", :size => 30 %></div>
+  
+  <div class="form_field"><label for="user_password">Choose password:</label><br/>
+  <%= password_field "user", "password", :size => 30 %></div>
+
+  <div class="form_field"><label for="user_password_confirmation">Confirm password:</label><br/>
+  <%= password_field "user", "password_confirmation", :size => 30 %></div>
+
+  <div class="form_field"><label for="user_time_zone">Default timezone:</label><br/>
+  <%= time_zone_select 'user', 'time_zone', TZInfo::Timezone.all.sort, :model => TZInfo::Timezone %></div>
+
+  <%= submit_tag "Signup &#187;" %> 
+
+</form>
+

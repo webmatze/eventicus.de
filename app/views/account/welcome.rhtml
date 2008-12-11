@@ -1,0 +1,42 @@
+<% content_for("title") do %>
+	Welcome to Eventicus
+<% end %>
+
+<% content_for("sidebox") do %>
+	You have been successfully logged into eventicus. You can start adding new events now
+	or just browse through existing events.
+<% end %>
+
+
+<p>You are now logged into the system...</p>
+
+<h3>What do you want to do next?</h3>
+
+<ul>
+	<li><%= link_to "I want to browse all existing events", events_url() %></li>
+	<li><%= link_to "I want to see my own events", user_url(:id => session['user'].login) %></li>
+	<li><%= link_to "I want to add a new event", :controller => 'event', :action => 'new' %></li>
+</ul>
+  
+<%= link_to "&#171; logout", :action=>"logout"%>  
+
+<!-- Google Code for signup Conversion Page -->
+<script language="JavaScript" type="text/javascript">
+<!--
+var google_conversion_id = 1069435150;
+var google_conversion_language = "de";
+var google_conversion_format = "1";
+var google_conversion_color = "FFFFFF";
+if (1) {
+  var google_conversion_value = 1;
+}
+var google_conversion_label = "signup";
+//-->
+</script>
+<script language="JavaScript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<img height=1 width=1 border=0 src="http://www.googleadservices.com/pagead/conversion/1069435150/imp.gif?value=1&label=signup&script=0">
+</noscript>
+
+                                    

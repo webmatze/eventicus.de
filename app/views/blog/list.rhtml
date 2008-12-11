@@ -1,0 +1,18 @@
+<% content_for("head") do %>
+	<%= auto_discovery_link_tag(:rss, 'http://feeds.feedburner.com/eventicus') %>
+<% end %>
+
+<% content_for("title") do %>
+	Eventicus Blog
+<% end %>
+
+<% content_for("sidebox") do %>
+	<h3>Recent Posts</h3>
+	<%= render :partial => 'recentposts' %>
+	
+	<div style="clear:both"><br /></div>
+	<h3>Recent Readers</h3>
+	<script type="text/javascript" src="http://pub.mybloglog.com/comm2.php?mblID=2006102008283848&amp;c_width=180&amp;c_sn_opt=y&amp;c_rows=5&amp;c_img_size=f&amp;c_heading_text=&amp;c_color_heading_bg=FFFFFF&amp;c_color_heading=666600&amp;c_color_link_bg=FFFFCC&amp;c_color_link=C5060B&amp;c_color_bottom_bg=FFFFFF"></script>
+<% end %>
+
+<%= render :partial => 'blogposts' %>

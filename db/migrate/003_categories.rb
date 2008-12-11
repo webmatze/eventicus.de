@@ -1,0 +1,12 @@
+class Categories < ActiveRecord::Migration
+  def self.up
+    create_table :categories, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+      t.column "name", :string, { :limit => 128, :null => false }
+      t.column "short", :string, { :limit => 32, :null => false }
+    end
+  end
+
+  def self.down
+    drop_table "categories"
+  end
+end

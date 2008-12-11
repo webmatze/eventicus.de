@@ -1,0 +1,17 @@
+﻿<ul id="mainmenu">
+	<li <%= 'class="active"' if params[:menu] == "events" %>>
+		<% #link_to "Events", events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>
+		<%= link_to "Events", events_url() %>
+	</li>
+<!--
+	<li <%= 'class="active"' if params[:menu] == "reviews" %>>
+		<%= link_to "Reviews", reviews_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>
+	</li>
+	<li <%= 'class="active"' if params[:menu] == "photos" %>>
+		<%= link_to "Photos", photos_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>
+	</li>
+-->
+	<li <%= 'class="active"' if params[:menu] == "blog" %>>
+		<%= link_to "Blog", blog_url() %>
+	</li>
+</ul>

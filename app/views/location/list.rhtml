@@ -1,0 +1,27 @@
+<h1>Listing locations</h1>
+
+<table>
+  <tr>
+  <% for column in Location.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for location in @locations %>
+  <tr>
+  <% for column in Location.content_columns %>
+    <td><%=h location.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => location %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => location %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => location }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @location_pages.current.previous } if @location_pages.current.previous %>
+<%= link_to 'Next page', { :page => @location_pages.current.next } if @location_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New location', :action => 'new' %>

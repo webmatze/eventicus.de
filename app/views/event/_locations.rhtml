@@ -1,0 +1,12 @@
+<ul class="locations">
+<% for location in @locations do -%>
+<li class="location" id="locationid_<%= location.id %>">
+<div class="name"><%=h location.name %></div>
+<div class="metro"><span class="informal"><%=h location.metro.name %> | <%=h location.metro.state %></span></div>
+</li>
+<% end -%>
+<li class="location">
+<div class="name">Not listet? Add a new venue...</div>
+<div class="metro"><span class="informal"></span></div>
+</li>
+</ul>

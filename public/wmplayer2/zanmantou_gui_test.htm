@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<style type="text/css" media="screen">@import url('styles/zanmantou_gui.css');</style>
+		
+		<script type="text/javascript" src="scripts/prototype.js"></script>
+		<script type="text/javascript" src="scripts/zanmantou_api.js"></script>
+		<script type="text/javascript" src="scripts/zanmantou_gui.js"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+						
+			//Script erst ausführen, wenn Seite vollständig geladen
+			Event.observe(window, "load", function() {
+			
+				//Ein ZanmantouGUI Objekt erstellen
+				var player1 = new ZanmantouGUI("player1",{
+					data: [
+						new Song("Song 1","http://localhost/song1.mp3"),
+						new Song("Song 2","http://localhost/song2.mp3")
+					]
+				});
+				
+			});
+			
+			
+			//]]>
+		</script>
+	</head>
+	<body>
+		<div id="player1">
+			<noscript>Hier würde der zanmantou Player zu sehen sein, wenn JavaScript aktiviert wäre.</noscript>
+		</div>
+
+	</body>
+</html>

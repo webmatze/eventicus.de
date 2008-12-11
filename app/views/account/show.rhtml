@@ -1,0 +1,52 @@
+﻿<% content_for("title") do %>
+	<%=h @user.firstname %> <%=h @user.name %> (<%=h @user.login %>)
+<% end %>
+
+
+<% content_for("sidebox") do %>
+	<h3>Friends</h3>
+	<p>here a list of all his friends</p>
+<% end %>
+
+<div class="user">
+	
+	<div class="user-data">
+		<h2>Details</h2>
+		<div class="data">
+			<% if session['user'] != nil && @user.id == session['user'].id %>
+				
+			<div>
+				<label>Firstname</label><br />
+				<%= in_place_editor_field :user, 'firstname' %>
+			</div>				
+			<div>
+				<label>Lastname</label><br />
+				<%= in_place_editor_field :user, 'name' %>
+			</div>				
+			<div>
+				<label>Email</label><br />
+				<%= in_place_editor_field :user, 'email' %>
+			</div>				
+			<div>
+				<label>URL</label><br />
+				<%= in_place_editor_field :user, 'url' %>
+			</div>				
+			
+			<% else %>
+				
+				<b><%=h @user.firstname%> <%=h @user.name %></b><br />
+				<%= link_to( @user.url, @user.url) + "<br />" if @user.url %>
+				Member since <%=h tz(@user.date_created) %>
+			
+			<% end %>
+		</div>
+	</div>
+	
+	<div class="user-events">
+		<h2>Events</h2>
+		<br />
+	</div>
+
+</div>
+
+<%= render :partial => 'event/events' %>

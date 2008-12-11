@@ -1,0 +1,12 @@
+<div class="metro_name form_field">
+	<label>Metro Name</label><br /><%= @metro.name %>
+</div>
+<div class="metro_state form_field">
+	<label>State</label><br /><%= @metro.state %>
+</div>
+<div class="metro_country form_field">
+	<label>Country</label><br /><%= @metro.country %>
+</div>
+<div>
+	<%= hidden_field 'location', 'metro_id', {:value => @metro.id} %>
+</div>

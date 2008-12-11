@@ -1,0 +1,13 @@
+xml.instruct!
+xml.urlset(:xmlns=>'http://www.google.com/schemas/sitemap/0.84') {
+	for event in @events
+		xml.url {
+			xml.loc(event_url(:id => event.id))
+			if event.date_modified
+				xml.lastmod(event.date_modified.strftime('%Y-%m-%d'))
+			else
+				xml.lastmod(event.date_created.strftime('%Y-%m-%d'))
+			end
+		}
+	end
+}

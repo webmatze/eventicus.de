@@ -1,0 +1,30 @@
+<% content_for("title") do %>
+	Please login
+<% end %>
+
+<% content_for("sidebox") do %>
+    Please enter your username and password to sign in.<br />
+    If you are not registered you can now sign up here:<br />
+    <br />
+    <%= link_to "Sign up now", { :controller => "account", :action => "signup"} %>
+<% end %>
+
+<%= form_tag :action=> "login" %>
+    
+  <% if @message %>
+    <div id="errorExplanation" class="errorExplanation">
+      <h2>Login failed</h2>
+    	<p><%= @message %></p>
+    </div>
+  <% end %>
+
+  <div class="form_field"><label for="user_login">Login:</label><br/>
+  <input type="text" name="user_login" id="user_login" size="30" value=""/></div>
+  
+  <div class="form_field"><label for="user_password">Password:</label><br/>
+  <input type="password" name="user_password" id="user_password" size="30"/></div>
+  
+  <%= submit_tag "Login &#187;" %> 
+
+</form>
+

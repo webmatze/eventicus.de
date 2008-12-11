@@ -1,0 +1,11 @@
+<div class="venue_name">
+	<%= @location.name %>
+</div>
+<div class="venue_address">
+	<%= @location.street + "<br />" if @location.street %>
+	<%= @location.zip %> <%= @location.metro.name %>
+</div>
+<div class="venue_state">
+	<%= @location.metro.state %> <%= @location.metro.country %>
+</div>
+<div id="selected_location_id" style="display:none"><%= @location.id %></div>

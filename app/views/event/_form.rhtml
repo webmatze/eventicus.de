@@ -1,0 +1,131 @@
+﻿<% require_bundle :dynarch_calendar, :language => 'en' %>
+
+<% content_for("sidebox") do %>
+	<script type="text/javascript" charset="utf-8">
+		function updateCategoryId(element, value) {
+			$('event_category_id').value = value;
+			return true;
+		} // End of update_category_id
+		
+		function selectVenue(field, li) {
+			var location_id = li.id.sub('locationid_','');
+			if (location_id != null && location_id != "") {
+				$('event_location_id').value = location_id;
+				new Ajax.Updater('selected_venue_content', '/event/selected_venue', 
+					{ parameters: 'id=' + location_id,
+					onComplete: function() {
+						Element.show('selected_venue');
+						Element.hide('find_venue');
+						new Effect.Highlight('selected_venue_content');
+					}
+					});
+			} else {
+				$('tmplocation_name').value = "";
+				Element.hide("mainCont");
+				Element.show("addLocationCont");
+				Element.hide("find_venue");
+				Element.hide("choose_category");
+				Element.show("addlocation_description");
+			}
+			return true;
+		} // End of selectVenue
+		function showFindVenue() {
+			Element.hide('selected_venue');
+			Element.show('find_venue');
+			$('location_name').value = "";
+			$('event_location_id').value = "";
+			return true;
+		} // End of showFindVenue
+	</script>
+	<div class="form_field" id="choose_category">
+		<label for="tmpevent_category_id">Choose Category</label>
+		<%= select 'event', 'category_id', [['Choose a category...','']] + categories_for_select.collect {|cat| [cat.name, cat.id]}, {}, { :id => 'tmpevent_category_id', :class => 'full', :style => 'width:200px'} %>
+	</div>
+	<%= observe_field 'tmpevent_category_id' , { :function => 'updateCategoryId(element, value)' }%>
+	
+	<% if controller.action_name != "import" and controller.action_name != "save_import" %>
+	
+		<div class="form_field" id="find_venue" <%= 'style="display:none"' if @event.location %>>
+			<label for="tmplocation_name">Find a Venue</label>
+			<%= text_field_with_auto_complete :tmplocation, :name, { :style => 'width: 200px'}, {:skip_style => true, :min_chars => 1, :after_update_element => 'selectVenue', :indicator => 'find_venue_spinner'} %>
+			<img id="find_venue_spinner" src="/images/spinner_moz.gif" width="16" height="16" style="display:none" />
+			<div style="display: none;" id="hidden_content_event_add_location"></div>
+		</div>
+	
+		<div class="form_field" id="selected_venue" <%= 'style="display:none"' unless @event.location %>>
+			<label>Selected Venue</label>
+			<div id="selected_venue_content">
+				<% if @event.location 
+					@location = @event.location %>
+					<%= render :partial => 'selectedvenue' %>
+				<% end %>
+			</div>
+			<%= link_to_function "change Venue", "showFindVenue()" %>
+		</div>
+	
+	<% end %>
+	
+	<div id="addlocation_description" style="display:none">
+		To add a new venue select a metro first.
+		You can also add new metros and select one of them.<br />
+		Then fill in your venue data and save it.
+	</div>
+<% end %>
+
+<%= error_messages_for 'event' %>
+<%= error_messages_for 'location' if @location %>
+<%= error_messages_for 'metro' if @metro %>
+
+<!--[form:event]-->
+<%= hidden_field 'event', 'category_id' %>
+<% if controller.action_name != "import" and controller.action_name != "save_import" %>
+	<%= hidden_field 'event', 'location_id' %>
+<% end %>
+
+<div class="form_field"><label for="event_title">Title</label><br/>
+<%= text_field 'event', 'title'  %></div>
+
+<div class="form_field"><label for="event_description">Description</label><br/>
+<%= text_area 'event', 'description', 'rows' => 10  %></div>
+
+<div class="form_field"><label for="event_date_start">Start Date</label><br/>
+<%= dynarch_datetime_select('event', 'date_start', {:select_time => true}) %></div>
+
+<div class="form_field"><label for="event_date_end">End Date</label><br/>
+<%= dynarch_datetime_select('event', 'date_end', {:select_time => true}) %></div>
+<!--[eoform:event]-->
+
+<% if controller.action_name == "import" or controller.action_name == "save_import" %>
+
+	<% if @location != nil and @location.new_record? == true %>
+		<!--[form:location]-->
+		<h2>Location</h2>
+		<%= render :partial => "location_data" %>
+		<%= render :partial => "location_descr" %>
+		<%= hidden_field 'location', 'lat' %>
+		<%= hidden_field 'location', 'lng' %>
+	<% else %>
+		<h2>Location</h2>
+		<%= hidden_field 'location', 'id' %>
+		<%= render :partial => "selectedvenue" %>
+		<!--[eoform:location]-->
+	<% end %>
+	
+	<% if @metro != nil and @metro.new_record? == true %>
+		<!--[form:metro]-->
+		<h2>Metro</h2>
+		<%= render :partial => "metro_data" %>
+	<% else %>
+		<h2>Metro</h2>
+		<%= hidden_field 'metro', 'id' %>
+		<%= render :partial => "selectedmetro" %>
+		<!--[eoform:metro]-->
+	<% end %>
+
+<% end %>
+
+<% content_for("more") do %>
+<div id="addLocationCont" style="display:none">
+	<%= render :partial => "addlocation"%>
+</div>
+<% end %>

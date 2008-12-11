@@ -1,0 +1,9 @@
+﻿<div id="selection">
+	<%= yield :tabs %>
+	<div id="popular" <%= 'class="active"' if params[:type] == "popular" %>>
+		<%= link_to "Popular", events_url(:place => params[:place], :type => "popular", :category => params[:category], :range => params[:range]) %>
+	</div>
+	<div id="timeline" <%= 'class="active"' if params[:type] == "upcoming" %>>
+		<%= link_to "Upcoming", events_url(:place => params[:place], :type => "upcoming", :category => params[:category], :range => params[:range]) %>
+	</div>
+</div>

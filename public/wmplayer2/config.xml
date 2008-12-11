@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<player width="120" height="35" background="" imagePath="images/" songPath="mp3/">
+	
+	<info x="10" y="0" width="110" height="18" overflow="scroll" show="true" />
+
+	<slider>
+	
+		<progress show="true">
+			<bar x="13" y="40" width="120" height="1" image="progressbar.jpg" show="true" />
+			<slider x="13" y="38" width="6" height="6" image="progressslider.jpg" hover="slider_hover.jpg" show="true" />
+		</progress>
+
+		<volume show="true">
+			<bar x="80" y="20" width="20" height="10" image="volumebar.jpg" show="true" />
+			<slider x="80" y="20" width="2" height="10" image="volumeslider.jpg" hover="slider_hover.jpg" show="true" />
+		</volume>
+		
+		<balance show="true">
+			<bar x="115" y="20" width="18" height="10" image="balancebar.jpg" show="true" />
+			<slider x="115" y="20" width="2" height="10" image="balanceslider.jpg" hover="slider_hover.jpg" show="true" />
+		</balance>
+		
+	</slider>
+
+	<buttons>
+		<start x="27" y="20" image="play.jpg" hover="play_hover.jpg" show="true" />
+		<stop x="41" y="20" image="stop.jpg" hover="stop_hover.jpg" show="true" />
+		<halt x="27" y="20" image="pause.jpg" hover="pause_hover.jpg" show="true" />
+		<next x="57" y="20" image="forward.jpg" hover="forward_hover.jpg" show="true" />
+		<last x="11" y="20" image="prev.jpg" hover="prev_hover.jpg" show="true" />
+
+		<mute x="11" y="50" image="mute.jpg" hover="mute_hover.jpg" show="true" />
+		<unmute x="11" y="50" image="unmute.jpg" hover="unmute_hover.jpg" show="true" />
+	</buttons>
+
+	<settings>
+		<font size="11" family="Arial" color="563D27" />
+		<scrolling interval="100" step="2" mode="reverse" />
+
+		<loadingProcess show="false" showTrackName="true" />
+
+		<streaming value="true" />
+		<autoload value="false" />
+		<autostart value="true" />
+
+		<repeatAll value="false" />
+		<repeat value="false" />
+		<shuffle value="false" onStart="false" />
+
+		<autostartNext value="true" />
+		<autoloadNext value="true" />
+
+		<ID3Names value="false" />
+
+		<skipTrack stopAtLast="true" stopAtZero="true"/>
+	</settings>
+
+	<songs>
+		<song name="Song 1" filename="song1.mp3" />
+		<song name="Song 2" filename="song2.mp3" />
+	</songs>
+</player>

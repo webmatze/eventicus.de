@@ -1,0 +1,40 @@
+#menu {
+	margin: 0px;
+	height: 25px;
+}
+#container {
+	background-color: #CCCC99;
+}
+#submenu {
+	margin: 0px;
+	height: 25px;
+}
+#body {
+	margin: 0px;
+	background-color: transparent;
+}
+#bodyheader {
+	margin: 0px;
+}
+#bodycontent {
+	margin: 0px;
+	background-color: #FFFFFF;
+}
+#rightcontent {
+	margin: 0px;
+	padding: 0px;
+}
+#maincontent {
+	margin: 0px;
+}
+#footer {
+	margin: 0px;
+}
+#mask {
+	background-color: #CCCC99;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 30px;
+	height: 1024px;
+}

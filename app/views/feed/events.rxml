@@ -1,0 +1,28 @@
+xml.instruct!
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1" do
+
+	xml.channel do
+	
+		xml.title "Eventicus.de Events"
+		xml.link events_url(:type => "upcoming")
+		xml.pubDate CGI.rfc1123_date(tz(@events.first.date_start)) if @events.length > 0
+		xml.description h("Upcoming events from eventicus.de")
+		
+		@events.each do |event|
+		
+			xml.item do
+			
+				xml.title event.title
+				xml.link event_url(:id => event.id.to_s)
+				xml.description h(event.description)
+				xml.pubDate CGI.rfc1123_date(tz(event.date_created))
+				xml.guid event_url(:id => event.id.to_s)
+				xml.author h(event.user.login)
+			
+			end
+		
+		end
+	
+	end
+
+end

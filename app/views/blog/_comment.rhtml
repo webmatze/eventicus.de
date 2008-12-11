@@ -1,0 +1,10 @@
+<div class="comment">
+	<div class="comment_head">
+		<%= link_to @comment.user.login, user_url(:id => @comment.user.login) %> commented <span class="small-date"><%= time_ago_in_words @comment.created_at %> ago</span>
+	</div>
+	<div class="comment_top">
+	</div>
+	<div class="comment_body">
+		<%= @comment.comment %>
+	</div>
+</div>

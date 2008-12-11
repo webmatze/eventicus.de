@@ -1,0 +1,10 @@
+﻿<div id="menu">
+	<ul>
+		<% for cat in categories %>
+			<li <%= 'class="active"' if params[:category] == cat.short %>>
+				<%= link_to cat.name, events_url(:place => params[:place], :type => params[:type], :category => cat.short, :range => params[:range]) %>
+			</li>
+		<% end %>
+	</ul>
+	<div style="clear:both"></div>
+</div>

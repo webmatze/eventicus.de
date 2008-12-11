@@ -1,0 +1,55 @@
+.zanmantou {
+	border: 1px solid #666666;
+	background-color: #e4e4e4;
+}
+.zanmantou .player {
+	border: 0px solid #666666;
+	border-bottom-width: 1px;
+	padding: 5px;
+}
+.zanmantou .player .title {
+	background-color: #ffffff;
+	padding: 2px;
+	font-size: 12px;
+}
+.zanmantou .player .button {
+	background-color: #e4e4e4;
+	border: 1px solid #666666;
+	border-color: #ffffff #666666 #666666 #ffffff;
+	padding: 2px;
+	font-size: 12px;
+	width: 30px;
+	height: 15px;
+	margin-top: 5px;
+	margin-right: 5px;
+	float: left;
+	text-align: center;
+}
+.zanmantou .player .button.over {
+	background-color: #d4d4d4;
+	cursor: pointer;
+}
+.zanmantou .player .button.active {
+	color: #ffffff;
+	background-color: #666666;
+}
+.zanmantou .player .button.disabled {
+	color: #d4d4d4;
+}
+.zanmantou .songs {
+	background-color: #FFFFFF;
+	padding: 2px;
+}
+.zanmantou .songs .song {
+	margin: 5px;
+	padding: 2px;
+	background-color: #e4e4e4;
+}
+.zanmantou .songs .song.active {
+	color: #ffffff;
+	background-color: #666666;
+}
+.zanmantou .songs .song.over {
+	background-color: #d4d4d4;
+	cursor: pointer;
+}

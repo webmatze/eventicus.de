@@ -1,0 +1,49 @@
+﻿<% content_for("head") do %>
+<% end %>
+
+<% content_for("title") do %>
+	<%=h 'Import Event' %>
+<% end %>
+
+<% content_for("icons") do %>
+<% end %>
+
+
+<% content_for("sidebox") do %>
+<% end %>
+
+<% content_for("tabs") do %>
+<% end %>
+
+<div class="event">
+
+<% if @event == nil %>
+
+	<p>You can import events from other sites with support for <a href="http://microformats.org">microformats</a> like <a href="http://microformats.org/wiki/hcalendar">hCalendar</a>.
+	We scan that page and extract the <strong>hCalendar</strong> data.</p>
+	
+	<p>After the scan you can then enter missing data and import the event to eventicus.</p>
+	
+	<p>Some sites where you can find events in <strong>hCalendar</strong> format are <a href="http://upcoming.org">upcoming.org</a> or <a href="http://eventful.com">eventful.com</a>. But you can find it on many other modern websites with events.</p>
+	
+	<%= form_tag :action => "import" %>
+	
+	<div class="data">
+		<div class="form_field"><label for="location_url">URL</label><br/>
+		<%= text_field_tag 'url', params[:url]  %> 
+	</div>
+	
+	<%= submit_tag 'Scan for hCalendar data' %>
+	
+	</form>
+
+<% else %>
+
+	<% form_tag :action => 'save_import' do %>
+	  <%= render :partial => 'form' %>
+	  <%= submit_tag 'Import' %>
+	<% end %>
+
+<% end %>
+
+</div>

@@ -1,0 +1,176 @@
+﻿<% content_for("head") do %>
+	<% if request.domain.eql?('eventicus.de') %>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAzYiE310tgcY5QZhQEIyGZhT-7GguMMIpO2xrd5xIgKN697deXxQ_YkplR0HlrnzSAs547EMtU_jOUQ"
+			type="text/javascript"></script>
+	<% else %>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAzYiE310tgcY5QZhQEIyGZhQxv4llRIh0X_zG59xBNeEaOOsx9RSwZ21apymwVIP2hJN3WnCBmC6dMQ"
+			type="text/javascript"></script>
+	<% end %>
+	<script type="text/javascript">
+	//<![CDATA[
+	
+		Event.observe(window, 'load', function() {
+			if (GBrowserIsCompatible()) {
+				<% if @event.location.lat %>
+				var map = new GMap2(document.getElementById("map"));
+				map.addControl(new GSmallMapControl());
+				var point = new GLatLng(<%= @event.location.lat %>, <%= @event.location.lng %>);
+				map.setCenter(point, 13);
+				map.addOverlay(new GMarker(point));
+				<% end %>
+			}
+		});
+
+	//]]>
+	</script>		
+<% end %>
+
+<% content_for("title") do %>
+	<%=h @event.title %>
+<% end %>
+
+<% content_for("icons") do %>
+
+	<% if session['user'] %>
+	<span id="category_description">
+		<% if @event.attendees.find_by_user_id session['user'].id %>
+			(I'm going)
+		<% else%>
+			(<%= link_to "Attend", :action => "attend", :id => @event %>)
+		<% end %>
+	</span>
+	<% end %>
+
+<% end %>
+
+
+<% content_for("sidebox") do %>
+	<h3>Category</h3>
+	<p><%=h @event.category.name %></p>
+	<h3><%= @event.attending_users.count %> Attending</h3>
+	<% for user in @event.attending_users %>
+		<%= link_to user.login, user_url(:id => user.login) %>
+		<% if user == session['user']%>
+			<%= link_to "[remove me]", :action => "notattending", :id => @event %>
+		<% end %> 
+	<% end %>
+<% end %>
+
+<% content_for("tabs") do %>
+	<% if session['user'] && @event.user.id == session['user'].id %>
+	<div id="edit" <%= 'class="active"' if params[:type] == "edit" %>>
+		<%= link_to "Edit", event_url(:id => @event.id, :action => 'edit') %>
+	</div>
+	<% end %>
+<% end %>
+
+<div class="vevent vcalendar event">
+
+	<div class="event-user">
+		<%= link_to @event.user.login, user_url(:id => @event.user.login) %>
+		submitted this event
+		<span class="small-date"><%= time_ago_or_time_stamp(@event.date_created) %></span>
+	</div>
+	
+	<div class="event-time">
+		<h2>When</h2>
+		<div class="data">
+			<span><%= tz(@event.date_start).strftime('%A, %B %d, %Y  %H:%M') %></span> <span class="end-date">- <%= tz(@event.date_end).strftime('%A, %B %d, %Y  %H:%M') %></span>
+		</div>
+	</div>
+
+	<div class="event-location">
+		
+		<h2>Where</h2>
+		<div class="location vcard data">
+			<div id="map" style="width:300px;height:150px"></div>
+			<span class="fn org"><%=h @event.location.name %></span><br />
+			<div class="adr">
+				<span class="street-address"><%=h @event.location.street %></span><%= "<br />" if @event.location.street %>
+				<span class="locality"><%= link_to @event.location.metro.name, events_url(:place => @event.location.metro.id) %></span>, <span class="region"><%=h @event.location.metro.state %></span> <span class="postal-code"><%=h @event.location.zip %></span><br />
+				<span class="country-name"><%=h @event.location.metro.country %></span>
+			</div><br />
+		</div>
+	</div>
+
+	<div class="event-description">
+		<h2>What</h2>
+		<div class="description data">
+			<%= nl2br(auto_link(textilize(@event.description.gsub("&amp;","&")))) %>
+		</div>
+	</div>
+	
+	<div class="event-pictures">
+		<h2>Photos</h2>
+		<div id="photohelp" class="data help" style="display:none">
+			To add a new photo you need an account from <a href="http://flickr.com">flickr</a>, upload you photos there<br /> and tag them with <input type="text" onClick="this.select()" value="eventicus:event=<%=@event.id %>" />.<br />
+			Your photo will appear on this page automatically.
+		</div>
+		<div class="data">
+			<% if @photos.size == 0 %>There are no photos for this event yet!<% end %>
+			<%=link_to_function("Add your own photos!", nil, :id => "photohelpshow") do |page| 
+				page.visual_effect :toggle_slide, 'photohelp' 
+				page[:photohelpshow].hide
+			end %>
+			<div>
+				<br />
+				<% for photo in @photos %>
+					<a href="<%=photo.url %>" title="<%=photo.title %>"><img class="photo" src="<%=photo.sizes[0]['source'] %>" /></a>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	
+	<div class="event-comments">
+		<a name="comments"></a>
+		<h2>Comments</h2>
+		<div class="data">
+			<div id="comments">
+				<% for comment in @event.comments_ordered_by_submitted %>
+					<div class="comment">
+						<div class="comment_head">
+							<%= link_to comment.user.login, user_url(:id => comment.user.login) %> commented <span class="small-date"><%= time_ago_or_time_stamp(comment.created_at) %></span>
+						</div>
+						<div class="comment_top">
+						</div>
+						<div class="comment_body">
+							<%= comment.comment %>
+						</div>
+					</div>
+				<% end %>
+				<% if @event.comments.count == 0%>No comments by now<% end %>
+			</div>
+		</div>
+		
+		<% if session['user'] %>
+		<h2>Leave a reply</h2>
+		<div class="data">
+			
+				<div id="addComment">
+					<% form_remote_tag  :html => {:action => 'add_comment', :id => 'comment_form'}, 
+										:url => { :action => 'add_comment'},
+										:update => { :success => 'comments'},
+										:position => :top,
+										:success => "Form.reset('comment_form')" do %>
+					
+						<div class="form_field"><label for="comment_comment">Comment</label><br/>
+						<%= text_area 'comment', 'comment', 'rows' => 5  %></div>
+					
+						<%= submit_tag "Submit Comment" %> 
+					  
+					<% end %>
+				</div>
+			
+		</div>
+		<% end %>
+
+
+	</div>
+
+	<span style="display:none" class="summary"><%=h @event.title %></span>
+	<span style="display:none" class="category"><%=h @event.category.name %></span>
+	<span style="display:none" class="dtstamp"><%=@event.date_created.iso8601 %></span>
+	<span style="display:none" class="dtstart"><%=@event.date_start.iso8601 %></span>
+	<span style="display:none" class="dtend"><%=@event.date_end.iso8601 %></span>
+
+</div>
