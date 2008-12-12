@@ -47,9 +47,15 @@ set :use_sudo, false
 # ssh_options[:keys] = %w(/path/to/my/key /path/to/another/key)
 # ssh_options[:port] = 25
 
+
 # =============================================================================
 # TASKS
 # =============================================================================
+desc 'Link shared directories and files'
+task :after_update_code, :roles => :app do
+  run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+end
+
 # Define tasks that run on all (or only some) of the machines. You can specify
 # a role (or set of roles) that each task should be executed on. You can also
 # narrow the set of servers to a subset of a role by specifying options, which

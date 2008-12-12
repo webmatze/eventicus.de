@@ -176,7 +176,6 @@ module Globalize
 
     def self.translate(key, default = nil, arg = nil, namespace = nil) # :nodoc:
       key = key.to_s.gsub('_', ' ') if key.kind_of? Symbol
-
       translator.fetch(key, self.language, default, arg, namespace)
     end
 

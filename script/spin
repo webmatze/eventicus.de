@@ -3,6 +3,6 @@
 /srv/rails/eventicus/current/script/process/spawner \
   mongrel \
   --environment=production \
-  --instances=4 \
+  --instances=3 \
   --address=127.0.0.1 \
   --port=8000

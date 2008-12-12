@@ -2,9 +2,9 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class ViewTranslationNamespaceTest < Test::Unit::TestCase
   include Globalize
-
+  
   fixtures :globalize_languages, :globalize_countries, :globalize_translations
-
+  
   def setup
     Globalize::Locale.set_base_language("en-US")
     Globalize::Locale.set("en-US")

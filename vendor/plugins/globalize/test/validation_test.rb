@@ -4,7 +4,7 @@ class ValidationTest < Test::Unit::TestCase
   include Globalize
 
   fixtures :globalize_languages, :globalize_countries, 
-    :globalize_translations, :globalize_products
+    :globalize_translations, :globalize_products  
 
   class Product < ActiveRecord::Base
     set_table_name "globalize_products"

@@ -78,7 +78,7 @@ See the wiki (http://www.globalize-rails.org/) for more documentation.
 
 From your rails app root directory:
 
-1. <tt>script/plugin install http://svn.globalize-rails.org/svn/globalize/branches/for-1.2</tt>
+1. <tt>script/plugin install http://svn.globalize-rails.org/svn/globalize/trunk</tt>
 2. <tt>rake globalize:setup</tt> (might take a while, about a minute or so)
 
 ...and you're globalized, dude!

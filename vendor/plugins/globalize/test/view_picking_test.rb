@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class ViewPickingTest < Test::Unit::TestCase
   include Globalize
-  fixtures :globalize_languages, :globalize_countries
+  fixtures :globalize_languages, :globalize_countries  
 
   class TestController < ActionView::Base
   end
@@ -13,8 +13,7 @@ class ViewPickingTest < Test::Unit::TestCase
   end
 
   def test_first
-    tc = TestController.new
-    tc.base_path = @base_path
+    tc = TestController.new([@base_path])
     assert_match /English/, tc.render("test")
     assert_no_match /Hebrew/, tc.render("test")
     Locale.set("he-IL")
@@ -23,15 +22,13 @@ class ViewPickingTest < Test::Unit::TestCase
   end
 
   def test_non_full_path
-    tc = TestController.new
-    tc.base_path = @base_path
+    tc = TestController.new([@base_path])
     assert_match /English/, tc.render_file("#{@base_path}/test.rhtml", false)
   end
 
   def test_nil
     Locale.set(nil)
-    tc = TestController.new
-    tc.base_path = @base_path
+    tc = TestController.new([@base_path])
     assert_match /English/, tc.render("test")
     assert_no_match /Hebrew/, tc.render("test")
     Locale.set("he-IL")
@@ -41,8 +38,7 @@ class ViewPickingTest < Test::Unit::TestCase
 
   def test_non_full_path_nil
     Locale.set(nil)
-    tc = TestController.new
-    tc.base_path = @base_path
+    tc = TestController.new([@base_path])
     assert_match /English/, tc.render_file("#{@base_path}/test.rhtml", false)
   end
 

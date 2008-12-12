@@ -366,7 +366,7 @@ view_es_tr_namespace_2:
   language_id: 7
   pluralization_index: 1
   tr_key: draw
-  namespace: lottery
+  namespace: "lottery"
   text: "seleccionar"
 
 view_es_tr_namespace_3:
@@ -391,7 +391,7 @@ view_es_tr_namespace_5:
   type: ViewTranslation
   language_id: 7
   pluralization_index: 1
-  namespace: lottery
+  namespace: "lottery"
   tr_key: "draw %d times"
   text: "seleccionar una vez"
 
@@ -400,7 +400,7 @@ view_es_tr_namespace_6:
   type: ViewTranslation
   language_id: 7
   pluralization_index: 2
-  namespace: lottery
+  namespace: "lottery"
   tr_key: "draw %d times"
   text: "seleccionar %d veces"
 
