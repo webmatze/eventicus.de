@@ -1,6 +1,6 @@
 --- 
 user: rails
-cwd: /srv/rails/eventicus2
+cwd: /srv/rails/eventicus/current
 port: "8000"
 environment: production
 group: rails
