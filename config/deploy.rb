@@ -2,7 +2,7 @@
 # (http://manuals.rubyonrails.com/read/book/17). It allows you to automate
 # (among other things) the deployment of your application.
 
-require 'mongrel_cluster/recipes'
+#require 'mongrel_cluster/recipes'
 
 # =============================================================================
 # REQUIRED VARIABLES
@@ -13,7 +13,7 @@ require 'mongrel_cluster/recipes'
 # form the root of the application path.
 
 set :application, "eventicus"
-set :repository, "http://svn.eventicus.de/#{application}/trunk"
+set :repository, "git@github.com:webmatze/eventicus.de.git"
 
 # =============================================================================
 # ROLES
@@ -32,8 +32,10 @@ role :db,  "eventicus.de", :primary => true
 # OPTIONAL VARIABLES
 # =============================================================================
 set :deploy_to, "/srv/rails/#{application}" # defaults to "/u/apps/#{application}"
-set :user, "root"            # defaults to the currently logged in user
-# set :scm, :darcs               # defaults to :subversion
+set :user, "rails"            # defaults to the currently logged in user
+set :scm, :git               # defaults to :subversion
+set :scm_username, "webmatze"
+set :use_sudo, false
 # set :svn, "/path/to/svn"       # defaults to searching the PATH
 # set :darcs, "/path/to/darcs"   # defaults to searching the PATH
 # set :cvs, "/path/to/cvs"       # defaults to searching the PATH

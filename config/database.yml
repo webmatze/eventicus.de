@@ -25,15 +25,15 @@ development:
 test:
   adapter: mysql
   database: eventicus2_test
-  username: eventicus
-  password: 123mat
+  username: xxx
+  password: xxx
   host: localhost
 
 production:
   adapter: mysql
 #  database: eventicus_production
   database: eventicus_development
-  username: root
-  password: meaqd81
+  username: xxx
+  password: xxx
   host: localhost
   socket: /var/run/mysqld/mysqld.sock
