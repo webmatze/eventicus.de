@@ -24,7 +24,7 @@
 			<div id="header">
 				<div id="logo">
 				
-					<div class="logo">Eventicus<sup>BETA</sup></div>
+					<div class="logo"><%= link_to 'Eventicus<sup>BETA</sup>', {:controller => 'events'} %></div>
 					
 					<ul id="mainmenu">
 						<li <%= 'class="active"' if params[:menu] == "events" %>>
@@ -204,7 +204,7 @@
 			</div>
 			
 			<div id="footer">
-				Copyright 2007 by eventicus.de - All rights reserved 
+				Copyright 2007-2008 by eventicus.de - All rights reserved 
 				| <%= link_to "About and Contact", :controller => 'event', :action => 'about' %> 
 				| <a href="http://groups.google.com/group/eventicus/topics">Discussions</a>
 			</div>

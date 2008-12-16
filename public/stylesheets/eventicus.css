@@ -116,7 +116,15 @@ img {
 	color: #FFFFFF;
 	float: left;
 	padding: 5px 10px;
+	text-decoration: none;
 }
+
+.logo a,
+.logo a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
 .logo sup {
 	font-size: 8px;
 }
@@ -361,6 +369,27 @@ ul#mainmenu li.active a {
 	float: left;
 	padding: 0px 10px 0px 0px;
 	height: 20px;
+}
+#bodycontent #rightcontent .side-box #add_event {
+}
+#bodycontent #rightcontent .side-box #add_event a {
+  display: block;
+  border-style: solid;
+  border-width: 2px 1px 1px 2px; 
+  border-color: #FFFFCC #666600 #666600 #FFFFCC; 
+  padding: 8px; 
+  background-color: rgb(204, 204, 51); 
+  -moz-border-radius: 6px; 
+  margin-bottom: 10px; 
+  text-align: center; 
+  text-decoration: none;
+  color: #666600;
+  font-weight: bold;
+}
+#bodycontent #rightcontent .side-box #add_event a:hover {
+  border-color: #666600 #FFFFCC #FFFFCC #666600; 
+  border-width: 1px 2px 2px 1px; 
+  color: #ffffff;
 }
 ul.cloud li a {
 	text-decoration: none;

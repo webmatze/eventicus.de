@@ -20,6 +20,9 @@
 <% end %>
 
 <% content_for("sidebox") do %>
+  <div id="add_event">
+    <%= link_to 'Add New Event Now', :controller => 'event', :action => 'new' %>
+  </div>
 	<h3>City Cloud</h3>
 	<ul class="cloud">
 		<% for metro in @metros %>
