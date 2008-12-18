@@ -186,8 +186,7 @@
 					<div id="maincontent">
 					
 						<!-- Hier der Hauptteil -->
-						
-						<div style="color: green"><%= flash[:notice] %></div>
+						<% if flash[:notice] %><div style="color: green"><%= flash[:notice] %></div><% end %>
 						
 						<div id="mainCont"><%= yield  %></div>
 						

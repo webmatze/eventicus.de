@@ -8,7 +8,7 @@ class AccountController < ApplicationController
     case request.method
       when :post
         if session['user'] = User.authenticate(params['user_login'], params['user_password'])
-          flash['notice']  = "Login successful"
+          flash[:notice]  = "Login successful"
           redirect_back_or_default :controller => "account", :action => "welcome"
         else
           @login    = params['user_login']
@@ -24,7 +24,7 @@ class AccountController < ApplicationController
         
         if @user.save      
           session['user'] = User.authenticate(@user.login, params['user']['password'])
-          flash['notice']  = "Signup successful"
+          flash[:notice]  = "Signup successful"
           redirect_back_or_default :controller => "account", :action => "welcome"          
         end
       when :get
@@ -42,7 +42,7 @@ class AccountController < ApplicationController
     
   def logout
     session['user'] = nil
-	  flash['notice'] = "Logout successful"
+	  flash[:notice] = "Logout successful"
 	  redirect_to events_url
   end
     
