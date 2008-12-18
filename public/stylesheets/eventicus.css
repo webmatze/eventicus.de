@@ -409,6 +409,22 @@ ul.cloud li.size4 {
 ul.cloud li.size5 {
 	font-size: 130% !important;
 }
+ul.searchform {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+ul.searchform li {
+  clear: both;
+}
+ul.searchform li label {
+  float: left;
+  margin-bottom: 10px;
+}
+ul.searchform li input {
+  float: right;
+  margin-bottom: 10px;
+}
 #bodycontent #rightcontent .side-box ul.recent-posts {
 	list-style-type: none;
 	margin: 0px;

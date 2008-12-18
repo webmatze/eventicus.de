@@ -45,6 +45,7 @@
 
 
 <% content_for("sidebox") do %>
+  <%= render :partial => 'sidebar_standard' %>
 	<h3>Category</h3>
 	<p><%=h @event.category.name %></p>
 	<h3><%= @event.attending_users.count %> Attending</h3>

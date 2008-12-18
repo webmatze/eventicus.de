@@ -158,7 +158,7 @@ class EventController < ApplicationController
             hLoc = hCal.location
           else
             cards = hCard.find url
-            hLoc = cards.first
+            hLoc = (cards.class.name == "HCard") ? cards : cards.first
           end
           
           @event = Event.new
@@ -167,9 +167,9 @@ class EventController < ApplicationController
           @event.date_start = hCal.dtstart if hCal.properties.index("dtstart")
           @event.date_end = hCal.properties.index("dtend") ? hCal.dtend : hCal.dtstart + 2.hours
           
-          @location = Location.find_by_name hLoc.fn
+          @location = Location.find_by_name hLoc.fn if hLoc
 
-          if @location == nil
+          if @location.nil?
           
             @location = Location.new
             
@@ -214,8 +214,8 @@ class EventController < ApplicationController
           
         rescue Timeout::Error
           flash[:notice] = 'Timeout on reading url'
-        rescue
-          flash[:notice] = 'Event could not be imported'
+        rescue Exception => e
+          flash[:notice] = 'Event could not be imported: ' + e
         end
         
       else

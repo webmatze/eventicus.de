@@ -1,0 +1,11 @@
+  <div id="add_event">
+    <%= link_to 'Add New Event Now', :controller => 'event', :action => 'new' %>
+  </div>
+  <h3>Search Events</h3>
+  <form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>">
+    <ul class="searchform">
+      <li><label>What</label><%= text_field_tag "search", params[:search] %></li>
+      <li><label>Where</label><%= text_field_tag "where", params[:where] %></li>
+      <li><label></label><input type="submit" value="Search"></li>
+    </ul>
+  </form>

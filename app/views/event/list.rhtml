@@ -20,16 +20,14 @@
 <% end %>
 
 <% content_for("sidebox") do %>
-  <div id="add_event">
-    <%= link_to 'Add New Event Now', :controller => 'event', :action => 'new' %>
-  </div>
+  <%= render :partial => 'sidebar_standard' %>
 	<h3>City Cloud</h3>
 	<ul class="cloud">
 		<% for metro in @metros %>
 			<li class="size3"><%= link_to metro.name , events_url(:type => params[:type], :category => params[:category], :range => params[:range], :page => params[:page], :place => metro.id) %> </li>
 		<% end %>
 	</ul>
-	
+	<br /><br />
 	<h3>Recent Blog Posts</h3>
 	<%= render :partial => 'blog/recentposts' %>
 <% end %>

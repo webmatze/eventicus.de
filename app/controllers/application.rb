@@ -59,11 +59,20 @@ class ApplicationController < ActionController::Base
         condParams[:searchKey] = "%" + params[:search] + "%"
         search = " (e.title like :searchKey OR e.description like :searchKey) AND "
       end
+      if params[:where]
+        name = params[:where]
+        search += " (l.name like '%#{name}%' OR l.street like '%#{name}%' OR m.name like '%#{name}%' OR m.state like '%#{name}%' OR m.country like '%#{name}%') AND "
+      end
       conditions = [place + category + search + range, condParams]
     end
 
     def count_events( params )
-      Event.count(:all, :joins => "e LEFT JOIN locations l ON l.id = e.location_id", :conditions => get_eventlist_conditions(params))
+      Event.count(
+        :all, 
+        :select => "events e",
+        :joins => "LEFT JOIN locations l ON l.id = e.location_id LEFT JOIN metros m ON m.id = l.metro_id " , 
+        :conditions => get_eventlist_conditions(params)
+      )
     end
 
     def eventlist( params , per_page = 6, page = 1)
@@ -78,7 +87,15 @@ class ApplicationController < ActionController::Base
 
       #find
       if conditions.length > 0
-        Event.paginate(:all, :order => order, :select => "e.*", :from => "events e", :conditions => conditions, :joins => "LEFT JOIN locations l ON l.id = e.location_id" , :per_page => per_page, :page => page)
+        Event.paginate(
+          :all, 
+          :order => order, 
+          :select => "e.*", 
+          :from => "events e", 
+          :conditions => conditions, 
+          :joins => "LEFT JOIN locations l ON l.id = e.location_id LEFT JOIN metros m ON m.id = l.metro_id" , 
+          :per_page => per_page, 
+          :page => page)
       else
         Event.paginate(:all, :order => order, :per_page => per_page, :page => page)
       end
