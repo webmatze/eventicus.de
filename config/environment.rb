@@ -39,6 +39,7 @@ Rails::Initializer.run do |config|
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake db:sessions:create')
   # config.action_controller.session_store = :active_record_store
+  config.action_controller.session_store = :mem_cache_store
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper, 
@@ -52,6 +53,8 @@ Rails::Initializer.run do |config|
   config.active_record.default_timezone = :utc
   
   # See Rails::Configuration for more options
+  config.cache_store = :mem_cache_store
+  
 end
 
 # Add new inflection rules using the following format 
