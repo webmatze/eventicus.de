@@ -4,7 +4,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1" do
 	xml.channel do
 	
 		xml.title "Eventicus Blog"
-		xml.link blog_url()
+		xml.link url_for :controller => 'blog', :action => 'index', :only_path => false
 		xml.pubDate CGI.rfc1123_date(@blogposts.first.created_at) if @blogposts.length > 0
 		xml.description h("Latest posts from Eventicus Blog")
 		
@@ -13,7 +13,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1" do
 			xml.item do
 			
 				xml.title post.title
-				xml.link :controller => 'blog', :action => 'show', :id => post.id.to_s
+				xml.link url_for :controller => 'blog', :action => 'show', :id => post.id.to_s, :only_path => false
 				xml.description h(post.description)
 				xml.pubDate CGI.rfc1123_date(post.created_at)
 				xml.guid :controller => 'blog', :action => 'show', :id => post.id.to_s

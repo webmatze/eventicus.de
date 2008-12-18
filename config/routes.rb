@@ -115,6 +115,14 @@ ActionController::Routing::Routes.draw do |map|
               :requirements => {
                 :page => /\d+/
               }
+            
+  map.rss_blog 'rss/blogposts/:page',
+            :controller => 'feed',
+            :action => 'blog',
+            :page => 1,
+            :requirements => {
+              :page => /\d+/
+            }
               
   map.blogposts 'blogposts/:page',
               :controller => 'blog',
@@ -124,14 +132,6 @@ ActionController::Routing::Routes.draw do |map|
               :requirements => {
                 :page => /\d+/
               }
-            
-  map.rss_blog 'rss/blogposts/:page',
-            :controller => 'feed',
-            :action => 'blog',
-            :page => 1,
-            :requirements => {
-              :page => /\d+/
-            }
 									
   map.event 'event/:id/:action',
       :controller => 'event',

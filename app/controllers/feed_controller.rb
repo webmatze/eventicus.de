@@ -8,6 +8,7 @@ class FeedController < ApplicationController
 	def blog
 		@blogposts = Blog.find(:all, :order => "created_at ASC")
 		headers["Content-Type"] = "application/rss+xml"
+    headers['Content-Type'] += '; charset=utf-8'
 	end
 
 	private
