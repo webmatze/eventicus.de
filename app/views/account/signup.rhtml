@@ -14,6 +14,9 @@
 
   <%= error_messages_for 'user' %><br/>
   
+  <div class="form_field"><label for="user_email">Email:</label><br/>
+  <%= text_field "user", "email", :size => 30 %></div>
+  
   <div class="form_field"><label for="user_login">Desired login:</label><br/>
   <%= text_field "user", "login", :size => 30 %></div>
   
