@@ -1,7 +1,6 @@
 class AccountController < ApplicationController
   
   before_filter :login_required, :except => [:login, :signup]
-  #model   :user
   layout  'eventicus'
 
   def login
@@ -47,6 +46,29 @@ class AccountController < ApplicationController
   end
     
   def welcome
+  end
+  
+  # Einen Avatar bearbeiten oder hochladen
+  def avatar
+    @user = session['user']
+  end
+  
+  def upload
+    @user = session['user']
+    @avatar = @user.avatar || Avatar.new(:uploaded_data => params[:avatar_file])
+    
+    @service = AvatarService.new(@user, @avatar)
+    
+    if @user.avatar and @service.update_avatar(params[:avatar_file])
+      flash[:notice] = 'Avatar was successfully updated.'
+      redirect_to :action => 'avatar'
+    elsif @user.avatar.nil? and @service.save
+      flash[:notice] = 'Avatar was successfully uploaded.'
+      redirect_to :action => 'avatar'
+    else
+      @avatar = @service.avatar
+      render :action => 'avatar'
+    end
   end
 
   in_place_edit_for :user, :firstname

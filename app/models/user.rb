@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :attendees
   has_many :attended_events, :through => :attendees, :source => :event
   
+  has_one :avatar, :dependent => :destroy
+  
   composed_of :tz, :class_name => 'TZInfo::Timezone', :mapping => %w( time_zone time_zone )
 
   def self.authenticate(login, pass)
