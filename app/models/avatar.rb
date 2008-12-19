@@ -7,7 +7,8 @@ class Avatar < ActiveRecord::Base
                   :risize_to    => '128x128>',
                   :thumbnails   => {
                     :normal => '64x64>',
-                    :small  => '32x32>'
+                    :small  => '32x32>',
+                    :mini   => '16x16>'
                   }
                   
   validates_as_attachment
