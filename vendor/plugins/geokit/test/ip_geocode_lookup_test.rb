@@ -1,9 +1,9 @@
-$:.unshift(File.dirname(__FILE__) + '/../lib')
+require File.join(File.dirname(__FILE__), '../../../../config/environment')
+require 'action_controller/test_process'
 require 'test/unit'
 require 'rubygems'
 require 'mocha'
-require File.join(File.dirname(__FILE__), '../../../../test/test_helper')
-require File.expand_path(File.join(File.dirname(__FILE__), '../../../../config/environment.rb'))
+
 
 class LocationAwareController < ActionController::Base #:nodoc: all
   geocode_ip_address
@@ -40,44 +40,44 @@ class IpGeocodeLookupTest < Test::Unit::TestCase #:nodoc: all
     @failure.success = false
     
     @controller = LocationAwareController.new
-    request = ActionController::TestRequest.new
+    @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
   end
 
   def test_no_location_in_cookie_or_session
     GeoKit::Geocoders::IpGeocoder.expects(:geocode).with("good ip").returns(@success)
-    request.remote_ip = "good ip"
+    @request.remote_ip = "good ip"
     get :index
     verify
   end
   
   def test_location_in_cookie
-    request.remote_ip = "good ip"
-    request.cookies['geo_location'] = CGI::Cookie.new('geo_location', @success.to_yaml)
+    @request.remote_ip = "good ip"
+    @request.cookies['geo_location'] = CGI::Cookie.new('geo_location', @success.to_yaml)
     get :index
     verify
   end
   
   def test_location_in_session
-    request.remote_ip = "good ip"
-    request.session[:geo_location] = @success
-    request.cookies['geo_location'] = CGI::Cookie.new('geo_location', @success.to_yaml)
+    @request.remote_ip = "good ip"
+    @request.session[:geo_location] = @success
+    @request.cookies['geo_location'] = CGI::Cookie.new('geo_location', @success.to_yaml)
     get :index
     verify
   end
   
   def test_ip_not_located
     GeoKit::Geocoders::IpGeocoder.expects(:geocode).with("bad ip").returns(@failure)
-    request.remote_ip = "bad ip"
+    @request.remote_ip = "bad ip"
     get :index
-    assert_nil request.session[:geo_location]
+    assert_nil @request.session[:geo_location]
   end
   
   private
   
   def verify
     assert_response :success    
-    assert_equal @success, request.session[:geo_location]
+    assert_equal @success, @request.session[:geo_location]
     assert_not_nil cookies['geo_location']
     assert_equal @success, YAML.load(cookies['geo_location'].join)
   end
