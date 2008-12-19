@@ -186,7 +186,7 @@
 					<div id="maincontent">
 					
 						<!-- Hier der Hauptteil -->
-						<% if flash[:notice] %><div style="color: green"><%= flash[:notice] %></div><% end %>
+						<% if flash[:notice]%><div class="notice"><%= flash[:notice] %></div><% end %>
 						
 						<div id="mainCont"><%= yield  %></div>
 						
@@ -203,7 +203,7 @@
 			</div>
 			
 			<div id="footer">
-				Copyright 2007-2008 by eventicus.de - All rights reserved 
+				Copyright 2007-<%= Date.today.year %> by eventicus.de - All rights reserved 
 				| <%= link_to "About and Contact", :controller => 'event', :action => 'about' %> 
 				| <a href="http://groups.google.com/group/eventicus/topics">Discussions</a>
 			</div>

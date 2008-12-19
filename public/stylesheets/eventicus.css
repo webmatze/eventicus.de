@@ -129,6 +129,14 @@ img {
 	font-size: 8px;
 }
 
+.notice {
+  color: #666600;
+  background-color: #EFEF9D;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  padding: 10px;
+}
+
 ul#mainmenu {
 	list-style-type: none;
 	margin: 0px;
