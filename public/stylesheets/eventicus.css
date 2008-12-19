@@ -22,6 +22,7 @@ a:hover {
 a.nav-link {
 	border: 1px solid #CCCC33;
 	-moz-border-radius: 6px 6px 6px 6px;
+	-webkit-border-radius: 6px 6px 6px 6px;
 	border-radius: 6px 6px 6px 6px;
 	padding: 5px 10px;
 	font-size: 80%;
@@ -47,6 +48,7 @@ img {
 
 #body {
 	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	background-color: #FFFFFF;
 	margin: 10px 0px;
@@ -59,6 +61,7 @@ img {
 
 #greeting {
 	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	background-color: #CCCC33;
 }
@@ -86,6 +89,7 @@ img {
 }
 #greeting .signup-text {
 	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	background-color: #FFFFCC;
 	font-size: 83%;
@@ -133,6 +137,7 @@ img {
   color: #666600;
   background-color: #EFEF9D;
   -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
   border-radius: 6px;
   padding: 10px;
 }
@@ -163,12 +168,14 @@ ul#mainmenu li a:hover {
 	color: #FFFFFF;
 	background-color: #CCCC33;
 	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 	border-radius: 8px;
 }
 ul#mainmenu li.active a {
 	color: #FFFFFF;
 	background-color: #CCCC33;
 	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 	border-radius: 8px;
 }
 
@@ -224,6 +231,7 @@ ul#mainmenu li.active a {
 	color: #000000;
 	text-decoration: none;
 	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	background-color: #FFFFCC;
 }
@@ -231,6 +239,7 @@ ul#mainmenu li.active a {
 	color: #000000;
 	text-decoration: none;
 	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	background-color: #FFFFCC;
 }
@@ -240,6 +249,7 @@ ul#mainmenu li.active a {
 	background-color: #FFFFCC;
 	min-height: 25px;
 	-moz-border-radius: 0px 0px 10px 10px;
+	-webkit-border-radius: 0px 0px 10px 10px;
 	border-radius: 0px 0px 10px 10px;
 }
 #submenu ul {
@@ -262,6 +272,7 @@ ul#mainmenu li.active a {
 	color: #FFFFFF;
 	text-decoration: none;
 	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	background-color: #666600;
 }
@@ -269,6 +280,7 @@ ul#mainmenu li.active a {
 	color: #FFFFFF;
 	text-decoration: none;
 	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	background-color: #666600;
 }
@@ -280,20 +292,21 @@ ul#mainmenu li.active a {
 	padding-top: 0px;
 }
 #submenu ul li.newEvent a {
+	color: #666600;
 	font-weight: bold;
 	font-size: 100%;
 	background-color: #CCCC33;
 	-moz-border-radius: 0px 0px 4px 4px;
+	-webkit-border-radius: 4px;
 	border-radius: 0px 0px 4px 4px;
-	border: 0px solid #CCCC33;
+	border: 0px solid transparent;
 	border-width: 0px 1px 1px 1px;
 	padding-left: 10px;
 	padding-right: 10px;
-	color: #666600;
 }
 #submenu ul li.newEvent a:hover {
 	color: #FFF;
-	border: 0px solid #666600;
+	border: 0px solid transparent;
 	border-width: 0px 1px 1px 1px;
 }
 
@@ -302,6 +315,7 @@ ul#mainmenu li.active a {
 	height: 38px;
 	background-color: #FFFFCC;
 	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
 	border-radius: 10px 10px 0px 0px;
 	padding: 5px 5px 0px 10px;
 }
@@ -329,6 +343,7 @@ ul#mainmenu li.active a {
 	text-decoration: none;
 	padding: 2px 5px 5px 5px;
 	-moz-border-radius: 7px 7px 0px 0px;
+	-webkit-border-radius: 7px;
 	border-radius: 7px 7px 0px 0px;
 	background-color: #CCCC33;
 	vertical-align: bottom;
@@ -388,6 +403,7 @@ ul#mainmenu li.active a {
   padding: 8px; 
   background-color: rgb(204, 204, 51); 
   -moz-border-radius: 6px; 
+  -webkit-border-radius: 6px;
   margin-bottom: 10px; 
   text-align: center; 
   text-decoration: none;
@@ -459,8 +475,9 @@ ul.recent-posts li a {
 	padding: 10px;
 	margin-bottom: 10px;
 	border: 1px solid #F1F4F8;
-	-moz-border-radius: 10px 0px;
-	border-radius: 10px 0px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 
 #maincontent .event-summary .event-body {
@@ -543,6 +560,7 @@ ul.recent-posts li a {
 	position: absolute;
 	background-color: #CCCC33;
 	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 6px;
 	border-radius: 10px 10px 0px 0px;
 	width: 65px;
 	text-align: center;
@@ -577,6 +595,7 @@ ul.recent-posts li a {
 	background-color: #FFFFCC;
 	border: 1px solid #CCCC33;
 	-moz-border-radius: 0px 0px 10px 10px;
+	-webkit-border-radius: 6px;
 	border-radius: 0px 0px 10px 10px;
 }
 #maincontent .event-summary .event-push a {
@@ -744,6 +763,7 @@ div.errorExplanation ul {
 }
 .event .comment .comment_body {
 	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	padding: 10px 0px 10px 10px ;
 	background-color: #FFFFCC;
@@ -782,6 +802,7 @@ div.errorExplanation ul {
 	padding: 0px;
 	border: 1px solid #CCCC99;
 	-moz-border-radius: 0px 0px 0px 10px;
+	-webkit-border-radius: 0px 0px 0px 10px;
 	border-radius: 0px 0px 0px 10px;
 }
 .newLocation .tabs {
@@ -804,6 +825,7 @@ div.errorExplanation ul {
 .newLocation .tabs li a {
 	background-color: #666600;
 	-moz-border-radius: 4px 4px 0px 0px;
+	-webkit-border-radius: 4px 4px 0px 0px;
 	border-radius: 4px 4px 0px 0px;
 	text-decoration: none;
 	color: #FFFFCC;
