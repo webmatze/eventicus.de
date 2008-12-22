@@ -15,7 +15,7 @@
 		<h2>Details</h2>
 		<div class="avatar">
 		  <%= link_to avatar_for(@user), { :controller => 'account', :action => 'avatar'} %>
-		  <%= link_to "change your avatar", :action => 'avatar' %>
+		  <%= link_to("change your avatar", :action => 'avatar') if session['user'] != nil && @user.id == session['user'].id %>
 		</div>
 		<div class="data">
 			<% if session['user'] != nil && @user.id == session['user'].id %>
@@ -41,13 +41,14 @@
 				
 				<b><%=h @user.firstname%> <%=h @user.name %></b><br />
 				<%= link_to( @user.url, @user.url) + "<br />" if @user.url %>
-				Member since <%=h tz(@user.date_created) %>
+				Member since <%=h tz(@user.date_created).strftime('%A, %B %d, %Y') %>
 			
 			<% end %>
 		</div>
 	</div>
 	
-	<div class="user-events">
+	<div class="user-events" style="clear: left">
+	  <br /><br />
 		<h2>Events</h2>
 		<br />
 	</div>

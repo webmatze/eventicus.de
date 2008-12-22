@@ -49,12 +49,18 @@
 	<h3>Category</h3>
 	<p><%=h @event.category.name %></p>
 	<h3><%= @event.attending_users.count %> Attending</h3>
+	<ul class="userlist">
 	<% for user in @event.attending_users %>
-		<%= link_to user.login, user_url(:id => user.login) %>
-		<% if user == session['user']%>
-			<%= link_to "[remove me]", :action => "notattending", :id => @event %>
-		<% end %> 
+	<li>
+    <div class="avatar"><%= link_to(avatar_for(user, :small), user_url(:id => user.login)) %></div>
+    <div class="username"><%= link_to(user.login, user_url(:id => user.login)) %>
+      <% if user == session['user']%>
+  			<%= link_to "[x]", :action => "notattending", :id => @event %>
+  		<% end %>  
+    </div>		
+	</li>
 	<% end %>
+	</ul>
 <% end %>
 
 <% content_for("tabs") do %>

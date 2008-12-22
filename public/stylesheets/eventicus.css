@@ -415,6 +415,23 @@ ul#mainmenu li.active a {
   border-width: 1px 2px 2px 1px; 
   color: #ffffff;
 }
+#bodycontent #rightcontent .side-box ul.userlist {
+  margin: 0px;
+  padding: 0px;
+}
+#bodycontent #rightcontent .side-box ul.userlist li {
+  clear: both;
+  list-style: none;
+  padding: 2px 0px;
+}
+#bodycontent #rightcontent .side-box ul.userlist li div.avatar {
+  float: left;
+  width: 42px;
+  height: 32px;
+}
+#bodycontent #rightcontent .side-box ul.userlist li div.username {
+  margin-left: 42px;
+}
 ul.cloud li a {
 	text-decoration: none;
 }

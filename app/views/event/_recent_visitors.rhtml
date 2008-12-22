@@ -1,0 +1,8 @@
+<ul class="userlist">
+  <% User.find(:all, :order => 'last_login DESC', :limit => 5).each do |user| %>
+  <li>
+    <div class="avatar"><%= link_to(avatar_for(user, :small), user_url(:id => user.login)) %></div>
+    <div class="username"><%= link_to(user.login, user_url(:id => user.login)) %></div>
+  </li>
+  <% end %>
+</ul>
