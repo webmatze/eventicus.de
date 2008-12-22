@@ -13,6 +13,10 @@
 	
 	<div class="user-data">
 		<h2>Details</h2>
+		<div class="avatar">
+		  <%= link_to avatar_for(@user), { :controller => 'account', :action => 'avatar'} %>
+		  <%= link_to "change your avatar", :action => 'avatar' %>
+		</div>
 		<div class="data">
 			<% if session['user'] != nil && @user.id == session['user'].id %>
 				

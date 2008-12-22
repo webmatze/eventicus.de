@@ -68,6 +68,7 @@
 <div class="vevent vcalendar event">
 
 	<div class="event-user">
+	  <%= link_to avatar_for(@event.user, :small, {:style => "vertical-align: middle"}), user_url(:id => @event.user.login) %>
 		<%= link_to @event.user.login, user_url(:id => @event.user.login) %>
 		submitted this event
 		<span class="small-date"><%= time_ago_or_time_stamp(@event.date_created) %></span>
@@ -128,16 +129,7 @@
 		<div class="data">
 			<div id="comments">
 				<% for comment in @event.comments_ordered_by_submitted %>
-					<div class="comment">
-						<div class="comment_head">
-							<%= link_to comment.user.login, user_url(:id => comment.user.login) %> commented <span class="small-date"><%= time_ago_or_time_stamp(comment.created_at) %></span>
-						</div>
-						<div class="comment_top">
-						</div>
-						<div class="comment_body">
-							<%= comment.comment %>
-						</div>
-					</div>
+				<%= render :partial => 'comment', :object => comment %>
 				<% end %>
 				<% if @event.comments.count == 0%>No comments by now<% end %>
 			</div>

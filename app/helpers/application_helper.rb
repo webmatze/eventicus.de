@@ -68,15 +68,15 @@ module ApplicationHelper
 	  return time
 	end
 
-  def avatar_for(user, size = nil) 
+  def avatar_for(user, size = nil, html_options = {})
     if user.avatar 
       avatar_image = size.nil? ? user.avatar.public_filename : user.avatar.public_filename(size) 
-      image_tag(avatar_image)
+      image_tag(avatar_image, html_options)
     else 
       if size.nil?
-        image_tag("default-avatar.png")         
+        image_tag("default_avatar.png", html_options)         
       else
-        image_tag("default-avatar-#{size}.png") 
+        image_tag("default_avatar_#{size}.png", html_options) 
       end
     end 
   end 

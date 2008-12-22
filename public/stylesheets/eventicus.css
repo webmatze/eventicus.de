@@ -508,6 +508,9 @@ ul.recent-posts li a {
 	font-size: 75%;
 	color: #999999;
 }
+#maincontent .event-summary .event-body .event-submitted img {
+  vertical-align: top;
+}
 #maincontent .event-summary .event-body .event-submitted a {
 	color: #999999;
 }
@@ -753,13 +756,19 @@ div.errorExplanation ul {
 .event .comment {
 	
 }
+.event .comment .comment_avatar {
+  float: left;
+  width: 74px;
+}
 .event .comment .comment_head {
 	color: #999999;
+	margin-left: 74px;
 }
 .event .comment .comment_top {
 	background-image: url(../images/comment_top.gif);
 	background-repeat: no-repeat;
 	height: 20px;
+	margin-left: 74px;
 }
 .event .comment .comment_body {
 	-moz-border-radius: 10px;
@@ -768,6 +777,7 @@ div.errorExplanation ul {
 	padding: 10px 0px 10px 10px ;
 	background-color: #FFFFCC;
 	margin-bottom: 10px;
+	margin-left: 74px;
 }
 /* End Event Styles */
 
@@ -781,8 +791,14 @@ div.errorExplanation ul {
 	color: #666600;
 	margin-bottom: 0px;
 }
+.user-data .avatar {
+  float:left;
+  width: 128px;
+  height: 128px;
+}
 .user .data {
 	padding: 10px;
+	margin-left: 150px;
 }
 .user .data label {
 	font-weight: bold;
