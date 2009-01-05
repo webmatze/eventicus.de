@@ -46,8 +46,8 @@ class EventController < ApplicationController
   end
   
   def sitemap
-    @events = Event.find(:all)
-    render_without_layout
+    @events = Event.find(:all, :order => "date_start DESC")
+    render :layout => false
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
