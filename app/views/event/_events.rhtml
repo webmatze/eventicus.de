@@ -28,7 +28,7 @@
 	<div class="event-location">
 		<div class="location-name"><%=h event.location.name %></div>
 		<div class="address"><%=h event.location.street %><br />
-		<%=h event.location.zip %> <%= link_to event.location.metro.name, events_url(:place => event.location.metro.id) %></div>
+		<%=h event.location.zip %> <%= link_to event.location.metro.name, events_url(:place => event.location.metro) %></div>
 	</div>
 	<div class="event-date">
 		<strong class="event-day"><span class="day"><%= tz(event.date_start).strftime('%d') %></span><br /><span class="month"><%= tz(event.date_start).strftime('%b %Y') %></span></strong>

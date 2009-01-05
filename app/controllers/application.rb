@@ -24,7 +24,10 @@ class ApplicationController < ActionController::Base
       search = ""
       #place
       if params[:place] != 'world'
-        place = "l.metro_id = " + params[:place] + " AND "
+        metro_id = params[:place]
+        metro = Metro.find(metro_id)
+        metro_id = metro.id 
+        place = "l.metro_id = " + metro_id.to_s + " AND "
       end
       #category
       if params[:category] != 'all'

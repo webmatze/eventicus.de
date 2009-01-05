@@ -95,7 +95,7 @@
 			<span class="fn org"><%=h @event.location.name %></span><br />
 			<div class="adr">
 				<span class="street-address"><%=h @event.location.street %></span><%= "<br />" if @event.location.street %>
-				<span class="locality"><%= link_to @event.location.metro.name, events_url(:place => @event.location.metro.id) %></span>, <span class="region"><%=h @event.location.metro.state %></span> <span class="postal-code"><%=h @event.location.zip %></span><br />
+				<span class="locality"><%= link_to @event.location.metro.name, events_url(:place => @event.location.metro) %></span>, <span class="region"><%=h @event.location.metro.state %></span> <span class="postal-code"><%=h @event.location.zip %></span><br />
 				<span class="country-name"><%=h @event.location.metro.country %></span>
 			</div><br />
 		</div>

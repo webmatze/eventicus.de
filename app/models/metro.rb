@@ -1,6 +1,8 @@
 class Metro < ActiveRecord::Base
 	has_many :locations
 	
+	has_friendly_id :name, :use_slug => true, :strip_diacritics => true, :reserved => ["new","index","show","delete","update","edit"]
+  
 	validates_presence_of :name, :state, :country
 	validates_uniqueness_of :name, :scope => [:country, :state]
 	
