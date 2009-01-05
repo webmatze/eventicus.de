@@ -36,7 +36,7 @@
 		<% if @event.attendees.find_by_user_id session['user'].id %>
 			(I'm going)
 		<% else%>
-			(<%= link_to "Attend", :action => "attend", :id => @event %>)
+			(<%= link_to "Attend", :action => "attend", :id => @event, :metro => @event.location.metro %>)
 		<% end %>
 	</span>
 	<% end %>
@@ -55,7 +55,7 @@
     <div class="avatar"><%= link_to(avatar_for(user, :small), user_url(:id => user.login)) %></div>
     <div class="username"><%= link_to(user.login, user_url(:id => user.login)) %>
       <% if user == session['user']%>
-  			<%= link_to "[x]", :action => "notattending", :id => @event %>
+  			<%= link_to "[x]", :action => "notattending", :id => @event, :metro => @event.location.metro %>
   		<% end %>  
     </div>		
 	</li>
