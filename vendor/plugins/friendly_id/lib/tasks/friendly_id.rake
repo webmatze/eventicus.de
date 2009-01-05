@@ -9,7 +9,7 @@ namespace :friendly_id do
       break if records.size == 0
       records.each do |r|
         r.send(:set_slug)
-        r.save!
+        r.save(false)
         puts "#{sluggable_class.to_s}(#{r.id}) friendly_id set to \"#{r.slug.name}\""
       end
     end

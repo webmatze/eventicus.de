@@ -5,6 +5,8 @@ class Event < ActiveRecord::Base
 	
 	has_many :attendees
 	has_many :attending_users, :through => :attendees, :source => :user
+
+  has_friendly_id :title, :use_slug => true, :strip_diacritics => true, :reserved => ["new","index","show","delete","update"]
 	
 	acts_as_commentable
 	
@@ -62,6 +64,8 @@ class Event < ActiveRecord::Base
 		end
 		
 		def initialize_datemodified
+		  #Folgendes für friendly_id Slug generator
+		  TzTime.zone = TZInfo::Timezone.new("Europe/Berlin") if TzTime.zone.nil?
 			self.date_modified = local_to_utc(TzTime.now).to_time
 		end
 

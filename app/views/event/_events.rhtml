@@ -2,7 +2,7 @@
 <% for event in @events %>
 <div id="event<%= event.id %>" class="event-summary">
 	<div class="event-body">
-		<h3><%= link_to strip_tags(event.title), event_url(:id => event.id) %></h3>
+		<h3><%= link_to strip_tags(event.title), event_url(:id => event) %></h3>
 		<p class="event-submitted">
 		  <%= link_to avatar_for(event.user, :mini), user_url(:id => event.user.login) %>
 			<%= link_to event.user.login, user_url(:id => event.user.login) %>
@@ -15,7 +15,7 @@
 		</p>
 		<div class="event-details">
 			<span class="tool comments">
-				<%= link_to event.comments.count.to_s + " comments", event_url(:id => event.id) + "#comments" %>
+				<%= link_to event.comments.count.to_s + " comments", event_url(:id => event) + "#comments" %>
 			</span>
 			<% if params[:category] == 'all' %>
 			<span class="tool">

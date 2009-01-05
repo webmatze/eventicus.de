@@ -136,10 +136,7 @@ ActionController::Routing::Routes.draw do |map|
   map.event 'event/:id/:action',
       :controller => 'event',
       :action => 'show',
-      :menu => 'events',
-      :requirements => {
-      :id => /\d+/
-      }
+      :menu => 'events'
 
   map.blog 'blog/:id/:action',
       :controller => 'blog',
