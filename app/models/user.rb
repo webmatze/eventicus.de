@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_one :avatar, :dependent => :destroy
   
   composed_of :tz, :class_name => 'TZInfo::Timezone', :mapping => %w( time_zone time_zone )
+  
+  has_friendly_id :login, :use_slug => true, :strip_diacritics => true, :reserved => ["new","index","show","delete","update"]
 
   def self.authenticate(login, pass)
     if user = first(:conditions => ["login = ? AND password = ?", login, sha1(pass)])
