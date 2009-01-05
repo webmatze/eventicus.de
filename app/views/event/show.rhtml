@@ -147,7 +147,7 @@
 			
 				<div id="addComment">
 					<% form_remote_tag  :html => {:action => 'add_comment', :id => 'comment_form'}, 
-										:url => { :action => 'add_comment'},
+										:url => { :action => 'add_comment', :id => @event, :metro => @event.location.metro},
 										:update => { :success => 'comments'},
 										:position => :top,
 										:success => "Form.reset('comment_form')" do %>
