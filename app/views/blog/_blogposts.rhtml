@@ -1,7 +1,7 @@
 <% for post in @blogposts %>
 <div id="post<%= post.id %>" class="event-summary">
 	<div class="event-body">
-		<h3><a href="#"><%= link_to strip_tags(post.title), :controller => 'blog', :action => 'show', :id => post.id %></h3>
+		<h3><a href="#"><%= link_to strip_tags(post.title), :controller => 'blog', :action => 'show', :id => post %></h3>
 		<p class="event-submitted">
 			<%= link_to post.user.login, user_url(:id => post.user.login) %>
 			submitted this post
@@ -9,7 +9,7 @@
 		</p>
 		<p>
 			<%=h truncate(strip_tags(textilize(post.description.gsub("&amp;","&"))), 1024) %>
-			<%= link_to "More...", {:controller => 'blog', :action => 'show', :id => post.id}, {:class => 'more'} %>
+			<%= link_to "More...", {:controller => 'blog', :action => 'show', :id => post}, {:class => 'more'} %>
 		</p>
 	</div>
 	<div class="event-date">

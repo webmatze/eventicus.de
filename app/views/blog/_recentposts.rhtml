@@ -1,7 +1,7 @@
 <ul class="recent-posts">
 <% for post in get_recent_blogposts %>
 	<li>
-		<%= link_to strip_tags(post.title), :controller => 'blog', :action => 'show', :id => post.id %> 
+		<%= link_to strip_tags(post.title), :controller => 'blog', :action => 'show', :id => post %> 
 		<span class="date"><%= post.created_at.strftime('%m/%d/%y') %></span>
 	</li>
 <% end %>

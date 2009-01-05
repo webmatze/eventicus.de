@@ -141,10 +141,7 @@ ActionController::Routing::Routes.draw do |map|
   map.blog 'blog/:id/:action',
               :controller => 'blog',
               :action => 'show',
-              :menu => 'blog',
-              :requirements => {
-                :id => /\d+/
-              }
+              :menu => 'blog'
               
   map.connect 'event/:action',
               :controller => 'event',
@@ -162,6 +159,9 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'blog',
               :action => 'list',
               :menu => 'blog'
+
+  map.connect 'account/:action',
+              :controller => 'account'
 
   map.event ':metro/:id/:action',
               :controller => 'event',
