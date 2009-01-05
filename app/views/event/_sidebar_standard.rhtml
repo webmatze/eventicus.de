@@ -1,5 +1,5 @@
   <div id="add_event">
-    <%= link_to 'Add New Event Now', :controller => 'event', :action => 'new' %>
+      <%= link_to 'Add New Event Now', events_add_url %>
   </div>
   <h3>Search Events</h3>
   <form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>">

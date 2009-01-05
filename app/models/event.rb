@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
 	has_many :attendees
 	has_many :attending_users, :through => :attendees, :source => :user
 
-  has_friendly_id :title, :use_slug => true, :strip_diacritics => true, :reserved => ["new","index","show","delete","update"]
+  has_friendly_id :title, :use_slug => true, :strip_diacritics => true, :reserved => ["auto_complete_for_tmplocation_name"]
 	
 	acts_as_commentable
 	

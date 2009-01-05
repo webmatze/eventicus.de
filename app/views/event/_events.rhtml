@@ -2,7 +2,7 @@
 <% for event in @events %>
 <div id="event<%= event.id %>" class="event-summary">
 	<div class="event-body">
-		<h3><%= link_to strip_tags(event.title), event_url(:id => event) %></h3>
+		<h3><%= link_to strip_tags(event.title), event_url(:metro => event.location.metro, :id => event) %></h3>
 		<p class="event-submitted">
 		  <%= link_to avatar_for(event.user, :mini), user_url(:id => event.user.login) %>
 			<%= link_to event.user.login, user_url(:id => event.user.login) %>
@@ -11,11 +11,11 @@
 		</p>
 		<p>
 			<%=h truncate(strip_tags(textilize(event.description.gsub("&amp;","&"))), 128) %>
-			<%= link_to "More...", event_url(:id => event.id), :class => 'more' %>
+			<%= link_to "More...", event_url(:metro => event.location.metro, :id => event), :class => 'more' %>
 		</p>
 		<div class="event-details">
 			<span class="tool comments">
-				<%= link_to event.comments.count.to_s + " comments", event_url(:id => event) + "#comments" %>
+				<%= link_to event.comments.count.to_s + " comments", event_url(:metro => event.location.metro, :id => event) + "#comments" %>
 			</span>
 			<% if params[:category] == 'all' %>
 			<span class="tool">

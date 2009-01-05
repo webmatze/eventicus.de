@@ -20,7 +20,12 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'sitemap.xml', :controller => 'event', :action => 'sitemap' 
 
 
-  map.connect 'events/import',
+  map.events_add 'events/add',
+              :controller => 'event',
+              :action => 'new',
+              :menu => 'events'
+
+  map.events_import 'events/import',
               :controller => 'event',
               :action => 'import',
               :menu => 'events'
@@ -117,12 +122,12 @@ ActionController::Routing::Routes.draw do |map|
               }
             
   map.rss_blog 'rss/blogposts/:page',
-            :controller => 'feed',
-            :action => 'blog',
-            :page => 1,
-            :requirements => {
-              :page => /\d+/
-            }
+              :controller => 'feed',
+              :action => 'blog',
+              :page => 1,
+              :requirements => {
+                :page => /\d+/
+              }
               
   map.blogposts 'blogposts/:page',
               :controller => 'blog',
@@ -132,33 +137,36 @@ ActionController::Routing::Routes.draw do |map|
               :requirements => {
                 :page => /\d+/
               }
-									
-  map.event 'event/:id/:action',
-      :controller => 'event',
-      :action => 'show',
-      :menu => 'events'
-
+      
   map.blog 'blog/:id/:action',
-      :controller => 'blog',
-      :action => 'show',
-      :menu => 'blog',
-      :requirements => {
-      :id => /\d+/
-      }
+              :controller => 'blog',
+              :action => 'show',
+              :menu => 'blog',
+              :requirements => {
+                :id => /\d+/
+              }
+              
+  map.connect 'event/:action',
+              :controller => 'event',
+              :menu => 'events'
+              
+  map.connect 'location/:action',
+              :controller => 'location',
+              :action => 'list'
 
   map.user 'user/:id/:action',
-			  :controller => 'account',
-			  :action => 'show'
-			
-  map.connect 'event/:action',
-      :controller => 'event',
-      :action => 'new',
-      :menu => 'events'
-      
+      			  :controller => 'account',
+      			  :action => 'show'
+     
   map.connect 'blogadmin/:action',
-      :controller => 'blog',
-      :action => 'list',
-      :menu => 'blog'
+              :controller => 'blog',
+              :action => 'list',
+              :menu => 'blog'
+
+  map.event ':metro/:id/:action',
+              :controller => 'event',
+              :action => 'show',
+              :menu => 'events'
 
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/:id'
