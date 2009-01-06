@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>vendor/plugins/tztime/README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Oct 12 13:30:50 +0200 2007</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="../../../../classes/TzTime.html">TzTime</a>
+</p>
+<h6></h6>
+<p>
+[Boring Introduction]
+</p>
+<p>
+<a href="../../../../classes/TzTime.html">TzTime</a> is a wrapper for the
+Time class. It associates a time instance with a time zone, and keeps the
+two together. It quacks very much like a Time instance, and even provides
+the same extension methods that Rails adds to time objects.
+</p>
+<p>
+By combining the time and the time zone in a single time-like class, you
+can simplify much of the time-zone gymnastics that you were previously
+forced to do.
+</p>
+<p>
+[Exciting Introduction]
+</p>
+<p>
+<a href="../../../../classes/TzTime.html">TzTime</a> is subversive. It even
+<em>sounds</em> subversive, like sharp incisors snicking together in the
+dark. It sneaks into your app from the inside and stuffs time zone support
+into the cracks. It&#8216;s like a little ruby-colored rat, poking around
+in the under-basement of your code, but instead of chewing away at the
+infrastructure with its sharp little teeth (and believe me, they
+<em>are</em> sharp), it builds fluffy (and oh, so comfortable!) little
+time-zone flavored nests wherever it can.
+</p>
+<p>
+This look familiar?
+</p>
+<pre>
+  class TasksController &lt; ApplicationController
+    def create
+      task = account.tasks.build(params[:task])
+      task.alert_at = current_user.time_zone.local_to_utc(task.alert_at)
+      task.save!
+    end
+  end
+</pre>
+<p>
+Oh, that awful bloating sensation! Because the time zone is not globally
+accessible, you have to jump through hoop and ungainly hoop in your
+controllers...or pass the unfortunate time zone to method after method.
+</p>
+<p>
+No more! Let the Rodent of Unusually Fine TZ Acumen aid you:
+</p>
+<pre>
+  class ApplicationController &lt; ActionController:Base
+    around_filter :set_timezone
+
+    private
+
+      def set_timezone
+        TzTime.zone = current_user.time_zone
+        yield
+        TzTime.reset!
+      end
+  end
+
+  class Task &lt; ActiveRecord::Base
+    tz_time_attributes :alert_at
+  end
+
+  class TasksController &lt; ApplicationController
+    def create
+      task = account.tasks.create(params[:task])
+    end
+  end
+</pre>
+<p>
+Let the rat cart the time-zone around for you! Refactor those nasty time
+zone conversions into your model, where they belong. Soar through the heady
+winds of your application&#8216;s stratosphere, comfortable in the
+knowledge that you have helpful little rats scurrying about in the dark.
+</p>
+<p>
+Or maybe they&#8216;re gnomes.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

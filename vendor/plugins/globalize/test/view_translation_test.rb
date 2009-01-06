@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/test_helper'
 class ViewTranslationTest < Test::Unit::TestCase
   include Globalize
 
-  fixtures :globalize_languages, :globalize_countries, :globalize_translations  
+  fixtures :globalize_languages, :globalize_countries, :globalize_translations
 
   def setup
     Globalize::Locale.set("en-US")
@@ -123,25 +123,11 @@ class ViewTranslationTest < Test::Unit::TestCase
   end
 
   def test_illegal_code
-    assert_raise(SecurityError) { 
-      Language.new :iso_639_1 => 'ba',
-        :english_name => 'Bashkir',
-        :scope => 'L',
-        :macro_language => 'false',
-        # intentional bad syntax
-        :pluralization => 'bogus syntax'
-    }
+    assert_raise(SecurityError) { Locale.set("ba") }
   end
 
   def test_overflow_code
-    assert_raise(SecurityError) { 
-      Language.new :iso_639_1 => 'tw',
-        :english_name => 'Twi',
-        :scope => 'L',
-        :macro_language => 'false',
-        # intentional bad syntax (too long)
-        :pluralization => 'c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = c = 1'      
-    }
+    assert_raise(SecurityError) { Locale.set("tw") }
   end
 
   def test_string_substitute

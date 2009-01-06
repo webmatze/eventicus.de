@@ -2,13 +2,12 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class TranslationTest < Test::Unit::TestCase
   Globalize::DbTranslate.keep_translations_in_model = false
-  ActiveRecord::Base.store_full_sti_class = false
 
   self.use_instantiated_fixtures = true
   fixtures :globalize_languages, :globalize_translations, :globalize_countries,
     :globalize_products, :globalize_manufacturers, :globalize_categories,
     :globalize_categories_products, :globalize_simples
-    
+
   class Product < ActiveRecord::Base
     set_table_name "globalize_products"
 
@@ -373,6 +372,6 @@ class TranslationTest < Test::Unit::TestCase
     assert_equal "\xe2\x80\xaaThis is a description of the second product\xe2\x80\xac",
       prod.description
   end
-  
+
   # association building/creating?
 end

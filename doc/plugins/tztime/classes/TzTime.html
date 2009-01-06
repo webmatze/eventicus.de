@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: TzTime</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">TzTime</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/vendor/plugins/tztime/lib/tz_time_rb.html">
+                vendor/plugins/tztime/lib/tz_time.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A wrapper class that quacks like a Time instance, but which remembers its
+<a href="TzTime.html#M000003">local</a> time zone. Most operations work
+like normal, but some will automatically convert the object to <a
+href="TzTime.html#M000004">utc</a>, like <a
+href="TzTime.html#M000015">to_s</a>(:db).
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000008">+</a>&nbsp;&nbsp;
+      <a href="#M000009">-</a>&nbsp;&nbsp;
+      <a href="#M000011">&lt;=&gt;</a>&nbsp;&nbsp;
+      <a href="#M000005">at</a>&nbsp;&nbsp;
+      <a href="#M000014">dst?</a>&nbsp;&nbsp;
+      <a href="#M000016">inspect</a>&nbsp;&nbsp;
+      <a href="#M000003">local</a>&nbsp;&nbsp;
+      <a href="#M000006">method_missing</a>&nbsp;&nbsp;
+      <a href="#M000007">new</a>&nbsp;&nbsp;
+      <a href="#M000002">now</a>&nbsp;&nbsp;
+      <a href="#M000013">period</a>&nbsp;&nbsp;
+      <a href="#M000001">reset!</a>&nbsp;&nbsp;
+      <a href="#M000015">to_s</a>&nbsp;&nbsp;
+      <a href="#M000010">utc</a>&nbsp;&nbsp;
+      <a href="#M000004">utc</a>&nbsp;&nbsp;
+      <a href="#M000012">utc?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">Comparable</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">time</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">to_time</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">time</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">zone</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc">
+Set and access the &quot;<a href="TzTime.html#M000003">local</a>&quot; time
+zone. There should be a before_filter somewhere in your app that ensures
+this is set correctly.
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">zone</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">at</span><span class="method-args">(time)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Given a time instance, return the corresponding <a
+href="TzTime.html">TzTime</a> instance. The time is interpreted as being in
+the &quot;<a href="TzTime.html#M000003">local</a>&quot; time zone,
+regardless of what the time&#8216;s actual time zone value is.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 64</span>
+64:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at</span>(<span class="ruby-identifier">time</span>)
+65:       <span class="ruby-identifier">new</span>(<span class="ruby-identifier">time</span>, <span class="ruby-identifier">zone</span>)
+66:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">local</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a <a href="TzTime.html">TzTime</a> instance for the given arguments,
+where the arguments are interpreted to be time components in the &quot;<a
+href="TzTime.html#M000003">local</a>&quot; time zone.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">local</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+52:       <span class="ruby-identifier">new</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">utc</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>), <span class="ruby-identifier">zone</span>)
+53:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="#M000006" class="method-signature">
+          <span class="method-name">method_missing</span><span class="method-args">(sym, *args, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Make sure the <a href="TzTime.html">TzTime</a> class itself responds like
+the Time class.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 69</span>
+69:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+70:       <span class="ruby-identifier">result</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+71:       <span class="ruby-identifier">result</span> = <span class="ruby-identifier">new</span>(<span class="ruby-identifier">result</span>, <span class="ruby-identifier">zone</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Time</span>)
+72:       <span class="ruby-identifier">result</span>
+73:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(time, zone)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a <a href="TzTime.html#M000007">new</a> <a
+href="TzTime.html">TzTime</a> instance that wraps the given Time instance.
+The time is considered to be in the time zone indicated by the
+<tt>zone</tt> parameter.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 81</span>
+81:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">time</span>, <span class="ruby-identifier">zone</span>)
+82:     <span class="ruby-ivar">@time</span> = <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_time</span>
+83:     <span class="ruby-ivar">@zone</span> = <span class="ruby-identifier">zone</span>
+84:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">now</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a <a href="TzTime.html">TzTime</a> instance that represents the
+current time.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 45</span>
+45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">now</span>
+46:       <span class="ruby-identifier">new</span>(<span class="ruby-identifier">zone</span>.<span class="ruby-identifier">utc_to_local</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">utc</span>), <span class="ruby-identifier">zone</span>)
+47:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="#M000001" class="method-signature">
+          <span class="method-name">reset!</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Clears the current zone setting. This should be called from an after_filter
+to make sure time zones don&#8216;t leak across requests.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 40</span>
+40:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset!</span>
+41:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">zone</span> = <span class="ruby-keyword kw">nil</span>
+42:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">utc</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a <a href="TzTime.html">TzTime</a> instance for the given arguments,
+where the arguments are interpreted to be time components in UTC.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 57</span>
+57:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">utc</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+58:       <span class="ruby-identifier">new</span>(<span class="ruby-identifier">zone</span>.<span class="ruby-identifier">utc_to_local</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">utc</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)), <span class="ruby-identifier">zone</span>)
+59:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">+</span><span class="method-args">(seconds)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds some number of seconds to the time, and returns it wrapped in a <a
+href="TzTime.html#M000007">new</a> <a href="TzTime.html">TzTime</a>
+instnace.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 94</span>
+94:   <span class="ruby-keyword kw">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">seconds</span>)
+95:     <span class="ruby-constant">TzTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">time</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">seconds</span>, <span class="ruby-ivar">@zone</span>)
+96:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">-</span><span class="method-args">(seconds)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Subtracts some number of seconds from the time, and returns it wrapped in a
+<a href="TzTime.html#M000007">new</a> <a href="TzTime.html">TzTime</a>
+instnace.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 100</span>
+100:   <span class="ruby-keyword kw">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">seconds</span>)
+101:     <span class="ruby-constant">TzTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">time</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">seconds</span>, <span class="ruby-ivar">@zone</span>)
+102:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">&lt;=&gt;</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Compares this <a href="TzTime.html">TzTime</a> with a time instance.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 110</span>
+110:   <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">value</span>)
+111:     <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_time</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_time</span>
+112:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="#M000014" class="method-signature">
+          <span class="method-name">dst?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true if the current time is adjusted for daylight savings.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000014-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 134</span>
+134:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dst?</span>
+135:     <span class="ruby-identifier">period</span>.<span class="ruby-identifier">dst?</span>
+136:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="#M000016" class="method-signature">
+          <span class="method-name">inspect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return a reasonable representation of this <a href="TzTime.html">TzTime</a>
+object for inspection.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 149</span>
+149:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+150:     <span class="ruby-node">&quot;#{time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)} #{period.abbreviation}&quot;</span>
+151:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="#M000013" class="method-signature">
+          <span class="method-name">period</span><span class="method-args">(dst=true)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the underlying TZInfo::TimeZonePeriod instance for the wrapped
+time.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 123</span>
+123:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">period</span>(<span class="ruby-identifier">dst</span>=<span class="ruby-keyword kw">true</span>)
+124:     <span class="ruby-identifier">t</span> = <span class="ruby-identifier">time</span>
+125:     <span class="ruby-keyword kw">begin</span>
+126:       <span class="ruby-ivar">@period</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">zone</span>.<span class="ruby-identifier">tzinfo</span>.<span class="ruby-identifier">period_for_local</span>(<span class="ruby-identifier">t</span>, <span class="ruby-identifier">dst</span>)
+127:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">TZInfo</span><span class="ruby-operator">::</span><span class="ruby-constant">PeriodNotFound</span>
+128:       <span class="ruby-identifier">t</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">hour</span>
+129:       <span class="ruby-keyword kw">retry</span>
+130:     <span class="ruby-keyword kw">end</span>
+131:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="#M000015" class="method-signature">
+          <span class="method-name">to_s</span><span class="method-args">(mode = :normal)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a string repersentation of the time. For the specific case where
+<tt>mode</tt> is <tt>:db</tt> or <tt>:rfc822</tt>, this will return the UTC
+representation of the time. All other conversions will use the <a
+href="TzTime.html#M000003">local</a> time.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000015-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 141</span>
+141:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">mode</span> = <span class="ruby-identifier">:normal</span>)
+142:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">mode</span>
+143:     <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:db</span>, <span class="ruby-identifier">:rfc822</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">utc</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">mode</span>)
+144:     <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">time</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">mode</span>)
+145:     <span class="ruby-keyword kw">end</span>
+146:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="#M000010" class="method-signature">
+          <span class="method-name">utc</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a Time value, representing the wrapped time in UTC.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 105</span>
+105:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">utc</span>
+106:     <span class="ruby-ivar">@utc</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">zone</span>.<span class="ruby-identifier">local_to_utc</span>(<span class="ruby-ivar">@time</span>)
+107:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">utc?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This <a href="TzTime.html">TzTime</a> object always represents the <a
+href="TzTime.html#M000003">local</a> time in the associated timezone. Thus,
+<a href="TzTime.html#M000004">utc</a>? should always return false, unless
+the zone is the UTC zone.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/tztime/lib/tz_time.rb, line 117</span>
+117:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">utc?</span>
+118:     <span class="ruby-identifier">zone</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;UTC&quot;</span>
+119:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -17,4 +17,5 @@ schema_file = plugin_path + "/test/db/schema.rb"
 load(schema_file) if File.exist?(schema_file)
 
 Test::Unit::TestCase.fixture_path = plugin_path + "/test/fixtures/"
+
 $LOAD_PATH.unshift(Test::Unit::TestCase.fixture_path)

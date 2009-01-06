@@ -672,23 +672,23 @@ module Globalize # :nodoc:
         # an SQL statement.
         # REDEFINED to include only untranslated fields. We don't want to overwrite the
         # base translation with other translations.
-        def attributes_with_quotes(include_primary_key = true, include_readonly_attributes = true, attribute_names = @attributes.keys)
-          quoted = {}
-          connection = self.class.connection
+        def attributes_with_quotes(include_primary_key = true)
           if Locale.base?
-            attribute_names.each do |name|
+            attributes.inject({}) do |quoted, (name, value)|
               if column = column_for_attribute(name)
-                quoted[name] = connection.quote(read_attribute(name), column) unless !include_primary_key && column.primary
+                quoted[name] = quote_value(value, column) unless !include_primary_key && column.primary
               end
+              quoted
             end
           else
-            attribute_names.each do |name|
-              if !self.class.globalize_facets_hash.has_key?(name) && column = column_for_attribute(name)
-                quoted[name] = connection.quote(read_attribute(name), column) unless !include_primary_key && column.primary
+            attributes.inject({}) do |quoted, (name, value)|
+              if !self.class.globalize_facets_hash.has_key?(name) &&
+                  column = column_for_attribute(name)
+                quoted[name] = quote_value(value, column) unless !include_primary_key && column.primary
               end
+              quoted
             end
           end
-	        include_readonly_attributes ? quoted : remove_readonly_attributes(quoted)
         end
 
         def create_or_update
@@ -765,6 +765,9 @@ module Globalize # :nodoc:
       private
         def find_every(options)
           return globalize_old_find_every(options) if options[:untranslated]
+          raise StandardError,
+            ":select option not allowed on translatable models " +
+            "(#{options[:select]})" if options[:select] && !options[:select].empty?
 
           # do quick version if base language is active
           if Locale.base? && !options.has_key?(:include_translated)
@@ -777,27 +780,13 @@ module Globalize # :nodoc:
 
           options[:conditions] = sanitize_sql(options[:conditions]) if options[:conditions]
 
+          # there will at least be an +id+ field here
+          select_clause = untranslated_fields.map {|f| "#{table_name}.#{f}" }.join(", ")
+
           joins_clause = options[:joins].nil? ? "" : options[:joins].dup
           joins_args = []
           load_full = options[:translate_all]
           facets = load_full ? globalize_facets : preload_facets
-
-          if options[:select].nil? || options[:select] = '*'
-            surrounding_clause = '%s'
-          else
-            surrounding_clause = options[:select]
-            re_select = Regexp.new("#{table_name}.*")
-            if surrounding_clause =~ re_select
-              surrounding_clause = surrounding_clause.gsub(re_select, '%s')
-            else
-              raise StandardError,
-              "this :select option format is not allowed on translatable models " +
-              "(#{options[:select]})"
-            end
-          end
-
-          # there will at least be an +id+ field here
-          select_clause = untranslated_fields.map {|f| "#{table_name}.#{f}" }.join(", ")
 
           if Locale.base?
             select_clause <<  ', ' << facets.map {|f| "#{table_name}.#{f}" }.join(", ")
@@ -888,7 +877,7 @@ module Globalize # :nodoc:
                 "ON #{table_name}.#{fk} = #{included_table}.#{included_fk} "
           end
 
-          options[:select] = surrounding_clause % select_clause
+          options[:select] = select_clause
           options[:readonly] = false
 
           sanitized_joins_clause = sanitize_sql( [ joins_clause, *joins_args ] )
@@ -915,7 +904,7 @@ module Globalize # :nodoc:
       # Note: <i>Used when Globalize::DbTranslate.keep_translations_in_model is true</i>
       def method_missing(method_id, *arguments)
         if match = /find_(all_by|by)_([_a-zA-Z]\w*)/.match(method_id.to_s)
-          finder = determine_finder(match)
+          finder, deprecated_finder = determine_finder(match), determine_deprecated_finder(match)
 
           facets = extract_attribute_names_from_match(match)
           super unless all_attributes_exists?(facets)
@@ -945,20 +934,17 @@ module Globalize # :nodoc:
               end
 
             else
-              raise ArgumentError, "Unrecognized arguments for #{method_id}: #{extra_options.inspect}"
+              ActiveSupport::Deprecation.silence do
+                send(deprecated_finder, sanitize_sql(attributes), *arguments[facets.length..-1])
+              end
           end
         elsif match = /find_or_(initialize|create)_by_([_a-zA-Z]\w*)/.match(method_id.to_s)
           instantiator = determine_instantiator(match)
           facets = extract_attribute_names_from_match(match)
           super unless all_attributes_exists?(facets)
 
-          if arguments[0].is_a?(Hash)
-            attributes = arguments[0].with_indifferent_access
-            find_attributes = attributes.slice(*facets)
-          else
-            find_attributes = attributes = construct_attributes_from_arguments(facets, arguments)
-          end
-          options = { :conditions => find_attributes }
+          attributes = construct_attributes_from_arguments(facets, arguments)
+          options = { :conditions => attributes }
           set_readonly_option!(options)
 
           find_initial(options) || send(instantiator, attributes)

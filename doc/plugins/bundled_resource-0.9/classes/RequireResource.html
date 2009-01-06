@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: RequireResource</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">RequireResource</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/vendor/plugins/bundled_resource-0_9/lib/require_resource_rb.html">
+                vendor/plugins/bundled_resource-0.9/lib/require_resource.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="RequireResource.html">RequireResource</a> v.1.1 by Duane Johnson
+Makes inclusion of javascript and stylesheet resources easier via automatic
+or explicit calls. e.g. <a
+href="RequireResource.html#M000009">require_javascript</a>
+&#8216;popup&#8217; is an explicit call.
+</p>
+<p>
+Note that this can easily be turned in to a helper on its own.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000011">autorequire</a>&nbsp;&nbsp;
+      <a href="#M000013">ensure_resource_is_initialized</a>&nbsp;&nbsp;
+      <a href="#M000008">javascript_auto_include_tags</a>&nbsp;&nbsp;
+      <a href="#M000009">require_javascript</a>&nbsp;&nbsp;
+      <a href="#M000012">require_resource</a>&nbsp;&nbsp;
+      <a href="#M000010">require_stylesheet</a>&nbsp;&nbsp;
+      <a href="#M000007">stylesheet_auto_link_tags</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">javascript_auto_include_tags</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/bundled_resource-0.9/lib/require_resource.rb, line 15</span>
+15:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">javascript_auto_include_tags</span>
+16:     <span class="ruby-identifier">ensure_resource_is_initialized</span>(<span class="ruby-identifier">:javascript</span>)
+17:     <span class="ruby-identifier">autorequire</span>(<span class="ruby-identifier">:javascript</span>)
+18:     <span class="ruby-ivar">@javascripts</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">js</span><span class="ruby-operator">|</span>
+19:       <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">javascript_include_tag</span>(<span class="ruby-identifier">js</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n    &quot;</span>
+20:     <span class="ruby-keyword kw">end</span>
+21:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">require_javascript</span><span class="method-args">(script)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/bundled_resource-0.9/lib/require_resource.rb, line 23</span>
+23:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_javascript</span>(<span class="ruby-identifier">script</span>)
+24:     <span class="ruby-identifier">require_resource</span>(<span class="ruby-identifier">:javascript</span>, <span class="ruby-identifier">script</span>)
+25:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="#M000010" class="method-signature">
+          <span class="method-name">require_stylesheet</span><span class="method-args">(sheet)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/bundled_resource-0.9/lib/require_resource.rb, line 27</span>
+27:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_stylesheet</span>(<span class="ruby-identifier">sheet</span>)
+28:     <span class="ruby-identifier">require_resource</span>(<span class="ruby-identifier">:stylesheet</span>, <span class="ruby-identifier">sheet</span>)
+29:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">stylesheet_auto_link_tags</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/bundled_resource-0.9/lib/require_resource.rb, line 7</span>
+ 7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stylesheet_auto_link_tags</span>
+ 8:     <span class="ruby-identifier">ensure_resource_is_initialized</span>(<span class="ruby-identifier">:stylesheet</span>)
+ 9:     <span class="ruby-identifier">autorequire</span>(<span class="ruby-identifier">:stylesheet</span>)
+10:     <span class="ruby-ivar">@stylesheets</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">css</span><span class="ruby-operator">|</span>
+11:       <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">stylesheet_link_tag</span>(<span class="ruby-identifier">css</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n    &quot;</span>
+12:     <span class="ruby-keyword kw">end</span>
+13:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">autorequire</span><span class="method-args">(resource_type, extension = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds resources such as stylesheet or javascript files to the corresponding
+array of resources that will be &#8216;required&#8217; by the layout. The
+<tt>resource_type</tt> is either :javascript or :stylesheet. The
+<tt>extension</tt> is optional, and should normally correspond with the
+resource type, e.g. &#8216;css&#8217; for :stylesheet and &#8216;js&#8217;
+for :javascript.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/bundled_resource-0.9/lib/require_resource.rb, line 36</span>
+36:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">autorequire</span>(<span class="ruby-identifier">resource_type</span>, <span class="ruby-identifier">extension</span> = <span class="ruby-keyword kw">nil</span>)
+37:       <span class="ruby-identifier">extensions</span> = {<span class="ruby-identifier">:stylesheet</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'css'</span>, <span class="ruby-identifier">:javascript</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'js'</span>}
+38:       <span class="ruby-identifier">path</span> = <span class="ruby-node">&quot;#{RAILS_ROOT}/public/#{resource_type.to_s.pluralize}/&quot;</span> 
+39:       <span class="ruby-identifier">candidates</span> = [ <span class="ruby-node">&quot;#{controller.controller_name}&quot;</span>,
+40:                      <span class="ruby-node">&quot;#{controller.controller_name}_#{controller.action_name}&quot;</span> ]
+41: 
+42:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">candidate</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">candidates</span>
+43:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">FileTest</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{path}/#{candidate}.#{extension || extensions[resource_type]}&quot;</span>)
+44:           <span class="ruby-identifier">require_resource</span>(<span class="ruby-identifier">resource_type</span>, <span class="ruby-identifier">candidate</span>)
+45:         <span class="ruby-keyword kw">end</span>
+46:       <span class="ruby-keyword kw">end</span>
+47:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="#M000013" class="method-signature">
+          <span class="method-name">ensure_resource_is_initialized</span><span class="method-args">(type)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Ensures that a resource array (e.g. @javascripts) is not nil&#8212;uses []
+if so
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/bundled_resource-0.9/lib/require_resource.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ensure_resource_is_initialized</span>(<span class="ruby-identifier">type</span>)
+59:       <span class="ruby-identifier">variable</span> = <span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">pluralize</span>
+60:       <span class="ruby-identifier">new_resource_array</span> = (<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{variable}&quot;</span>) <span class="ruby-operator">||</span> [])
+61:       <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{variable}&quot;</span>, <span class="ruby-identifier">new_resource_array</span>)      
+62:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">require_resource</span><span class="method-args">(type, name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds a resource (e.g. a javascript) to the appropriate array (e.g.
+@javascripts) ONLY if the resource is not already included.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/bundled_resource-0.9/lib/require_resource.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_resource</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">name</span>)
+52:       <span class="ruby-identifier">variable</span> = <span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">pluralize</span>
+53:       <span class="ruby-identifier">new_resource_array</span> = (<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{variable}&quot;</span>) <span class="ruby-operator">||</span> []) <span class="ruby-operator">|</span> [<span class="ruby-identifier">name</span>]
+54:       <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{variable}&quot;</span>, <span class="ruby-identifier">new_resource_array</span>)
+55:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

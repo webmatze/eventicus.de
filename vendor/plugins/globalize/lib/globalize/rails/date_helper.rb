@@ -74,12 +74,11 @@ module ActionView
             end
 
             month_options << ((val == month_number) ?
-              content_tag(:option, month_name, :value => month_number, :selected => "selected") :
-              content_tag(:option, month_name, :value => month_number)
+              %(<option value="#{month_number}" selected="selected">#{month_name}</option>\n) :
+              %(<option value="#{month_number}">#{month_name}</option>\n)
             )
-            month_options << "\n"
           end
-          select_html(options[:field_name] || 'month', month_options.join, options, html_options)
+          select_html(options[:field_name] || 'month', month_options, options)
         end
       end
     end

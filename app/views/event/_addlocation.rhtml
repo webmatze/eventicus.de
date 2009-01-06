@@ -107,7 +107,7 @@
 <div id="addMetro" class="newLocation" style="display:none">
 	
 	<ul id="addLocationTabs" class="tabs">
-		<li><%= link_to_function("Add Metro", nil, :id => "addmetro_link", :class => "active", :onclick => "Void(0)") %></li>
+		<li><%= link_to_function("Add Metro".t, nil, :id => "addmetro_link", :class => "active", :onclick => "Void(0)") %></li>
 	</ul>
 	
 	<div class="tabContent">
@@ -127,8 +127,8 @@
 				<%= render :partial => "metro_data" %>
 				
 				<div>
-					<%= submit_tag 'Save' %> 
-					<%= button_to_function 'Cancel', :onclick => "cancelAddMetro()" %>
+					<%= submit_tag 'Save'.t %> 
+					<%= button_to_function 'Cancel'.t, :onclick => "cancelAddMetro()" %>
 				</div>
 				
 			</div>
@@ -142,9 +142,9 @@
 <div id="addLocation" class="newLocation">
 
 	<ul id="addLocationTabs" class="tabs">
-		<li><%= link_to_function("Metro", nil, :id => "metro_link", :class => "active", :onclick => "showMetroTab()") %></li>
-		<li><%= link_to_function("Venue", nil, :id => "venue_link", :onclick => "showVenueTab()") %></li>
-		<li><%= link_to_function("Extra", nil, :id => "extra_link", :onclick => "showExtraTab()") %></li>
+		<li><%= link_to_function("Metro".t, nil, :id => "metro_link", :class => "active", :onclick => "showMetroTab()") %></li>
+		<li><%= link_to_function("Venue".t, nil, :id => "venue_link", :onclick => "showVenueTab()") %></li>
+		<li><%= link_to_function("Extra".t, nil, :id => "extra_link", :onclick => "showExtraTab()") %></li>
 	</ul>
 
 	<div class="tabContent">
@@ -164,7 +164,7 @@
 			
 				<div id="newLocationMetroData">
 					
-					<div class="form_field" id="find_metro"><label for="tmpmetro_name">Metro Name</label><br/>
+					<div class="form_field" id="find_metro"><label for="tmpmetro_name"><%= 'Metro Name'.t %></label><br/>
 					<%= text_field_with_auto_complete :tmpmetro, :name, {:style => 'width:95%'}, {:skip_style => true, :min_chars => 1, :after_update_element => 'selectMetro', :indicator => 'find_metro_spinner'} %>
 					<img id="find_metro_spinner" src="/images/spinner_moz.gif" width="16" height="16" style="display:none" />
 					</div>
@@ -174,8 +174,8 @@
 					</div>
 					
 					<div>
-						<%= button_to_function 'Next &gt;', :onclick => "showVenueTab()" %>
-						<%= button_to_function 'Cancel', :onclick => "cancelAddLocation()" %>
+						<%= button_to_function 'Next'.t + ' &gt;', :onclick => "showVenueTab()" %>
+						<%= button_to_function 'Cancel'.t, :onclick => "cancelAddLocation()" %>
 					</div>
 									
 				</div>		
@@ -185,10 +185,10 @@
 					<%= render :partial => "location_data" %>
 
 					<div>
-						<%= button_to_function '&lt; Prev', :onclick => "showMetroTab()" %>
-						<%= button_to_function 'Next &gt;', :onclick => "showExtraTab()" %>
-						<%= submit_tag 'Save' %> 
-						<%= button_to_function 'Cancel', :onclick => "cancelAddLocation()" %>
+						<%= button_to_function '&lt; '+ 'Prev'.t, :onclick => "showMetroTab()" %>
+						<%= button_to_function 'Next'.t + ' &gt;', :onclick => "showExtraTab()" %>
+						<%= submit_tag 'Save'.t %> 
+						<%= button_to_function 'Cancel'.t, :onclick => "cancelAddLocation()" %>
 					</div>
 					
 				</div>
@@ -198,9 +198,9 @@
 					<%= render :partial => "location_descr" %>
 
 					<div>
-						<%= button_to_function '&lt; Prev', :onclick => "showVenueTab()" %>
-						<%= submit_tag 'Save' %> 
-						<%= button_to_function 'Cancel', :onclick => "cancelAddLocation()" %>
+						<%= button_to_function '&lt; ' + 'Prev'.t, :onclick => "showVenueTab()" %>
+						<%= submit_tag 'Save'.t %> 
+						<%= button_to_function 'Cancel'.t, :onclick => "cancelAddLocation()" %>
 					</div>
 										
 				</div>

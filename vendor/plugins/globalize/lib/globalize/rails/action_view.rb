@@ -44,8 +44,8 @@ module ActionView # :nodoc: all
           if template_extension
             template_file_name = full_template_path(template_path_without_extension, template_extension)
           else
-            template_extension = pick_template_extension(template_path).to_s
-            template_file_name = full_template_path(template_path, template_extension)
+            template_extension = @finder.pick_template_extension(template_path).to_s
+            template_file_name = @finder.pick_template(template_path, template_extension)
           end
         else
           template_file_name = template_path

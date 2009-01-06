@@ -23,13 +23,13 @@ module ActionMailer # :nodoc:
     # It is fully backwards compatible with the original rails version.
     def create!(method_name, *parameters) #:nodoc:
       initialize_defaults(method_name)
-      __send__(method_name, *parameters)
+      send(method_name, *parameters)
       
       # If an explicit, textual body has not been set, we check assumptions.
       unless String === @body
         # First, we look to see if there are any likely templates that match,
         # which include the content-type in their file name (i.e.,
-        # "the_template_file.text.html.erb", etc.). Only do this if parts
+        # "the_template_file.text.html.rhtml", etc.). Only do this if parts
         # have not already been specified manually.
         if @parts.empty?
           append_localized_parts
@@ -60,6 +60,7 @@ module ActionMailer # :nodoc:
 
       # build the mail object itself
       @mail = create_mail
+
     end
 
     private
@@ -68,47 +69,35 @@ module ActionMailer # :nodoc:
         codes.each do |code|
           if code
             templates = Dir.glob("#{template_path}/#{@template}.#{code}.*")
-            template_regex = Regexp.new("^([^\\\.]+)\\\.(" + code + ")\\\.([^\\\.]+\\\.[^\\\.]+)\\\.(" + template_extensions.join('|') + ")$")
-            type_index = 2
           else
             templates = Dir.glob("#{template_path}/#{@template}.*")
-            template_regex = Regexp.new("^([^\\\.]+)\\\.([^\\\.]+\\\.[^\\\.]+)\\\.(" + template_extensions.join('|') + ")$")
-            type_index = 1
           end
           templates.each do |path|
-            basename = File.basename(path)
-            next unless md = template_regex.match(basename)
-            template_name = basename
-            content_type = md.captures[type_index].gsub('.', '/')
-            @parts << Part.new(:content_type => content_type,
+            sections = File.basename(path).split(".")[0..-2] || []
+
+            # skip if this is some other language
+            next if !code && Globalize::RFC_3066.valid?(sections[1])
+
+            # skip either template name and locale, or just template name
+            type_sections = code ? sections[2..-1] : sections[1..-1]
+            type = type_sections.join("/")
+            
+            next if type.empty?
+            @parts << Part.new(:content_type => type,
               :disposition => "inline", :charset => charset,
-              :body => render_message(template_name, @body))
-            
-            
-            #sections = basename.split(".")[0..-2] || []
-            ## skip if this is some other language
-            #next if !code && Globalize::RFC_3066.valid?(sections[1])
-            #
-            ## skip either template name and locale, or just template name
-            #type_sections = code ? sections[2..-1] : sections[1..-1]
-            #type = type_sections.join("/")
-            #next if type.empty?
-            #pth = path.split('/')[1..-1].join('/')
-            #puts pth
-            #
-            #@parts << Part.new(:content_type => type,
-            #  :disposition => "inline", :charset => charset,
-            #  :body => render_message(pth, @body))
+              :body => render_message(sections.join('.'), @body))
           end
+          
 
           # if we found templates at this stage, no need to continue to defaults
-          # break if !templates.empty?
+          break if !templates.empty?
         end
       end
 
       def render_localized_normal_template
         template_exists = @parts.empty?
-        locale_codes.each do |code|
+        codes = locale_codes
+        codes.each do |code|
           localized_name = @template
           if !template_exists
             if code 

@@ -3,15 +3,17 @@
 
 require_dependency "login_system"
 
-
 class ApplicationController < ActionController::Base
+
+  include LoginSystem
 
   around_filter :set_timezone
 
-  include LoginSystem
   # Pick a unique cookie name to distinguish our session data from others'
   session :session_key => '_eventicus2_session_id'
   
+  before_filter :set_charset
+  before_filter :set_locale
   
   protected
   
@@ -106,6 +108,13 @@ class ApplicationController < ActionController::Base
     
   private
   
+    def set_charset
+        content_type = headers["Content-Type"] || "text/html" 
+        if /^text\//.match(content_type)
+          headers["Content-Type"] = "#{content_type}; charset=utf-8" 
+        end
+    end
+  
     def set_timezone
       if session['user'] && !session['user'].time_zone.nil?
         TzTime.zone = session['user'].tz
@@ -115,5 +124,23 @@ class ApplicationController < ActionController::Base
       yield
       TzTime.reset!
     end
-  
+     
+    def set_locale
+     default_locale = 'de-DE'
+     request_language = request.env['HTTP_ACCEPT_LANGUAGE']
+     request_language = request_language.nil? ? nil : 
+       request_language[/[^,;]+/]
+
+    request_language = default_locale if request_language != "en-US"
+
+     @locale = params[:locale] || session[:locale] ||
+               request_language || default_locale
+     session[:locale] = @locale
+     begin
+       Locale.set @locale
+     rescue
+       Locale.set default_locale
+     end
+    end
+ 
 end

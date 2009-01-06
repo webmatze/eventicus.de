@@ -1,8 +1,8 @@
 ﻿<% content_for("title") do %>
-	Edit Event
+	<%= 'Edit Event'.t %>
 <% end %>
 
 <% form_tag :action => 'update', :id => @event do %>
   <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
+  <%= submit_tag 'Edit'.t %>
 <% end %>

@@ -6,21 +6,21 @@
 		<p class="event-submitted">
 		  <%= link_to avatar_for(event.user, :mini), user_url(:id => event.user.login) %>
 			<%= link_to event.user.login, user_url(:id => event.user.login) %>
-			submitted this event
+			<%= 'submitted this event'.t %>
 			<span class="small-date"><%= time_ago_or_time_stamp(event.date_created) %></span>
 		</p>
 		<p>
 			<%=h truncate(strip_tags(textilize(event.description.gsub("&amp;","&"))), 128) %>
-			<%= link_to "More...", event_url(:metro => event.location.metro, :id => event), :class => 'more' %>
+			<%= link_to "More...".t, event_url(:metro => event.location.metro, :id => event), :class => 'more' %>
 		</p>
 		<div class="event-details">
 			<span class="tool comments">
-				<%= link_to event.comments.count.to_s + " comments", event_url(:metro => event.location.metro, :id => event) + "#comments" %>
+				<%= link_to event.comments.count.to_s + " " + 'comments'.t, event_url(:metro => event.location.metro, :id => event) + "#comments" %>
 			</span>
 			<% if params[:category] == 'all' %>
 			<span class="tool">
-				Category:
-				<%= link_to event.category.name, events_url(:category => event.category.short, :place => params[:place], :type => params[:type], :range => params[:range]) %>
+				<%= 'Category'.t %>:
+				<%= link_to event.category.name.t, events_url(:category => event.category.short, :place => params[:place], :type => params[:type], :range => params[:range]) %>
 			</span>
 			<% end %>
 		</div>
@@ -31,17 +31,17 @@
 		<%=h event.location.zip %> <%= link_to event.location.metro.name, events_url(:place => event.location.metro) %></div>
 	</div>
 	<div class="event-date">
-		<strong class="event-day"><span class="day"><%= tz(event.date_start).strftime('%d') %></span><br /><span class="month"><%= tz(event.date_start).strftime('%b %Y') %></span></strong>
+		<strong class="event-day"><span class="day"><%= tz(event.date_start).strftime('%d') %></span><br /><span class="month"><%= tz(event.date_start).loc('%b %Y') %></span></strong>
 		<div class="event-time"><%=h tz(event.date_start).strftime('%H:%M') %></div>
 	</div>
 	<% if session['user'] %>
 		<% if event.attendees.find_by_user_id session['user'].id %>
 			<div class="event-push">
-				I'm going
+				<%= "I'm going".t %>
 			</div>
 		<% else%>
 			<div class="event-push">
-				<%= link_to "Attend", :controller => 'event', :action => "attend", :id => event %>
+				<%= link_to "Attend".t, :controller => 'event', :action => "attend", :id => event %>
 			</div>
 		<% end %>
 	<% end %>

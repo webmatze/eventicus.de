@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: GeoKit::Mappable</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">GeoKit::Mappable</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/plugins/geokit/lib/geo_kit/mappable_rb.html">
+                vendor/plugins/geokit/lib/geo_kit/mappable.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Contains class and instance methods providing distance calcuation services.
+This module is meant to be mixed into classes containing lat and lng
+attributes where distance calculation is desired.
+</p>
+<p>
+At present, two forms of distance calculations are provided:
+</p>
+<ul>
+<li>Pythagorean Theory (flat Earth) - which assumes the world is flat and loses
+accuracy over long distances.
+
+</li>
+<li>Haversine (sphere) - which is fairly accurate, but at a performance cost.
+
+</li>
+</ul>
+<p>
+Distance units supported are :miles and :kms.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000005">distance_from</a>&nbsp;&nbsp;
+      <a href="#M000004">distance_to</a>&nbsp;&nbsp;
+      <a href="#M000008">endpoint</a>&nbsp;&nbsp;
+      <a href="#M000007">heading_from</a>&nbsp;&nbsp;
+      <a href="#M000006">heading_to</a>&nbsp;&nbsp;
+      <a href="#M000009">midpoint_to</a>&nbsp;&nbsp;
+      <a href="#M000003">to_lat_lng</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">PI_DIV_RAD</td>
+          <td>=</td>
+          <td class="context-item-value">0.0174</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">KMS_PER_MILE</td>
+          <td>=</td>
+          <td class="context-item-value">1.609</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">EARTH_RADIUS_IN_MILES</td>
+          <td>=</td>
+          <td class="context-item-value">3963.19</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">EARTH_RADIUS_IN_KMS</td>
+          <td>=</td>
+          <td class="context-item-value">EARTH_RADIUS_IN_MILES * KMS_PER_MILE</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">MILES_PER_LATITUDE_DEGREE</td>
+          <td>=</td>
+          <td class="context-item-value">69.1</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">KMS_PER_LATITUDE_DEGREE</td>
+          <td>=</td>
+          <td class="context-item-value">MILES_PER_LATITUDE_DEGREE * KMS_PER_MILE</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">LATITUDE_DEGREES</td>
+          <td>=</td>
+          <td class="context-item-value">EARTH_RADIUS_IN_MILES / MILES_PER_LATITUDE_DEGREE</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <span class="method-name">distance_from</span><span class="method-args">(other, options={})</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Mappable.html#M000004">distance_to</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">distance_to</span><span class="method-args">(other, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the distance from another point. The other point parameter is
+required to have lat and lng attributes. Valid options are: :units - valid
+values are :miles or :kms (:miles is the default) :formula - valid values
+are :flat or :sphere (:sphere is the default)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/geokit/lib/geo_kit/mappable.rb, line 154</span>
+154:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">distance_to</span>(<span class="ruby-identifier">other</span>, <span class="ruby-identifier">options</span>={})
+155:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">distance_between</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">other</span>, <span class="ruby-identifier">options</span>)
+156:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">endpoint</span><span class="method-args">(heading,distance,options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the <a href="Mappable.html#M000008">endpoint</a>, given a heading
+(in degrees) and distance. Valid option: :units - valid values are :miles
+or :kms (:miles is the default)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/geokit/lib/geo_kit/mappable.rb, line 174</span>
+174:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">endpoint</span>(<span class="ruby-identifier">heading</span>,<span class="ruby-identifier">distance</span>,<span class="ruby-identifier">options</span>={})
+175:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">endpoint</span>(<span class="ruby-keyword kw">self</span>,<span class="ruby-identifier">heading</span>,<span class="ruby-identifier">distance</span>,<span class="ruby-identifier">options</span>)  
+176:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">heading_from</span><span class="method-args">(other)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns heading in degrees (0 is north, 90 is east, 180 is south, etc) FROM
+the given point. The given point can be a <a href="LatLng.html">LatLng</a>
+or a string to be Geocoded
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/geokit/lib/geo_kit/mappable.rb, line 167</span>
+167:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">heading_from</span>(<span class="ruby-identifier">other</span>)
+168:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">heading_between</span>(<span class="ruby-identifier">other</span>,<span class="ruby-keyword kw">self</span>)
+169:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="#M000006" class="method-signature">
+          <span class="method-name">heading_to</span><span class="method-args">(other)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns heading in degrees (0 is north, 90 is east, 180 is south, etc) to
+the given point. The given point can be a <a href="LatLng.html">LatLng</a>
+or a string to be Geocoded
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/geokit/lib/geo_kit/mappable.rb, line 161</span>
+161:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">heading_to</span>(<span class="ruby-identifier">other</span>)
+162:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">heading_between</span>(<span class="ruby-keyword kw">self</span>,<span class="ruby-identifier">other</span>)
+163:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">midpoint_to</span><span class="method-args">(other, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the midpoint, given another point on the map. Valid option: :units
+- valid values are :miles or :kms (:miles is the default)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/geokit/lib/geo_kit/mappable.rb, line 181</span>
+181:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">midpoint_to</span>(<span class="ruby-identifier">other</span>, <span class="ruby-identifier">options</span>={})
+182:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">midpoint_between</span>(<span class="ruby-keyword kw">self</span>,<span class="ruby-identifier">other</span>,<span class="ruby-identifier">options</span>)
+183:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">to_lat_lng</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Extracts a <a href="LatLng.html">LatLng</a> instance. Use with models that
+are acts_as_mappable
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/geokit/lib/geo_kit/mappable.rb, line 144</span>
+144:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_lat_lng</span>
+145:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">GeoKit</span><span class="ruby-operator">::</span><span class="ruby-constant">LatLng</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">GeoKit</span><span class="ruby-operator">::</span><span class="ruby-constant">GeoLoc</span>)
+146:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">LatLng</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">send</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">lat_column_name</span>),<span class="ruby-identifier">send</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">lng_column_name</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:acts_as_mappable</span>)
+147:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+148:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

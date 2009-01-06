@@ -76,6 +76,12 @@ require 'flickr'
 require 'icalendar'
 require 'mofo'
 
+include Globalize
+Locale.set_base_language("en-US")
+
+# Start Locale
+Locale.set("de-DE")
+
 class Time
   def to_datetime
     # Convert seconds + microseconds into a fractional number of seconds
