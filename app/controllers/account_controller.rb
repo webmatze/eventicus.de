@@ -51,6 +51,7 @@ class AccountController < ApplicationController
   # Einen Avatar bearbeiten oder hochladen
   def avatar
     @user = session['user']
+    @avatar = @user.avatar
   end
   
   def upload

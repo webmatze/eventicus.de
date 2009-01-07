@@ -4,17 +4,17 @@
 		<h3><a href="#"><%= link_to strip_tags(post.title), :controller => 'blog', :action => 'show', :id => post %></h3>
 		<p class="event-submitted">
 			<%= link_to post.user.login, user_url(:id => post.user.login) %>
-			submitted this post
-			<span class="small-date"><%= time_ago_in_words post.created_at %> ago</span>
+			<%= 'submitted this post'.t %>
+			<span class="small-date"><%= time_ago_or_time_stamp(post.created_at) %></span>
 		</p>
 		<p>
 			<%=h truncate(strip_tags(textilize(post.description.gsub("&amp;","&"))), 1024) %>
-			<%= link_to "More...", {:controller => 'blog', :action => 'show', :id => post}, {:class => 'more'} %>
+			<%= link_to "More...".t, {:controller => 'blog', :action => 'show', :id => post}, {:class => 'more'} %>
 		</p>
 	</div>
 	<div class="event-date">
-		<strong class="event-day"><%= post.created_at.strftime('%m/%d/%y') %></strong>
-		<div class="event-time"><%=h post.created_at.strftime('%H:%M') %></div>
+		<strong class="event-day"><%= post.created_at.loc('%m/%d/%y') %></strong>
+		<div class="event-time"><%=h post.created_at.loc('%H:%M') %></div>
 	</div>
 </div>
 <% end %>

@@ -5,18 +5,18 @@
 
 <% content_for("sidebox") do %>
   <%= render :partial => 'event/sidebar_standard' %>
-	<h3>Friends</h3>
-	<p>here a list of all his friends</p>
+	<!--<h3>%= 'Friends'.t %></h3>
+	<p>here a list of all his friends</p>-->
 <% end %>
 
 <div class="user">
 	
 	<div class="user-data">
-		<h2>Details</h2>
+		<h2><%= 'User details'.t %></h2>
 		<div class="avatar">
 		  <%- if session['user'] != nil && @user.id == session['user'].id -%>
   		  <%= link_to avatar_for(@user), { :controller => 'account', :action => 'avatar'} %>
-  		  <%= link_to("change your avatar", :action => 'avatar') %>
+  		  <%= link_to("change your avatar".t, :action => 'avatar') %>
 		  <%- else -%>
     	  <%= avatar_for(@user) %>
 		  <%- end -%>
@@ -25,19 +25,19 @@
 			<% if session['user'] != nil && @user.id == session['user'].id %>
 				
 			<div>
-				<label>Firstname</label><br />
+				<label><%= 'Firstname'.t %></label><br />
 				<%= in_place_editor_field :user, 'firstname' %>
 			</div>				
 			<div>
-				<label>Lastname</label><br />
+				<label><%= 'Lastname'.t %></label><br />
 				<%= in_place_editor_field :user, 'name' %>
 			</div>				
 			<div>
-				<label>Email</label><br />
+				<label><%= 'Email'.t %></label><br />
 				<%= in_place_editor_field :user, 'email' %>
 			</div>				
 			<div>
-				<label>URL</label><br />
+				<label><%= 'URL'.t %></label><br />
 				<%= in_place_editor_field :user, 'url' %>
 			</div>				
 			

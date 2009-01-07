@@ -7,14 +7,14 @@
 <% end %>
 
 <% content_for("sidebox") do %>
-	<h3>Recent Posts</h3>
+	<h3><%= 'Recent Blog Posts'.t %></h3>
 	<%= render :partial => 'recentposts' %>
 <% end %>
 
 <% content_for("tabs") do %>
 	<% if session['user'] && @blogpost.user.id == session['user'].id %>
 	<div id="edit" <%= 'class="active"' if params[:type] == "edit" %>>
-		<%= link_to "Edit", :controller => 'blog', :id => @blogpost.id, :action => 'edit' %>
+		<%= link_to "Edit".t, :controller => 'blog', :id => @blogpost.id, :action => 'edit' %>
 	</div>
 	<% end %>
 <% end %>
@@ -22,8 +22,8 @@
 <div class="event">
 	<div class="event-user">
 		<%= link_to @blogpost.user.login, user_url(:id => @blogpost.user.login) %>
-		submitted this post
-		<span class="small-date"><%= time_ago_in_words @blogpost.created_at %> ago</span>
+		<%= 'submitted this post'.t %>
+		<span class="small-date"><%= time_ago_or_time_stamp(@blogpost.created_at) %></span>
 	</div>
 
 	<div class="event-description">
@@ -34,13 +34,13 @@
 	
 	<div class="event-comments">
 		<a name="comments"></a>
-		<h2>Comments</h2>
+		<h2><%= 'Comments'.t %></h2>
 		<div class="data">
 			<div id="comments">
 				<% for comment in @blogpost.comments_ordered_by_submitted %>
 					<div class="comment">
 						<div class="comment_head">
-							<%= link_to comment.user.login, user_url(:id => comment.user.login) %> commented <span class="small-date"><%= time_ago_in_words comment.created_at %> ago</span>
+							<%= link_to comment.user.login, user_url(:id => comment.user.login) %> <%= 'commented'.t %> <span class="small-date"><%= time_ago_or_time_stamp comment.created_at %></span>
 						</div>
 						<div class="comment_top">
 						</div>
@@ -49,12 +49,12 @@
 						</div>
 					</div>
 				<% end %>
-				<% if @blogpost.comments.count == 0%>No comments by now<% end %>
+				<% if @blogpost.comments.count == 0%><%= 'No comments by now'.t %><% end %>
 			</div>
 		</div>
 		
 		<% if session['user'] %>
-		<h2>Leave a reply</h2>
+		<h2><%= 'Leave a reply'.t %></h2>
 		<div class="data">
 			
 				<div id="addComment">
@@ -64,10 +64,10 @@
 										:position => :top,
 										:success => "Form.reset('comment_form')" do %>
 					
-						<div class="form_field"><label for="comment_comment">Comment</label><br/>
+						<div class="form_field"><label for="comment_comment"><%= 'Comment'.t %></label><br/>
 						<%= text_area 'comment', 'comment', 'rows' => 5  %></div>
 					
-						<%= submit_tag "Submit Comment" %> 
+						<%= submit_tag "Submit Comment".t %> 
 					
 					<% end %>
 				</div>
@@ -78,6 +78,6 @@
 	</div>
 	
 	
-	<%= link_to "Back", blogposts_url(), {:class => 'nav-link'} %>
+	<%= link_to "Back".t, blogposts_url(), {:class => 'nav-link'} %>
 	
 </div>

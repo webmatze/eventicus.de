@@ -1,4 +1,4 @@
 log/*.log
 public/avatars
 .DS_Store
-
+tmp/attachment_fu/
