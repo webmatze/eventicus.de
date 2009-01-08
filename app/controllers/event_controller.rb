@@ -83,7 +83,7 @@ class EventController < ApplicationController
 	  @event.user = session['user']
     @event.prepare_dates
     if @event.save
-      flash[:notice] = 'Event was successfully created.'
+      flash[:notice] = 'Event was successfully created'.t
       redirect_to events_url(:category => @event.category.short)
     else
       render :action => 'new'
@@ -124,7 +124,7 @@ class EventController < ApplicationController
     @event.attributes = params[:event]
     @event.prepare_dates
     if @event.save
-      flash[:notice] = 'Event was successfully updated.'
+      flash[:notice] = 'Event was successfully updated'.t
       redirect_to :action => 'show', :id => @event
     else
       render :action => 'edit'

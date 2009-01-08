@@ -72,6 +72,22 @@ namespace :eventicus do
     Locale.set_translation("You can also add new metros and select one of them.", "Du kannst auch einen neuen Ort anlegen und diesen auswählen.")
     Locale.set_translation("Then fill in your venue data and save it.", "Dann die Location Daten ausfüllen und speichern.")
     
+    # Events
+    Locale.set_translation("Event was successfully created", "Das Event wurde erfolgreich erstellt")
+    Locale.set_translation("Event was successfully updated", "Das Event wurde erfolgreich geändert")
+    Locale.set_translation("cannot be set to before the start date", "kann vor dem Startdatum liegen")
+    Locale.set_translation("must be selected. Or add a new one", "muss ausgewählt sein. Oder erstellen Sie einen Neuen.")
+    Locale.set_translation("is required", "muss ausgewählt sein")
+    
+    # Location
+    Locale.set_translation("Location was successfully created", "Die Location wurde erfolgreich erstellt")
+    Locale.set_translation("Location was successfully updated", "Die Location wurde erfolgreich geändert")
+    
+    # Metro
+    Locale.set_translation("Metro was successfully created", "Der Ort wurde erfolgreich erstellt")
+    Locale.set_translation("Metro was successfully updated", "Der Ort wurde erfolgreich geändert")
+    
+    
     # Login
     Locale.set_translation("Please login", "Bitte anmelden")
     Locale.set_translation("Sign up now", "Jetzt registrieren")
@@ -100,6 +116,12 @@ namespace :eventicus do
     Locale.set_translation("Just select a desired image file and submit it.", "Einfach das gewünschte Bild auswählen und hochladen.")
     Locale.set_translation("We accept JPEG, GIF, or PNG files up to 500 KB.", "Wir akzeptieren JPEG, GIF oder PNG Dateien bis zu 500 Kilobytes.")
     Locale.set_translation("Upload", "Hochladen")
+    Locale.set_translation("Login successful", "Du hast dich erfolgreich angemeldet")
+    Locale.set_translation("Logou successful", "Du hast dich erfolgreich abgemeldet")
+    Locale.set_translation("Please check your username and password", "Bitte überprüfe deinen Benutzernamen und dein Passwort")
+    Locale.set_translation("Signup successful", "Du hast dich erfolgreich registriert")
+    Locale.set_translation("Avatar was successfully updated", "Du hast deinen Avatar erfolgreich geändert")
+    Locale.set_translation("Avatar was successfully uploadedl", "Du hast deinen Avatar erfolgreich hochgeladen")
     
     # Zeitangaben
     Locale.set_translation("1 minute ago", "vor einer Minute")

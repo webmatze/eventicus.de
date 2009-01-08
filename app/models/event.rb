@@ -43,9 +43,9 @@ class Event < ActiveRecord::Base
 	protected
 
 		def validate
-			errors.add("End Date", "cannot be set to before the start date") unless self.date_start < self.date_end
-			errors.add("Venue", "must be selected. Or add a new one") unless self.location
-			errors.add("Category", "is required") unless self.category
+			errors.add("End Date".t, "cannot be set to before the start date".t) unless self.date_start < self.date_end
+			errors.add("Venue".t, "must be selected. Or add a new one".t) unless self.location
+			errors.add("Category".t, "is required".t) unless self.category
 		end
 	
 	private

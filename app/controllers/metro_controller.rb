@@ -27,7 +27,7 @@ class MetroController < ApplicationController
   def create
     @metro = Metro.new(params[:metro])
     if @metro.save
-      flash[:notice] = 'Metro was successfully created.'
+      flash[:notice] = 'Metro was successfully created'.t
       redirect_to :action => 'list'
     else
       render :action => 'new'
@@ -54,7 +54,7 @@ class MetroController < ApplicationController
   def update
     @metro = Metro.find(params[:id])
     if @metro.update_attributes(params[:metro])
-      flash[:notice] = 'Metro was successfully updated.'
+      flash[:notice] = 'Metro was successfully updated'.t
       redirect_to :action => 'show', :id => @metro
     else
       render :action => 'edit'

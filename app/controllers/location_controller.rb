@@ -23,7 +23,7 @@ class LocationController < ApplicationController
   def create
     @location = Location.new(params[:location])
     if @location.save
-      flash[:notice] = 'Location was successfully created.'
+      flash[:notice] = 'Location was successfully created'.t
       redirect_to :action => 'list'
     else
       render :action => 'new'
@@ -58,7 +58,7 @@ class LocationController < ApplicationController
   def update
     @location = Location.find(params[:id])
     if @location.update_attributes(params[:location])
-      flash[:notice] = 'Location was successfully updated.'
+      flash[:notice] = 'Location was successfully updated'.t
       redirect_to :action => 'show', :id => @location
     else
       render :action => 'edit'
