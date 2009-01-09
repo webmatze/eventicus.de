@@ -146,9 +146,13 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'event/:action',
               :controller => 'event',
               :menu => 'events'
-              
+
   map.connect 'location/:action',
               :controller => 'location',
+              :action => 'list'
+
+  map.connect 'metro/:action',
+              :controller => 'metro',
               :action => 'list'
 
   map.user 'user/:id/:action',

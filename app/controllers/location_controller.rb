@@ -34,7 +34,7 @@ class LocationController < ApplicationController
     @location = Location.new(params[:location])
     searchStr = ""
     searchStr << @location.street + ", "
-    searchStr << @location.zip + " " + @location.metro.name + ", " + @location.metro.country
+    searchStr << @location.zip + " " + @location.metro.name + ", " + @location.metro.country if @location.metro
     loc = GeoKit::Geocoders::GoogleGeocoder.geocode(searchStr)
     if loc.success
       @location.lat = loc.lat

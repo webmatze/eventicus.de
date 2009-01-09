@@ -165,5 +165,28 @@ namespace :eventicus do
     Locale.set_translation("This month", "diesen Monat")
     Locale.set_translation("This year", "dieses Jahr")
     
+    # Fehlermeldungen
+    Locale.set_translation("%d errors prohibited this user from being saved","Beim Speichern des Nutzers ist ein Fehler aufgetreten","Beim Speichern des Nutzers sind %d Fehler aufgetreten")
+    Locale.set_translation("There were problems with the following fields:","Es gab Probleme mit den folgenden Feldern:")
+    Locale.set_translation("Password confirmation can't be blank","Die Passwortbestätigung darf nicht leer sein")
+    Locale.set_translation("Password is too short (minimum is %d characters)","Das Passwort ist zu kurz","Das Passwort ist zu kurz (mind. %d Zeichen)")
+    Locale.set_translation("Password can't be blank","Das Passwort darf nicht leer sein")
+    Locale.set_translation("Login is too short (minimum is %d characters)","Der Benutzername ist zu kurz","Der Benutzername ist zu kurz (mind. %d Zeichen)")
+    Locale.set_translation("Login can't be blank","Der Benutzername darf nicht leer sein")
+    Locale.set_translation("Email can't be blank","Die E-Mail darf nicht leer sein")
+    Locale.set_translation("Email has already been taken","Die E-Mail wird bereits verwendet")
+    Locale.set_translation("can't be blank","darf nicht leer sein")
+    Locale.set_translation("has already been taken","wird bereits verwendet")
+    Locale.set_translation("is too short (minimum is %d characters)","ist zu kurz","ist zu kurz (mind. %d Zeichen)")
+    Locale.set_translation("%d errors prohibited this event from being saved","Beim Speichern des Events ist ein Fehler aufgetreten","Beim Speichern des Events sind %d Fehler aufgetreten")
+    Locale.set_translation("Title can't be blank","Der Titel darf nicht leer sein")
+    Locale.set_translation("Description can't be blank","Die Beschreibung darf nicht leer sein")
+    Locale.set_translation("Name can't be blank","Der Name darf nicht leer sein")
+    Locale.set_translation("Zip can't be blank","Die PLZ darf nicht leer sein")
+    Locale.set_translation("Metro can't be blank","Sie müssen einen Ort auswählen oder anlegen")
+    Locale.set_translation("Street can't be blank","Die Straße darf nicht leer sein")
+    Locale.set_translation("Country can't be blank","Das Land darf nicht leer sein")
+    Locale.set_translation("State can't be blank","Das Bundesland darf nicht leer sein")
+    Locale.set_translation("Name has already been taken","Der Name wird bereits verwendet")
   end
 end
