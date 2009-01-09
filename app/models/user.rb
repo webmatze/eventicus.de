@@ -15,10 +15,9 @@ class User < ActiveRecord::Base
 
   def self.authenticate(login, pass)
     if user = first(:conditions => ["login = ? AND password = ?", login, sha1(pass)])
-      user.last_login = TzTime.now.utc
-      if user.increment :number_of_logins, 1
-        return user
-      end
+      user.increment :number_of_logins, 1
+      user.update_attribute "last_login", TzTime.now.utc
+      return user
 	  end
   end  
 
