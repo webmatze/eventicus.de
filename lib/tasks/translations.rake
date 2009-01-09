@@ -98,7 +98,6 @@ namespace :eventicus do
     Locale.set_translation("If you are not registered you can now sign up here:", "Wenn Du noch nicht registriert bist, kannst du dies hier tun:")
     
     # Registrieren
-    Locale.set_translation("Login Name", "Benutzername")
     Locale.set_translation("Desired login", "Gewünschter Benutzername")
     Locale.set_translation("Choose password", "Passwort auswählen")
     Locale.set_translation("Confirm password", "Passwort bestätigen")
@@ -117,11 +116,11 @@ namespace :eventicus do
     Locale.set_translation("We accept JPEG, GIF, or PNG files up to 500 KB.", "Wir akzeptieren JPEG, GIF oder PNG Dateien bis zu 500 Kilobytes.")
     Locale.set_translation("Upload", "Hochladen")
     Locale.set_translation("Login successful", "Du hast dich erfolgreich angemeldet")
-    Locale.set_translation("Logou successful", "Du hast dich erfolgreich abgemeldet")
+    Locale.set_translation("Logout successful", "Du hast dich erfolgreich abgemeldet")
     Locale.set_translation("Please check your username and password", "Bitte überprüfe deinen Benutzernamen und dein Passwort")
     Locale.set_translation("Signup successful", "Du hast dich erfolgreich registriert")
     Locale.set_translation("Avatar was successfully updated", "Du hast deinen Avatar erfolgreich geändert")
-    Locale.set_translation("Avatar was successfully uploadedl", "Du hast deinen Avatar erfolgreich hochgeladen")
+    Locale.set_translation("Avatar was successfully uploaded", "Du hast deinen Avatar erfolgreich hochgeladen")
     
     # Zeitangaben
     Locale.set_translation("1 minute ago", "vor einer Minute")

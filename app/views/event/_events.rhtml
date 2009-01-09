@@ -41,7 +41,7 @@
 			</div>
 		<% else%>
 			<div class="event-push">
-				<%= link_to "Attend".t, :controller => 'event', :action => "attend", :id => event %>
+				<%= link_to "Attend".t, :controller => 'event', :action => "attend", :id => event, :metro => event.location.metro %>
 			</div>
 		<% end %>
 	<% end %>
