@@ -391,7 +391,7 @@ ul#mainmenu li.active a {
 #bodycontent #rightcontent .side-box ul.cloud li {
 	float: left;
 	padding: 0px 10px 0px 0px;
-	height: 20px;
+	line-height: 20px;
 }
 #bodycontent #rightcontent .side-box #add_event {
 }
@@ -705,8 +705,9 @@ div.auto_complete ul li {
 	display: block;
 	margin: 0px;
 	padding: 4px;
-	height: 32px;
 	cursor: pointer;
+	border: 0px solid #CCCC99;
+	border-bottom-width: 1px;
 }
 
 div.auto_complete ul li.location .name {
