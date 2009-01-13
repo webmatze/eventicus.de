@@ -113,7 +113,7 @@ namespace :scrape do
           else
             event.date_end = event.date_start + 2.hours
           end
-          event.user = User.find ["venti","webmatze","matze002"].rand
+          event.user = User.find ["venti","webmatze","frankm","demode"].rand
       
           #location Daten
           location = Location.find_by_name item[:venue] rescue nil
