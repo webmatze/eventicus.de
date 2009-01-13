@@ -141,6 +141,8 @@ class ApplicationController < ActionController::Base
      rescue
        Locale.set default_locale
      end
+     WillPaginate::ViewHelpers.pagination_options[:previous_label] =  '&lt;- ' + 'Previous'.t
+     WillPaginate::ViewHelpers.pagination_options[:next_label] = 'Next'.t + ' -&gt;'
     end
  
 end

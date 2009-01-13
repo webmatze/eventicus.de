@@ -63,6 +63,7 @@ namespace :eventicus do
     Locale.set_translation("Extra", "Mehr Daten")
     Locale.set_translation("Next", "Weiter")
     Locale.set_translation("Prev", "Zurück")
+    Locale.set_translation("Previous", "Zurück")
     Locale.set_translation("URL", "URL")
     Locale.set_translation("Email", "E-Mail")
     Locale.set_translation("Phone", "Telefon")
