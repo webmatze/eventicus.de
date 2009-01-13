@@ -10,7 +10,7 @@
 			<span class="small-date"><%= time_ago_or_time_stamp(event.date_created) %></span>
 		</p>
 		<p>
-			<%=h truncate(strip_tags(textilize(event.description.gsub("&amp;","&"))), 128) %>
+			<%= truncate(strip_tags(textilize(event.description.gsub("&amp;","&"))), 128) %>
 			<%= link_to "More...".t, event_url(:metro => event.location.metro, :id => event), :class => 'more' %>
 		</p>
 		<div class="event-details">

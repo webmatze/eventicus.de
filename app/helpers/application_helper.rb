@@ -34,7 +34,7 @@ module ApplicationHelper
 		if param.to_i > 0
 			return Metro.find_by_id(param)
 		else
-			return Metro.find_by_name(param)
+			return Metro.find(param)
 		end 
 	end
 	
