@@ -25,6 +25,11 @@ ActionController::Routing::Routes.draw do |map|
               :action => 'new',
               :menu => 'events'
 
+  map.events_update 'events/update/:id',
+              :controller => 'event',
+              :action => 'update',
+              :menu => 'events'
+
   map.events_import 'events/import',
               :controller => 'event',
               :action => 'import',

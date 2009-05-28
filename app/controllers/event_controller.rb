@@ -125,7 +125,7 @@ class EventController < ApplicationController
     @event.prepare_dates
     if @event.save
       flash[:notice] = 'Event was successfully updated'.t
-      redirect_to :action => 'show', :id => @event
+      redirect_to :action => 'show', :metro => @event.location.metro, :id => @event
     else
       render :action => 'edit'
     end
