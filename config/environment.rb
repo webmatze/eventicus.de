@@ -75,6 +75,8 @@ end
 require 'flickr'
 require 'icalendar'
 require 'mofo'
+gem('twitter4r','0.3.1')
+require 'twitter'
 
 include Globalize
 Locale.set_base_language("en-US")
