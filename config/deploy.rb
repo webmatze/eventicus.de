@@ -2,7 +2,7 @@
 # (http://manuals.rubyonrails.com/read/book/17). It allows you to automate
 # (among other things) the deployment of your application.
 
-require 'mongrel_cluster/recipes'
+#require 'mongrel_cluster/recipes'
 
 # =============================================================================
 # REQUIRED VARIABLES
@@ -52,6 +52,21 @@ set :mongrel_conf, "#{current_path}/config/mongrel_cluster.yml"
 # =============================================================================
 # TASKS
 # =============================================================================
+namespace :deploy do
+  task :start, :roles => :app do
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+
+  task :stop, :roles => :app do
+    # Do nothing.
+  end
+
+  desc "Restart Application"
+  task :restart, :roles => :app do
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+end
+
 desc 'Link shared directories and files'
 task :after_update_code, :roles => :app do
   run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
