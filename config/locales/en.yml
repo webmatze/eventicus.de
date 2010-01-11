@@ -1,0 +1,23 @@
+en:
+  search_events: Search Events
+  logout: Logout
+  login: Login
+  join_us: Join Us
+  add_event: Add Event
+  All: All
+  in: in
+  within: within
+  city_cloud: City Cloud
+  recent_blog_posts: Recent Blog Posts
+  recent_visitors: Recent Visitors
+  time:
+    seconds_ago: "{{seconds}} seconds ago"
+    one_second_ago: 1 second ago
+    minutes_ago: "{{minutes}} minutes ago"
+    one_minute_ago: 1 minute ago
+    hours_ago: "{{hours}} hours ago"
+    one_hour_ago: 1 hour ago
+    days_ago: "{{days}} days ago"
+    one_day_ago: 1 day ago
+    on: "on {{on}}"
+  
