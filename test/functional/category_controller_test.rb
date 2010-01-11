@@ -9,10 +9,10 @@ class CategoryControllerTest < Test::Unit::TestCase
 
   def setup
     @controller = CategoryController.new
-    request    = ActionController::TestRequest.new
+    @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
 
-    @first_id = categories(:first).id
+    @first_id = categories(:one).id
   end
 
   def test_index
@@ -52,7 +52,7 @@ class CategoryControllerTest < Test::Unit::TestCase
   def test_create
     num_categories = Category.count
 
-    post :create, :category => {}
+    post :create, :category => { :name => "Testcategory", :short => 'testcat', :ordering => 3 }
 
     assert_response :redirect
     assert_redirected_to :action => 'list'

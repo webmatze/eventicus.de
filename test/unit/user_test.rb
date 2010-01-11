@@ -5,6 +5,10 @@ class UserTest < Test::Unit::TestCase
   
   fixtures :users
     
+  def setup
+    TzTime.zone = TZInfo::Timezone.new("Europe/Berlin")
+  end
+  
   def test_auth  
     assert_equal  @bob, User.authenticate("bob", "test")    
     assert_nil    User.authenticate("nonbob", "test")
@@ -27,6 +31,7 @@ class UserTest < Test::Unit::TestCase
 
     u = User.new    
     u.login = "nonbob"
+    u.email = "nonbob@boby.de"
 
     u.password = u.password_confirmation = "tiny"
     assert !u.save     
@@ -43,6 +48,7 @@ class UserTest < Test::Unit::TestCase
     u.password = u.password_confirmation = "bobs_secure_password"
     assert u.save     
     assert u.errors.empty?
+    
         
   end
   
@@ -50,6 +56,7 @@ class UserTest < Test::Unit::TestCase
 
     u = User.new  
     u.password = u.password_confirmation = "bobs_secure_password"
+    u.email = "okbob@bob.de"
 
     u.login = "x"
     assert !u.save     
@@ -74,6 +81,7 @@ class UserTest < Test::Unit::TestCase
     u = User.new
     u.login      = "existingbob"
     u.password = u.password_confirmation = "bobs_secure_password"
+    u.email = "existingbob@bob.de"
     assert !u.save
   end
 
@@ -82,6 +90,7 @@ class UserTest < Test::Unit::TestCase
     u = User.new
     u.login      = "nonexistingbob"
     u.password = u.password_confirmation = "bobs_secure_password"
+    u.email = "nonexistingbob@bob.de"
       
     assert u.save  
     
@@ -91,6 +100,7 @@ class UserTest < Test::Unit::TestCase
     u = User.new
     u.login      = "nonexistingbob"
     u.password = u.password_confirmation = "bobs_secure_password"
+    u.email = "nonexistingbob@bob.de"
     assert u.save
         
     assert_equal '98740ff87bade6d895010bceebbd9f718e7856bb', u.password

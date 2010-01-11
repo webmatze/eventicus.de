@@ -24,5 +24,5 @@ class Test::Unit::TestCase
   # then set this back to true.
   self.use_instantiated_fixtures  = false
 
-  # Add more helper methods to be used by all tests here...
+  # Add more helper methods to be used by all tests here...  
 end

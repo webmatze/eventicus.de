@@ -12,15 +12,15 @@ class AccountControllerTest < Test::Unit::TestCase
   def setup
 
     @controller = AccountController.new
-    request, @response = ActionController::TestRequest.new, ActionController::TestResponse.new
-    request.host = "localhost"
+    @request, @response = ActionController::TestRequest.new, ActionController::TestResponse.new
+    @request.host = "localhost"
   end
   
   def test_auth_bob
-    request.session['return-to'] = "/bogus/location"
+    @request.session['return-to'] = "/bogus/location"
 
     post :login, "user_login" => "bob", "user_password" => "test"
-    assert_session_has "user"
+    assert(@response.has_session_object?("user"))
 
     assert_equal @bob, @response.session["user"]
     
@@ -28,46 +28,51 @@ class AccountControllerTest < Test::Unit::TestCase
   end
   
   def test_signup
-    request.session['return-to'] = "/bogus/location"
+    @request.session['return-to'] = "/bogus/location"
 
-    post :signup, "user" => { "login" => "newbob", "password" => "newpassword", "password_confirmation" => "newpassword" }
-    assert_session_has "user"
+    post :signup, "user" => { "login" => "newbob", "password" => "newpassword", "password_confirmation" => "newpassword", "email" => "newbob@bob.de" }
+    assert(@response.has_session_object?("user"), 'Das user Objekt konnte nicht in der Session gefunden werden')
     
-    assert_redirected_to "/bogus/location"
+    assert_redirected_to "/bogus/location", 'ist nicht zur richtigen Seite redirected worden'
   end
 
   def test_bad_signup
-    request.session['return-to'] = "/bogus/location"
+    @request.session['return-to'] = "/bogus/location"
 
-    post :signup, "user" => { "login" => "newbob", "password" => "newpassword", "password_confirmation" => "wrong" }
-    assert_invalid_column_on_record "user", "password"
-    assert_success
+    post :signup, "user" => { "login" => "newbob", "password" => "newpassword", "password_confirmation" => "wrong", "email" => "newbob@bob.de" }
+    assert(assigns("user").errors.invalid?('password'))
+    assert_response :success
     
-    post :signup, "user" => { "login" => "yo", "password" => "newpassword", "password_confirmation" => "newpassword" }
-    assert_invalid_column_on_record "user", "login"
-    assert_success
+    post :signup, "user" => { "login" => "yo", "password" => "newpassword", "password_confirmation" => "newpassword", "email" => "newbob@bob.de" }
+    assert(assigns("user").errors.invalid?("login"))
+    assert_response :success
+    
+    post :signup, "user" => { "login" => "newbob", "password" => "newpassword", "password_confirmation" => "newpassword" }
+    assert(assigns("user").errors.invalid?("email"))
+    assert_response :success
 
-    post :signup, "user" => { "login" => "yo", "password" => "newpassword", "password_confirmation" => "wrong" }
-    assert_invalid_column_on_record "user", ["login", "password"]
-    assert_success
+    post :signup, "user" => { "login" => "yo", "password" => "newpassword", "password_confirmation" => "wrong", "email" => "newbob@bob.de" }
+    assert(assigns("user").errors.invalid?("password"))
+    assert(assigns("user").errors.invalid?("login"))
+    assert_response(:success)
   end
 
   def test_invalid_login
     post :login, "user_login" => "bob", "user_password" => "not_correct"
      
-    assert_session_has_no "user"
+    assert(!@response.has_session_object?('user'))
     
-    assert_template_has "message"
-    assert_template_has "login"
+    assert(@response.has_template_object?("message"))
+    assert(@response.has_template_object?("login"))
   end
   
   def test_login_logoff
 
     post :login, "user_login" => "bob", "user_password" => "test"
-    assert_session_has "user"
+    assert(@response.has_session_object?("user"))
 
     get :logout
-    assert_session_has_no "user"
+    assert(!@response.has_session_object?("user"))
 
   end
   

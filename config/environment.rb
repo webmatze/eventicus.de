@@ -83,6 +83,8 @@ Locale.set_base_language("en-US")
 
 # Start Locale
 Locale.set("de-DE")
+TzTime.zone = TZInfo::Timezone.new("Europe/Berlin")
+
 
 class Time
   def to_datetime

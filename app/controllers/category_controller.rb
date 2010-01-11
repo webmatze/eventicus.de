@@ -9,7 +9,7 @@ class CategoryController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @category_pages, @categories = paginate :categories, :per_page => 10
+    @categories = Category.paginate(:per_page => 10, :page => 1)
   end
 
   def show

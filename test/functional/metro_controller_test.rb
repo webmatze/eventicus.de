@@ -5,14 +5,14 @@ require 'metro_controller'
 class MetroController; def rescue_action(e) raise e end; end
 
 class MetroControllerTest < Test::Unit::TestCase
-  fixtures :metros
+  fixtures :metros, :users
 
   def setup
     @controller = MetroController.new
-    request    = ActionController::TestRequest.new
+    @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
 
-    @first_id = metros(:first).id
+    @first = metros(:one)
   end
 
   def test_index
@@ -31,7 +31,7 @@ class MetroControllerTest < Test::Unit::TestCase
   end
 
   def test_show
-    get :show, :id => @first_id
+    get :show, :id => @first.id
 
     assert_response :success
     assert_template 'show'
@@ -49,7 +49,9 @@ class MetroControllerTest < Test::Unit::TestCase
     assert_not_nil assigns(:metro)
   end
 
-  def test_create
+  def test_create_loggedin
+    @request.session['user'] = users(:bob)
+    
     num_metros = Metro.count
 
     post :create, :metro => {}
@@ -60,8 +62,10 @@ class MetroControllerTest < Test::Unit::TestCase
     assert_equal num_metros + 1, Metro.count
   end
 
-  def test_edit
-    get :edit, :id => @first_id
+  def test_edit_loggedin
+    @request.session['user'] = users(:bob)
+    
+    get :edit, :id => @first.id
 
     assert_response :success
     assert_template 'edit'
@@ -70,23 +74,26 @@ class MetroControllerTest < Test::Unit::TestCase
     assert assigns(:metro).valid?
   end
 
-  def test_update
-    post :update, :id => @first_id
+  def test_update_loggedin
+    @request.session['user'] = users(:bob)
+    post :update, :id => @first.id
     assert_response :redirect
-    assert_redirected_to :action => 'show', :id => @first_id
+    assert_redirected_to :action => 'show', :id => @first
   end
 
-  def test_destroy
+  def test_destroy_loggedin
     assert_nothing_raised {
-      Metro.find(@first_id)
+      Metro.find(@first.id)
     }
 
-    post :destroy, :id => @first_id
+    @request.session['user'] = users(:bob)
+
+    post :destroy, :id => @first.id
     assert_response :redirect
     assert_redirected_to :action => 'list'
 
     assert_raise(ActiveRecord::RecordNotFound) {
-      Metro.find(@first_id)
+      Metro.find(@first.id)
     }
   end
 end

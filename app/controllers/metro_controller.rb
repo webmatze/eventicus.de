@@ -13,7 +13,7 @@ class MetroController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @metro_pages, @metros = paginate :metros, :per_page => 10
+    @metros = Metro.paginate :page => 1, :per_page => 10
   end
 
   def show

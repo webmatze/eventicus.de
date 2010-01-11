@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090105154539) do
+ActiveRecord::Schema.define(:version => 20100111195232) do
 
   create_table "attendees", :force => true do |t|
     t.integer  "user_id"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20090105154539) do
     t.integer  "location_id",                                 :null => false
     t.integer  "category_id"
     t.integer  "popularity",                   :default => 0, :null => false
+    t.string   "scrapingid"
   end
 
   create_table "globalize_countries", :force => true do |t|

@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
 	
-	has_many :attendees
+	has_many :attendees, :dependent => true
 	has_many :attending_users, :through => :attendees, :source => :user
 
   has_friendly_id :title, :use_slug => true, :strip_diacritics => true, :reserved => ["new","edit","delete"]

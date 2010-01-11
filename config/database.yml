@@ -24,10 +24,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   adapter: mysql
-  database: eventicus2_test
-  username: xxx
-  password: xxx
+  database: eventicus_test
+  username: root
+  password: 1q2w3e4r
   host: localhost
+  encoding: utf8
 
 production:
   adapter: mysql

@@ -1,5 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
   id: 1
+  name: category one
+  short: one
+  ordering: 1
 two:
   id: 2
+  name: category two
+  short: two
+  ordering: 2
