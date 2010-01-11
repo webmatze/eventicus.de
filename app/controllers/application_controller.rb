@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   include LoginSystem
 
-  around_filter :set_timezone
+  before_filter :set_timezone
 
   # Pick a unique cookie name to distinguish our session data from others'
   session :session_key => '_eventicus2_session_id'
@@ -38,26 +38,26 @@ class ApplicationController < ActionController::Base
       #range
       if params[:range] == 'all'
         range = "(e.date_start > :rangeStart OR e.date_end > :rangeStart) ";
-        condParams[:rangeStart] = TzTime.now.utc
+        condParams[:rangeStart] = Time.zone.now.utc
       end
       if params[:range] == 'today'
         range = "(e.date_start BETWEEN :rangeStart AND :rangeEnd OR e.date_end BETWEEN :rangeStart AND :rangeEnd OR :rangeStart BETWEEN e.date_start AND e.date_end) ";
-        condParams[:rangeStart] = TzTime.now.utc
-        condParams[:rangeEnd] = TzTime.today.utc.at_beginning_of_day + 1.day
+        condParams[:rangeStart] = Time.zone.now.utc
+        condParams[:rangeEnd] = Time.zone.today.utc.at_beginning_of_day + 1.day
       end
       if params[:range] == 'week'
-        condParams[:rangeStart] = TzTime.now.utc
-        condParams[:rangeEnd] = (TzTime.today.utc.beginning_of_week + 1.week).beginning_of_day
+        condParams[:rangeStart] = Time.zone.now.utc
+        condParams[:rangeEnd] = (Time.zone.today.utc.beginning_of_week + 1.week).beginning_of_day
         range = "(e.date_start BETWEEN :rangeStart AND :rangeEnd OR e.date_end BETWEEN :rangeStart AND :rangeEnd OR :rangeStart BETWEEN e.date_start AND e.date_end) "
       end
       if params[:range] == 'month'
-        condParams[:rangeStart] = TzTime.now.utc
-        condParams[:rangeEnd] = TzTime.today.utc.end_of_month + 1.day
+        condParams[:rangeStart] = Time.zone.now.utc
+        condParams[:rangeEnd] = Time.zone.today.utc.end_of_month + 1.day
         range = "(e.date_start BETWEEN :rangeStart and :rangeEnd OR e.date_end BETWEEN :rangeStart and :rangeEnd OR :rangeStart BETWEEN e.date_start AND e.date_end) "
       end
       if params[:range] == 'year'
-        condParams[:rangeStart] = TzTime.now.utc
-        condParams[:rangeEnd] = (TzTime.today.utc.beginning_of_year + 1.year).beginning_of_day
+        condParams[:rangeStart] = Time.zone.now.utc
+        condParams[:rangeEnd] = (Time.zone.today.utc.beginning_of_year + 1.year).beginning_of_day
         range = "(e.date_start BETWEEN :rangeStart and :rangeEnd OR e.date_end BETWEEN :rangeStart and :rangeEnd OR :rangeStart BETWEEN e.date_start AND e.date_end) "
       end
       if params[:search]
@@ -116,13 +116,14 @@ class ApplicationController < ActionController::Base
     end
   
     def set_timezone
-      if session['user'] && !session['user'].time_zone.nil?
-        TzTime.zone = session['user'].tz
-      else
-        TzTime.zone = TZInfo::Timezone.new("Europe/Berlin")
-      end
-      yield
-      TzTime.reset!
+      Time.zone = @current_user.time_zone if @current_user
+      #if session['user'] && !session['user'].time_zone.nil?
+      #  TzTime.zone = session['user'].tz
+      #else
+      #  TzTime.zone = TZInfo::Timezone.new("Europe/Berlin")
+      #end
+      #yield
+      #TzTime.reset!
     end
      
     def set_locale
@@ -137,12 +138,14 @@ class ApplicationController < ActionController::Base
                request_language || default_locale
      session[:locale] = @locale
      begin
-       Locale.set @locale
+       #Locale.set @locale
+       I18n.locale = @locale
      rescue
-       Locale.set default_locale
+       #Locale.set default_locale
+       I18n.locale = :en
      end
-     WillPaginate::ViewHelpers.pagination_options[:previous_label] =  '&lt;- ' + 'Previous'.t
-     WillPaginate::ViewHelpers.pagination_options[:next_label] = 'Next'.t + ' -&gt;'
+     WillPaginate::ViewHelpers.pagination_options[:previous_label] =  '&lt;- ' + t('Previous')
+     WillPaginate::ViewHelpers.pagination_options[:next_label] = t('Next') + ' -&gt;'
     end
  
 end
