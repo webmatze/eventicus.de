@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -18,6 +18,8 @@ Rails::Initializer.run do |config|
   config.gem "icalendar"
   config.gem "mofo"
   config.gem "friendly_id"
+  config.gem "RedCloth"
+  config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
   
   # Skip frameworks you're not going to use (only works if using vendor/rails)
   # config.frameworks -= [ :action_web_service, :action_mailer ]
@@ -56,6 +58,12 @@ Rails::Initializer.run do |config|
   # See Rails::Configuration for more options
   config.cache_store = :mem_cache_store
   
+  #set Timezone
+  config.time_zone = "Berlin"
+  
+  #set locale
+  config.i18n.default_locale = :en
+  
 end
 
 # Add new inflection rules using the following format 
@@ -72,19 +80,11 @@ end
 # Mime::Type.register "application/x-mobile", :mobile
 
 # Include your application configuration below
-require 'flickr'
-require 'icalendar'
-require 'mofo'
+#require 'flickr'
+#require 'icalendar'
+#require 'mofo'
 gem('twitter4r','0.3.1')
 require 'twitter'
-
-include Globalize
-Locale.set_base_language("en-US")
-
-# Start Locale
-Locale.set("de-DE")
-TzTime.zone = TZInfo::Timezone.new("Europe/Berlin")
-
 
 class Time
   def to_datetime

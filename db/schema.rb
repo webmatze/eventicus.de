@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100111195232) do
+ActiveRecord::Schema.define(:version => 20100111204804) do
 
   create_table "attendees", :force => true do |t|
     t.integer  "user_id"
@@ -46,14 +46,17 @@ ActiveRecord::Schema.define(:version => 20100111195232) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
-    t.string   "comment",                        :default => ""
-    t.datetime "created_at",                                     :null => false
-    t.integer  "commentable_id",                 :default => 0,  :null => false
-    t.string   "commentable_type", :limit => 15, :default => "", :null => false
-    t.integer  "user_id",                        :default => 0,  :null => false
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "comments", ["user_id"], :name => "fk_comments_user"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "events", :force => true do |t|
     t.string   "title",         :limit => 128,                :null => false
