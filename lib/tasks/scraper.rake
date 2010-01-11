@@ -87,7 +87,7 @@ namespace :scrape do
         puts "Event mit ID '#{guid}' bereits vorhanden"
       end
             
-      sleep 5
+      sleep 2
       
     end
   end
