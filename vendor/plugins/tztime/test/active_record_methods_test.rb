@@ -20,7 +20,7 @@ MockRecord.extend TzTimeHelpers::ActiveRecordMethods
 MockRecord.tz_time_attributes :due_on
 
 module TzTimeHelpers
-  class ActiveRecordMethodsTest < Test::Unit::TestCase
+  class ActiveRecordMethodsTest < ActiveSupport::TestCase
     def setup
       TzTime.zone = TimeZone["Central Time (US & Canada)"]
       @record = MockRecord.new

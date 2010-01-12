@@ -2,7 +2,7 @@ $LOAD_PATH.unshift File.join('..', 'lib')
 require 'geo_kit/mappable'
 require 'test/unit'
 
-class BoundsTest < Test::Unit::TestCase #:nodoc: all
+class BoundsTest < ActiveSupport::TestCase #:nodoc: all
   
   def setup
     # This is the area in Texas

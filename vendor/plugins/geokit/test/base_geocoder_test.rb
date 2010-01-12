@@ -16,7 +16,7 @@ class MockFailure < Net::HTTPServiceUnavailable #:nodoc: all
 end
 
 # Base class for testing geocoders.
-class BaseGeocoderTest < Test::Unit::TestCase #:nodoc: all
+class BaseGeocoderTest < ActiveSupport::TestCase #:nodoc: all
 
   # Defines common test fixtures.
   def setup

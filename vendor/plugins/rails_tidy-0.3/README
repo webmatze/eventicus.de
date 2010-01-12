@@ -77,7 +77,7 @@ validated. If $FILE does not exists it will try with:
 
 === 4.2 Validating html output
 
-The plugin adds a new assert_tidy method to the <tt>Test::Unit::TestCase</tt>
+The plugin adds a new assert_tidy method to the <tt>ActiveSupport::TestCase</tt>
 class. You can use it in your class by simply call it with no
 arguments. It will validate the last response returned by a test. For
 example:

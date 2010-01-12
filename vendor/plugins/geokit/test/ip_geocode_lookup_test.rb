@@ -22,7 +22,7 @@ class LocationAwareController #:nodoc: all
   def rescue_action(e) raise e end; 
 end
 
-class IpGeocodeLookupTest < Test::Unit::TestCase #:nodoc: all
+class IpGeocodeLookupTest < ActiveSupport::TestCase #:nodoc: all
   
   def setup
     @success = GeoKit::GeoLoc.new

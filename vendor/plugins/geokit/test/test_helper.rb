@@ -15,4 +15,4 @@ ActiveRecord::Base.establish_connection(databases[ENV['DB'] || 'mysql'])
 load(File.join(plugin_test_dir, 'schema.rb'))
 
 # Load fixtures from the plugin
-Test::Unit::TestCase.fixture_path = File.join(plugin_test_dir, 'fixtures/')
+ActiveSupport::TestCase.fixture_path = File.join(plugin_test_dir, 'fixtures/')

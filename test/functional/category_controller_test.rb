@@ -4,7 +4,7 @@ require 'category_controller'
 # Re-raise errors caught by the controller.
 class CategoryController; def rescue_action(e) raise e end; end
 
-class CategoryControllerTest < Test::Unit::TestCase
+class CategoryControllerTest < ActionController::TestCase
   fixtures :categories
 
   def setup

@@ -4,7 +4,7 @@ require 'metro_controller'
 # Re-raise errors caught by the controller.
 class MetroController; def rescue_action(e) raise e end; end
 
-class MetroControllerTest < Test::Unit::TestCase
+class MetroControllerTest < ActionController::TestCase
   fixtures :metros, :users
 
   def setup

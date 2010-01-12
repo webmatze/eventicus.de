@@ -2,7 +2,7 @@ $LOAD_PATH.unshift File.join('..', 'lib')
 require 'geo_kit/mappable'
 require 'test/unit'
 
-class LatLngTest < Test::Unit::TestCase #:nodoc: all
+class LatLngTest < ActiveSupport::TestCase #:nodoc: all
   
   def setup
     @loc_a = GeoKit::LatLng.new(32.918593,-96.958444)

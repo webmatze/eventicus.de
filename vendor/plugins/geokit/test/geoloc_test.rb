@@ -1,7 +1,7 @@
 require 'test/unit'
 require File.join(File.dirname(__FILE__), '../../../../config/environment')
 
-class GeoLocTest < Test::Unit::TestCase #:nodoc: all
+class GeoLocTest < ActiveSupport::TestCase #:nodoc: all
   
   def setup
     @loc = GeoKit::GeoLoc.new

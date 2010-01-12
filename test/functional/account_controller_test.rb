@@ -4,7 +4,7 @@ require 'account_controller'
 # Raise errors beyond the default web-based presentation
 class AccountController; def rescue_action(e) raise e end; end
 
-class AccountControllerTest < Test::Unit::TestCase
+class AccountControllerTest < ActionController::TestCase
   self.use_instantiated_fixtures  = true
   
   fixtures :users

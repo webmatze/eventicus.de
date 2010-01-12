@@ -1,7 +1,7 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '../../../../test/test_helper'))
 require 'test/unit'
 
-class InPlaceEditingTest < Test::Unit::TestCase
+class InPlaceEditingTest < ActiveSupport::TestCase
   include InPlaceEditing
   include InPlaceMacrosHelper
   

@@ -1,6 +1,6 @@
 require 'test/unit'
 
-class RedboxTest < Test::Unit::TestCase
+class RedboxTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   def test_this_plugin
     flunk

@@ -34,7 +34,7 @@ class CustomLocation < ActiveRecord::Base #:nodoc: all
   end
 end
 
-class ActsAsMappableTest < Test::Unit::TestCase #:nodoc: all
+class ActsAsMappableTest < ActiveSupport::TestCase #:nodoc: all
     
   LOCATION_A_IP = "217.10.83.5"  
     

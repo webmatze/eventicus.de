@@ -4,7 +4,7 @@ require 'event_controller'
 # Re-raise errors caught by the controller.
 class EventController; def rescue_action(e) raise e end; end
 
-class EventControllerTest < Test::Unit::TestCase
+class EventControllerTest < ActionController::TestCase
   fixtures :events
 
   def setup

@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class MetroTest < Test::Unit::TestCase
+class MetroTest < ActiveSupport::TestCase
   fixtures :metros
 
   def test_should_create_record

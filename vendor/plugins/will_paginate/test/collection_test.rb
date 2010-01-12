@@ -1,7 +1,7 @@
 require 'helper'
 require 'will_paginate/array'
 
-class ArrayPaginationTest < Test::Unit::TestCase
+class ArrayPaginationTest < ActiveSupport::TestCase
   
   def setup ; end
   
