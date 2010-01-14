@@ -1,15 +1,115 @@
 en:
-  search_events: Search Events
-  logout: Logout
-  login: Login
-  join_us: Join Us
-  add_event: Add Event
   All: All
-  in: in
-  within: within
+  accepted_file_formats: We accept JPEG, GIF, or PNG files up to 500 KB.
+  add_event: Add Event
+  add_metro: Add Metro
+  add_new_event_now: Add New Event Now
+  add_own_photos: Add your own photos!
+  about_and_contact: About and Contact
+  attend: Attend
+  attending: Attending
+  avatar_uploaded: Avatar was successfully updated
+  back: Back
+  blog: Blog
   city_cloud: City Cloud
+  cancel: Cancel
+  comment: Comment
+  comments: Comments
+  commented: commented
+  country: Country
+  category: Category
+  can_add_new_metro: You can also add new metros and select one of them.
+  change_venue: change Venue
+  change_your_avatar: change your avatar
+  check_username_password: Please check your username and password
+  choose_category: Choose Category
+  choose_a_category: Choose a category...
+  choose_password: Choose Password
+  confirm_password: Confirm Password
+  create: Create
+  create_new_event: Create New Event
+  current_avatar: Your current avatar
+  description: Description
+  desired_login: Desired Login
+  discussions: Discussions
+  email: Email
+  enter_username_password: Please enter your username and password to sign in.
+  enter_username_and_password: Please enter your desired username and password.
+  end_date: End Date
+  end_date_error: cannot be set to before the start date
+  edit: Edit
+  edit_event: Edit Event
+  extra: Extra
+  event_successful_created: Event was successfully created
+  event_successful_updated: Event was successfully updated
+  events: Events
+  firstname: Firstname
+  find_a_venue: Find a Venue
+  fill_venue_data: Then fill in your venue data and save it.
+  i_am_going: I'm going
+  in: in
+  if_not_registerd_sign_up_here: "If you are not registered you can now sign up here:"
+  if_registerd: 'If you are already registered with eventicus you can login here:'
+  is_required: is required
+  join_us: Join Us
+  lastname: Lastname
+  leave_reply: Leave a reply
+  logout: Logout
+  logout_successful: Logout successful
+  login: Login
+  login_now: Login now
+  login_failed: Login failed
+  login_successful: Login successful
+  login_name: Login Name
+  location: Location
+  more: more...
+  metro: Metro
+  metro_name: Metro Name
+  metro_not_listed: Not listet? Add new metro...
+  name: Name
+  next: Next
+  not_listed_venue: Not listet? Add a new venue...
+  not_tagged_photos: There are no photos for this event yet!
+  no_comments: No comments by now
+  password: Password
+  previous: Previous
+  prev: Prev
+  popular: Popular
+  please_login: Please login
+  photos: Photos
+  phone: Phone
   recent_blog_posts: Recent Blog Posts
   recent_visitors: Recent Visitors
+  recent_readers: Recent Readers
+  save: Save
+  search: Search
+  search_events: Search Events
+  selected_venue: Selected Venue
+  select_metro_first: To add a new venue select a metro first.
+  select_image_file: Just select a desired image file and submit it.
+  submitted_this_event: submitted this event
+  submit_comment: Submit Comment
+  search_events: Search Events
+  sign_up_now: Sign up now
+  signup_successful: Signup successful
+  state: Statte
+  start_date: Start Date
+  street: Street
+  submitted_this_post: submitted this post
+  title: Title
+  upcoming: Upcoming
+  url: URL
+  user_details: User Details
+  upload: Upload
+  upload_avatar: Upload an avatar
+  upload_your_own_avatar: You can upload your own avatar.
+  venue: Venue
+  venue_error: must be selected. Or add a new one
+  when: When
+  what: What
+  where: Where
+  within: within
+  zip: ZIP
   time:
     seconds_ago: "{{seconds}} seconds ago"
     one_second_ago: 1 second ago
@@ -19,5 +119,5 @@ en:
     one_hour_ago: 1 hour ago
     days_ago: "{{days}} days ago"
     one_day_ago: 1 day ago
-    on: "on {{on}}"
+    on_date: "on {{date}}"
   

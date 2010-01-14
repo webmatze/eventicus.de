@@ -1,30 +1,30 @@
 <% content_for("title") do %>
-	<%= 'Please login'.t %>
+	<%= t(:please_login) %>
 <% end %>
 
 <% content_for("sidebox") do %>
-    <%= 'Please enter your username and password to sign in.'.t %><br />
-    <%= 'If you are not registered you can now sign up here:'.t %><br />
+    <%= t(:enter_username_password) %><br />
+    <%= t(:if_not_registerd_sign_up_here) %><br />
     <br />
-    <%= link_to "Sign up now".t, { :controller => "account", :action => "signup"} %>
+    <%= link_to t(:sign_up_now), { :controller => "account", :action => "signup"} %>
 <% end %>
 
 <%= form_tag :action=> "login" %>
     
   <% if @message %>
     <div id="errorExplanation" class="errorExplanation">
-      <h2><%= 'Login failed'.t %></h2>
+      <h2><%= t(:login_failed) %></h2>
     	<p><%= @message %></p>
     </div>
   <% end %>
 
-  <div class="form_field"><label for="user_login"><%= 'Login Name'.t %>:</label><br/>
+  <div class="form_field"><label for="user_login"><%= t(:login_name) %>:</label><br/>
   <input type="text" name="user_login" id="user_login" size="30" value=""/></div>
   
-  <div class="form_field"><label for="user_password"><%= 'Password'.t %>:</label><br/>
+  <div class="form_field"><label for="user_password"><%= t(:password) %>:</label><br/>
   <input type="password" name="user_password" id="user_password" size="30"/></div>
   
-  <%= submit_tag 'Login'.t + "&#187;" %> 
+  <%= submit_tag t(:login) + "&#187;" %> 
 
 </form>
 

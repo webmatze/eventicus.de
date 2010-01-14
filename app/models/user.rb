@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   def self.authenticate(login, pass)
     if user = first(:conditions => ["login = ? AND password = ?", login, sha1(pass)])
       user.increment :number_of_logins, 1
-      user.update_attribute "last_login", TzTime.now.utc
+      user.update_attribute "last_login", Time.zone.now.utc
       return user
 	  end
   end  
@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
   end
 
 	def init_user
-		write_attribute("date_created", TzTime.now.utc)
-		write_attribute("last_login", TzTime.now.utc)
+		write_attribute("date_created", Time.zone.now.utc)
+		write_attribute("last_login", Time.zone.now.utc)
 		write_attribute("number_of_logins", 0)
 	end
 

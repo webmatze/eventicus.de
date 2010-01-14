@@ -7,11 +7,9 @@
 		<meta name="y_key" content="13906d118df944d8" />
 		<title>Eventicus 2.0 - <%= yield :title %></title>
 		<link rel="Shortcut Icon" href="/favicon.png" />
-		<!--<%= stylesheet_link_tag 'redbox' %>-->
 		<%= javascript_include_tag :defaults %>
 		<%= javascript_auto_include_tags %>
 		<%= yield :head %>
-		<!--<%= javascript_include_tag 'redbox' %>-->
 		<%= stylesheet_auto_link_tags %>
 		<%= stylesheet_link_tag 'eventicus' %>
 		<!--[if lte IE 7]>
@@ -25,11 +23,11 @@
 			<div id="header">
 				<div id="logo">
 				
-					<div class="logo"><%= link_to 'Eventicus<sup>BETA</sup>', {:controller => 'events'} %></div>
+					<div class="logo"><%= link_to 'Eventicus', {:controller => 'events'} %></div>
 					
 					<ul id="mainmenu">
 						<li <%= 'class="active"' if params[:menu] == "events" %>>
-							<%= link_to "Events", events_url() %>
+							<%= link_to t(:events), events_url() %>
 						</li>
 						<!--
 						<li <%= 'class="active"' if params[:menu] == "reviews" %>>
@@ -40,7 +38,7 @@
 						</li>
 						-->
 						<li <%= 'class="active"' if params[:menu] == "blog" %>>
-							<%= link_to "Blog", blogposts_url() %>
+							<%= link_to t(:blog), blogposts_url() %>
 						</li>
 					</ul>
 					
@@ -48,13 +46,13 @@
 						<ul>
 						<% if session['user'] %>
 							<li><%= link_to session['user'].login, user_url(:id => session['user'].login) %></li>
-							<li><%= link_to "Logout".t, { :controller => "account", :action => "logout"} %></li>
+							<li><%= link_to t(:logout), { :controller => "account", :action => "logout"} %></li>
 						<% else %>
-							<li><%= link_to "Join Us".t, { :controller => "account", :action => "signup"} %></li>
-							<li><%= link_to "Login".t, { :controller => "account", :action => "login"} %></li>
+							<li><%= link_to t(:join_us), { :controller => "account", :action => "signup"} %></li>
+							<li><%= link_to t(:login), { :controller => "account", :action => "login"} %></li>
 						<% end %>
 							<li>
-								<form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>"><input class="noborder" type="text" name="search" value="<%= 'Search Events'.t %>" id="search" onfocus="this.value=''" /></form>
+								<form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>"><input class="noborder" type="text" name="search" value="<%= t(:search_events) %>" id="search" onfocus="this.value=''" /></form>
 							</li>
 						</ul>
 					</div>
@@ -66,7 +64,7 @@
 					<ul>
 						<% for cat in categories %>
 							<li <%= 'class="active"' if params[:category] == cat.short %>>
-								<%= link_to cat.name.t, events_url(:place => params[:place], :type => params[:type], :category => cat.short, :range => params[:range]) %>
+								<%= link_to cat.name, events_url(:place => params[:place], :type => params[:type], :category => cat.short, :range => params[:range]) %>
 							</li>
 						<% end %>
 					</ul>
@@ -77,11 +75,11 @@
 					<ul>
 						<% ranges.each do |range| %>
 							<li <%= 'class="active"' if params[:range] == range[:key] %>>
-								<%= link_to range[:title].t, events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => range[:key]) %>
+								<%= link_to range[:title], events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => range[:key]) %>
 							</li>
 						<% end %>
 						<li class="newEvent">
-							<%= link_to 'Add Event'.t, :controller => 'event', :action => 'new' %>
+							<%= link_to t(:add_event), :controller => 'event', :action => 'new' %>
 						</li>
 					</ul>
 				</div>
@@ -135,10 +133,10 @@
 					<div id="selection">
 						<%= yield :tabs %>
 						<div id="popular" <%= 'class="active"' if params[:type] == "popular" %>>
-							<%= link_to "Popular".t, events_url(:place => params[:place], :type => "popular", :category => params[:category], :range => params[:range]) %>
+							<%= link_to t(:popular), events_url(:place => params[:place], :type => "popular", :category => params[:category], :range => params[:range]) %>
 						</div>
 						<div id="timeline" <%= 'class="active"' if params[:type] == "upcoming" %>>
-							<%= link_to "Upcoming".t, events_url(:place => params[:place], :type => "upcoming", :category => params[:category], :range => params[:range]) %>
+							<%= link_to t(:upcoming), events_url(:place => params[:place], :type => "upcoming", :category => params[:category], :range => params[:range]) %>
 						</div>
 					</div>
 					
@@ -180,8 +178,8 @@
 			
 			<div id="footer">
 				Copyright 2007-<%= Date.today.year %> by eventicus.de - All rights reserved 
-				| <%= link_to "About and Contact".t, :controller => 'event', :action => 'about' %> 
-				| <a href="http://groups.google.com/group/eventicus/topics"><%= 'Discussions'.t %></a>
+				| <%= link_to t(:about_and_contact), :controller => 'event', :action => 'about' %> 
+				| <a href="http://groups.google.com/group/eventicus/topics"><%= t(:discussions) %></a>
 			</div>
 			
 		</div>	

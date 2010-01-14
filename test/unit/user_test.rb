@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   fixtures :users
     
   def setup
-    TzTime.zone = TZInfo::Timezone.new("Europe/Berlin")
+    Time.zone = ActiveSupport::TimeZone.new("Berlin")
   end
   
   def test_auth  

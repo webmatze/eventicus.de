@@ -34,9 +34,9 @@
 	<% if session['user'] %>
 	<span id="category_description">
 		<% if @event.attendees.find_by_user_id session['user'].id %>
-			(<%= "I'm going".t %>)
+			(<%= t(:i_am_going) %>)
 		<% else%>
-			(<%= link_to "Attend".t, :action => "attend", :id => @event, :metro => @event.location.metro %>)
+			(<%= link_to t(:attend), attend_path(:id => @event, :metro => @event.location.metro) %>)
 		<% end %>
 	</span>
 	<% end %>
@@ -46,9 +46,9 @@
 
 <% content_for("sidebox") do %>
   <%= render :partial => 'sidebar_standard' %>
-	<h3><%= 'Category'.t %></h3>
-	<p><%=h @event.category.name.t %></p>
-	<h3><%= @event.attending_users.count %> <%= 'Attending'.t %></h3>
+	<h3><%= t(:category) %></h3>
+	<p><%=h @event.category.name %></p>
+	<h3><%= @event.attending_users.count %> <%= t(:attending) %></h3>
 	<ul class="userlist">
 	<% for user in @event.attending_users %>
 	<li>
@@ -66,7 +66,7 @@
 <% content_for("tabs") do %>
 	<% if session['user'] && @event.user.id == session['user'].id %>
 	<div id="edit" <%= 'class="active"' if params[:type] == "edit" %>>
-		<%= link_to "Edit".t, event_url(:id => @event.id, :action => 'edit') %>
+		<%= link_to t(:edit), event_url(:id => @event.id, :action => 'edit') %>
 	</div>
 	<% end %>
 <% end %>
@@ -76,12 +76,12 @@
 	<div class="event-user">
 	  <%= link_to avatar_for(@event.user, :small, {:style => "vertical-align: middle"}), user_url(:id => @event.user.login) %>
 		<%= link_to @event.user.login, user_url(:id => @event.user.login) %>
-		<%= 'submitted this event'.t %>
+		<%= t(:submitted_this_event) %>
 		<span class="small-date"><%= time_ago_or_time_stamp(@event.date_created) %></span>
 	</div>
 	
 	<div class="event-time">
-		<h2><%= 'When'.t %></h2>
+		<h2><%= t(:when) %></h2>
 		<div class="data">
 			<span><%= tz(@event.date_start).strftime('%A, %B %d, %Y  %H:%M') %></span> <span class="end-date">- <%= tz(@event.date_end).strftime('%A, %B %d, %Y  %H:%M') %></span>
 		</div>
@@ -89,7 +89,7 @@
 
 	<div class="event-location">
 		
-		<h2><%= 'Where'.t %></h2>
+		<h2><%= t(:where) %></h2>
 		<div class="location vcard data">
 			<div id="map" style="width:300px;height:150px"></div>
 			<span class="fn org"><%=h @event.location.name %></span><br />
@@ -102,21 +102,21 @@
 	</div>
 
 	<div class="event-description">
-		<h2><%= 'What'.t %></h2>
+		<h2><%= t(:what) %></h2>
 		<div class="description data">
 			<%= nl2br(auto_link(textilize(@event.description.gsub("&amp;","&")))) %>
 		</div>
 	</div>
 	
 	<div class="event-pictures">
-		<h2><%= 'Photos'.t %></h2>
+		<h2><%= t(:photos) %></h2>
 		<div id="photohelp" class="data help" style="display:none">
 			To add a new photo you need an account from <a href="http://flickr.com">flickr</a>, upload you photos there<br /> and tag them with <input type="text" onClick="this.select()" value="eventicus:event=<%=@event.id %>" />.<br />
 			Your photo will appear on this page automatically.
 		</div>
 		<div class="data">
-			<% if @photos.size == 0 %><%= 'There are no photos for this event yet!'.t %><% end %>
-			<%=link_to_function("Add your own photos!".t, nil, :id => "photohelpshow") do |page| 
+			<% if @photos.size == 0 %><%= t(:not_tagged_photos) %><% end %>
+			<%=link_to_function(t(:add_own_photos), nil, :id => "photohelpshow") do |page| 
 				page.visual_effect :toggle_slide, 'photohelp' 
 				page[:photohelpshow].hide
 			end %>
@@ -131,18 +131,18 @@
 	
 	<div class="event-comments">
 		<a name="comments"></a>
-		<h2><%= 'Comments'.t %></h2>
+		<h2><%= t(:comments) %></h2>
 		<div class="data">
 			<div id="comments">
 				<% for comment in @event.comments_ordered_by_submitted %>
 				<%= render :partial => 'comment', :object => comment %>
 				<% end %>
-				<% if @event.comments.count == 0%><%= 'No comments by now'.t %><% end %>
+				<% if @event.comments.count == 0%><%= t(:no_comments) %><% end %>
 			</div>
 		</div>
 		
 		<% if session['user'] %>
-		<h2><%= 'Leave a reply'.t %></h2>
+		<h2><%= t(:leave_reply) %></h2>
 		<div class="data">
 			
 				<div id="addComment">
@@ -152,10 +152,10 @@
 										:position => :top,
 										:success => "Form.reset('comment_form')" do %>
 					
-						<div class="form_field"><label for="comment_comment"><%= 'Comment'.t %></label><br/>
+						<div class="form_field"><label for="comment_comment"><%= t(:comment) %></label><br/>
 						<%= text_area 'comment', 'comment', 'rows' => 5  %></div>
 					
-						<%= submit_tag "Submit Comment".t %> 
+						<%= submit_tag t(:submit_comment) %> 
 					  
 					<% end %>
 				</div>

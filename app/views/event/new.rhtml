@@ -1,9 +1,9 @@
 <% content_for("title") do %>
-	<%= 'Create New Event'.t %>
+	<%= t(:create_new_event) %>
 <% end %>
 
 <% form_tag :action => 'create' do %>
   <%= render :partial => 'form' %>
-  <%= submit_tag "Create".t %> 
+  <%= submit_tag t(:create) %> 
   
 <% end %>

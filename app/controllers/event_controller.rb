@@ -74,7 +74,7 @@ class EventController < ApplicationController
 
   def new
     @event = Event.new
-    @event.date_start = TzTime.now
+    @event.date_start = Time.zone.now 
     @event.date_end = @event.date_start + 2.hours
   end
 
@@ -83,7 +83,7 @@ class EventController < ApplicationController
 	  @event.user = session['user']
     @event.prepare_dates
     if @event.save
-      flash[:notice] = 'Event was successfully created'.t
+      flash[:notice] = t(:event_successful_created)
       redirect_to events_url(:category => @event.category.short)
     else
       render :action => 'new'
@@ -124,7 +124,7 @@ class EventController < ApplicationController
     @event.attributes = params[:event]
     @event.prepare_dates
     if @event.save
-      flash[:notice] = 'Event was successfully updated'.t
+      flash[:notice] = t(:event_successful_updated)
       redirect_to :action => 'show', :metro => @event.location.metro, :id => @event
     else
       render :action => 'edit'
@@ -253,8 +253,8 @@ class EventController < ApplicationController
       @event.user = session['user']
       @event.location = @location
       
-      @event.date_start = TzTime.zone.local_to_utc(@event.date_start)
-      @event.date_end = TzTime.zone.local_to_utc(@event.date_end)
+      @event.date_start = Time.zone.local_to_utc(@event.date_start)
+      @event.date_end = Time.zone.local_to_utc(@event.date_end)
 
       if @event.save
         flash[:notice] = 'Event was successfully imported.'

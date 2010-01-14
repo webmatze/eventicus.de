@@ -48,7 +48,7 @@ module BundledResource::DynarchCalendar
   module Helper
     #Timezone conversion
     def tz(time_at)
-      TzTime.zone.utc_to_local(time_at.utc)
+      Time.zone.utc_to_local(time_at.utc)
     end
     # Shows a calendar image that the user can click on to show a pop-up Dynarch calendar.
     def dynarch_date_select(object_name, method_name, options = {})

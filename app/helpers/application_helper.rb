@@ -47,7 +47,7 @@ module ApplicationHelper
 	end
 	
 	def tz(time_at)
-		TzTime.zone.utc_to_local(time_at.utc)
+		Time.zone.utc_to_local(time_at.utc)
 	end
 
 	def time_ago_or_time_stamp(from_time, to_time = Time.now, include_seconds = true, detail = false)
@@ -56,13 +56,13 @@ module ApplicationHelper
 	  distance_in_minutes = (((to_time - from_time).abs)/60).round
 	  distance_in_seconds = ((to_time - from_time).abs).round
 	  case distance_in_minutes
-		when 0..1           then time = (distance_in_seconds < 60) ? "%d seconds ago".t / distance_in_seconds : '1 minute ago'.t
-		when 2..59          then time = "%d minutes ago".t / distance_in_minutes
-		when 60..90         then time = "1 hour ago".t
-		when 90..1440       then time = "%d hours ago".t / (distance_in_minutes.to_f / 60.0).round
-		when 1440..2160     then time = '1 day ago'.t # 1-1.5 days
-		when 2160..10080     then time = "%d days ago".t / (distance_in_minutes.to_f / 1440.0).round # 1.5-7 days
-		else time = "on %s".t / from_time.localize("%d. %B %Y")
+		when 0..1           then time = (distance_in_seconds < 60) ? t(:"time.seconds_ago", :seconds => distance_in_seconds) : t(:"time.one_minute_ago")
+		when 2..59          then time = t(:"time.minutes_ago", :minutes => distance_in_minutes)
+		when 60..90         then time = t(:"time.one_hour_ago")
+		when 90..1440       then time = t(:"time.hours_ago", :hours => (distance_in_minutes.to_f / 60.0).round)
+		when 1440..2160     then time = t(:"time.one_day_ago") # 1-1.5 days
+		when 2160..10080     then time = t(:"time.days_ago", :days => (distance_in_minutes.to_f / 1440.0).round) # 1.5-7 days
+		else time = t(:"time.on_date", :date => from_time.to_date.strftime("%d. %B %Y"))
 	  end
 	  return time_stamp(from_time) if (detail && distance_in_minutes > 10080)
 	  return time

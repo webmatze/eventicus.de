@@ -1,1 +1,1 @@
-ActiveRecord::Base.extend TzTimeHelpers::ActiveRecordMethods
+#ActiveRecord::Base.extend TzTimeHelpers::ActiveRecordMethods

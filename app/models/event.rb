@@ -43,30 +43,30 @@ class Event < ActiveRecord::Base
 	protected
 
 		def validate
-			errors.add("End Date".t, "cannot be set to before the start date".t) unless self.date_start < self.date_end
-			errors.add("Venue".t, "must be selected. Or add a new one".t) unless self.location
-			errors.add("Category".t, "is required".t) unless self.category
+			errors.add(t(:end_date), t(:end_date_error)) unless self.date_start < self.date_end
+			errors.add(t(:venue), t(:venue_error)) unless self.location
+			errors.add(t(:category), t(:is_required)) unless self.category
 		end
 	
 	private
 
 
 		def tz(time_at)
-			TzTime.zone.utc_to_local(time_at.utc)
+			Time.zone.utc_to_local(time_at.utc)
 		end
 		
 		def local_to_utc(time)
-			TzTime.zone.local_to_utc time.utc
+			Time.zone.local_to_utc time.utc
 		end
 	
 		def initialize_datecreated
-			self.date_created = local_to_utc(TzTime.now).to_time
+			self.date_created = local_to_utc(Time.now).to_time
 		end
 		
 		def initialize_datemodified
 		  #Folgendes für friendly_id Slug generator
-		  TzTime.zone = TZInfo::Timezone.new("Europe/Berlin") if TzTime.zone.nil?
-			self.date_modified = local_to_utc(TzTime.now).to_time
+		  Time.zone = ActiveSupport::TimeZone.new("Berlin") if Time.zone.nil?
+			self.date_modified = local_to_utc(Time.now).to_time
 		end
 
 end

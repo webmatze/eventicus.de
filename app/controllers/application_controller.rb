@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_timezone
 
   # Pick a unique cookie name to distinguish our session data from others'
-  session :session_key => '_eventicus2_session_id'
+  #session :session_key => '_eventicus2_session_id'
   
   before_filter :set_charset
   before_filter :set_locale
@@ -38,26 +38,26 @@ class ApplicationController < ActionController::Base
       #range
       if params[:range] == 'all'
         range = "(e.date_start > :rangeStart OR e.date_end > :rangeStart) ";
-        condParams[:rangeStart] = Time.zone.now.utc
+        condParams[:rangeStart] = Time.zone.now
       end
       if params[:range] == 'today'
         range = "(e.date_start BETWEEN :rangeStart AND :rangeEnd OR e.date_end BETWEEN :rangeStart AND :rangeEnd OR :rangeStart BETWEEN e.date_start AND e.date_end) ";
-        condParams[:rangeStart] = Time.zone.now.utc
-        condParams[:rangeEnd] = Time.zone.today.utc.at_beginning_of_day + 1.day
+        condParams[:rangeStart] = Time.zone.now
+        condParams[:rangeEnd] = Time.zone.today.at_beginning_of_day + 1.day
       end
       if params[:range] == 'week'
         condParams[:rangeStart] = Time.zone.now.utc
-        condParams[:rangeEnd] = (Time.zone.today.utc.beginning_of_week + 1.week).beginning_of_day
+        condParams[:rangeEnd] = (Time.zone.today.beginning_of_week + 1.week).beginning_of_day
         range = "(e.date_start BETWEEN :rangeStart AND :rangeEnd OR e.date_end BETWEEN :rangeStart AND :rangeEnd OR :rangeStart BETWEEN e.date_start AND e.date_end) "
       end
       if params[:range] == 'month'
         condParams[:rangeStart] = Time.zone.now.utc
-        condParams[:rangeEnd] = Time.zone.today.utc.end_of_month + 1.day
+        condParams[:rangeEnd] = Time.zone.today.end_of_month + 1.day
         range = "(e.date_start BETWEEN :rangeStart and :rangeEnd OR e.date_end BETWEEN :rangeStart and :rangeEnd OR :rangeStart BETWEEN e.date_start AND e.date_end) "
       end
       if params[:range] == 'year'
         condParams[:rangeStart] = Time.zone.now.utc
-        condParams[:rangeEnd] = (Time.zone.today.utc.beginning_of_year + 1.year).beginning_of_day
+        condParams[:rangeEnd] = (Time.zone.today.beginning_of_year + 1.year).beginning_of_day
         range = "(e.date_start BETWEEN :rangeStart and :rangeEnd OR e.date_end BETWEEN :rangeStart and :rangeEnd OR :rangeStart BETWEEN e.date_start AND e.date_end) "
       end
       if params[:search]
@@ -144,8 +144,8 @@ class ApplicationController < ActionController::Base
        #Locale.set default_locale
        I18n.locale = :en
      end
-     WillPaginate::ViewHelpers.pagination_options[:previous_label] =  '&lt;- ' + t('Previous')
-     WillPaginate::ViewHelpers.pagination_options[:next_label] = t('Next') + ' -&gt;'
+     WillPaginate::ViewHelpers.pagination_options[:previous_label] =  '&lt;- ' + t(:previous)
+     WillPaginate::ViewHelpers.pagination_options[:next_label] = t(:next) + ' -&gt;'
     end
  
 end

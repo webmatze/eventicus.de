@@ -7,11 +7,11 @@ class AccountController < ApplicationController
     case request.method
       when :post
         if session['user'] = User.authenticate(params['user_login'], params['user_password'])
-          flash[:notice]  = "Login successful".t
+          flash[:notice]  = t(:login_successful)
           redirect_back_or_default :controller => "account", :action => "welcome"
         else
           @login    = params['user_login']
-          @message = "Please check your username and password".t;
+          @message = t(:check_username_password);
       end
     end
   end
@@ -23,7 +23,7 @@ class AccountController < ApplicationController
         
         if @user.save      
           session['user'] = User.authenticate(@user.login, params['user']['password'])
-          flash[:notice]  = "Signup successful".t
+          flash[:notice]  = t(:signup_successful)
           redirect_back_or_default :controller => "account", :action => "welcome"          
         end
       when :get
@@ -41,7 +41,7 @@ class AccountController < ApplicationController
     
   def logout
     session['user'] = nil
-	  flash[:notice] = "Logout successful".t
+	  flash[:notice] = t(:logout_successful)
 	  redirect_to events_url
   end
     
@@ -61,10 +61,10 @@ class AccountController < ApplicationController
     @service = AvatarService.new(@user, @avatar)
     
     if @user.avatar and @service.update_avatar(params[:avatar_file])
-      flash[:notice] = 'Avatar was successfully updated'.t
+      flash[:notice] = t(:avatar_uploaded)
       redirect_to :action => 'avatar'
     elsif @user.avatar.nil? and @service.save
-      flash[:notice] = 'Avatar was successfully uploaded'.t
+      flash[:notice] = t(:avatar_uploaded)
       redirect_to :action => 'avatar'
     else
       @avatar = @service.avatar

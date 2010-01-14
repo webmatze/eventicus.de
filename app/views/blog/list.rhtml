@@ -7,11 +7,11 @@
 <% end %>
 
 <% content_for("sidebox") do %>
-	<h3><%= 'Recent Blog Posts'.t %></h3>
+	<h3><%= t(:recent_blog_posts) %></h3>
 	<%= render :partial => 'recentposts' %>
 	
 	<div style="clear:both"><br /></div>
-	<h3><%= 'Recent Readers'.t %></h3>
+	<h3><%= t(:recent_readers) %></h3>
 	<script type="text/javascript" src="http://pub.mybloglog.com/comm2.php?mblID=2006102008283848&amp;c_width=180&amp;c_sn_opt=y&amp;c_rows=5&amp;c_img_size=f&amp;c_heading_text=&amp;c_color_heading_bg=FFFFFF&amp;c_color_heading=666600&amp;c_color_link_bg=FFFFCC&amp;c_color_link=C5060B&amp;c_color_bottom_bg=FFFFFF"></script>
 <% end %>
 

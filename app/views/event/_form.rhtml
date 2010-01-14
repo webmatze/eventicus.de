@@ -38,37 +38,37 @@
 		} // End of showFindVenue
 	</script>
 	<div class="form_field" id="choose_category">
-		<label for="tmpevent_category_id"><%= 'Choose Category'.t %></label>
-		<%= select 'event', 'category_id', [['Choose a category...'.t,'']] + categories_for_select.collect {|cat| [cat.name.t, cat.id]}, {}, { :id => 'tmpevent_category_id', :class => 'full', :style => 'width:200px'} %>
+		<label for="tmpevent_category_id"><%= t(:choose_category) %></label>
+		<%= select 'event', 'category_id', [[t(:choose_a_category),'']] + categories_for_select.collect {|cat| [cat.name, cat.id]}, {}, { :id => 'tmpevent_category_id', :class => 'full', :style => 'width:200px'} %>
 	</div>
 	<%= observe_field 'tmpevent_category_id' , { :function => 'updateCategoryId(element, value)' }%>
 	
 	<% if controller.action_name != "import" and controller.action_name != "save_import" %>
 	
 		<div class="form_field" id="find_venue" <%= 'style="display:none"' if @event.location %>>
-			<label for="tmplocation_name"><%= 'Find a Venue'.t %></label>
+			<label for="tmplocation_name"><%= t(:find_a_venue) %></label>
 			<%= text_field_with_auto_complete :tmplocation, :name, { :style => 'width: 200px'}, {:skip_style => true, :min_chars => 1, :after_update_element => 'selectVenue', :indicator => 'find_venue_spinner'} %>
 			<img id="find_venue_spinner" src="/images/spinner_moz.gif" width="16" height="16" style="display:none" />
 			<div style="display: none;" id="hidden_content_event_add_location"></div>
 		</div>
 	
 		<div class="form_field" id="selected_venue" <%= 'style="display:none"' unless @event.location %>>
-			<label><%= 'Selected Venue'.t %></label>
+			<label><%= t(:selected_venue) %></label>
 			<div id="selected_venue_content">
 				<% if @event.location 
 					@location = @event.location %>
 					<%= render :partial => 'selectedvenue' %>
 				<% end %>
 			</div>
-			<%= link_to_function "change Venue".t, "showFindVenue()" %>
+			<%= link_to_function t(:change_venue), "showFindVenue()" %>
 		</div>
 	
 	<% end %>
 	
 	<div id="addlocation_description" style="display:none">
-		<%= 'To add a new venue select a metro first.'.t %>
-		<%= 'You can also add new metros and select one of them.'.t %><br />
-		<%= 'Then fill in your venue data and save it.'.t %>
+		<%= t(:select_metro_first) %>
+		<%= t(:can_add_new_metro) %><br />
+		<%= t(:fill_venue_data) %>
 	</div>
 <% end %>
 
@@ -82,16 +82,16 @@
 	<%= hidden_field 'event', 'location_id' %>
 <% end %>
 
-<div class="form_field"><label for="event_title"><%= 'Title'.t %></label><br/>
+<div class="form_field"><label for="event_title"><%= t(:title) %></label><br/>
 <%= text_field 'event', 'title'  %></div>
 
-<div class="form_field"><label for="event_description"><%= 'Description'.t %></label><br/>
+<div class="form_field"><label for="event_description"><%= t(:description) %></label><br/>
 <%= text_area 'event', 'description', 'rows' => 10  %></div>
 
-<div class="form_field"><label for="event_date_start"><%= 'Start Date'.t %></label><br/>
+<div class="form_field"><label for="event_date_start"><%= t(:start_date) %></label><br/>
 <%= dynarch_datetime_select('event', 'date_start', {:select_time => true}) %></div>
 
-<div class="form_field"><label for="event_date_end"><%= 'End Date'.t %></label><br/>
+<div class="form_field"><label for="event_date_end"><%= t(:end_date) %></label><br/>
 <%= dynarch_datetime_select('event', 'date_end', {:select_time => true}) %></div>
 <!--[eoform:event]-->
 
@@ -99,13 +99,13 @@
 
 	<!--[form:location]-->
 	<% if @location != nil and @location.new_record? == true %>
-		<h2><%= 'Location'.t %></h2>
+		<h2><%= t(:location) %></h2>
 		<%= render :partial => "location_data" %>
 		<%= render :partial => "location_descr" %>
 		<%= hidden_field 'location', 'lat' %>
 		<%= hidden_field 'location', 'lng' %>
 	<% else %>
-		<h2><%= 'Location'.t %></h2>
+		<h2><%= t(:location) %></h2>
 		<%= hidden_field 'location', 'id' %>
 		<%= render :partial => "selectedvenue" %>
 	<% end %>
@@ -113,10 +113,10 @@
 	
 	<!--[form:metro]-->
 	<% if @metro != nil and @metro.new_record? == true %>
-		<h2><%= 'Metro'.t %></h2>
+		<h2><%= t(:metro) %></h2>
 		<%= render :partial => "metro_data" %>
 	<% else %>
-		<h2><%= 'Metro'.t %></h2>
+		<h2><%= t(:metro) %></h2>
 		<%= hidden_field 'metro', 'id' %>
 		<%= render :partial => "selectedmetro" %>
 	<% end %>

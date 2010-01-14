@@ -1,12 +1,12 @@
 <% content_for("title") do %>
-	<%= 'Join us'.t %>
+	<%= t(:join_us) %>
 <% end %>
 
 <% content_for("sidebox") do %>
-    <%= 'Please enter your desired username and password.'.t %><br />
-    <%= 'If you are already registered with eventicus you can login here:'.t %><br />
+    <%= t(:enter_username_and_password) %><br />
+    <%= t(:if_registerd) %><br />
     <br />
-    <%= link_to "Login now".t, { :controller => "account", :action => "login"} %>
+    <%= link_to t(:login_now), { :controller => "account", :action => "login"} %>
 <% end %>
 
 
@@ -14,22 +14,22 @@
 
   <%= error_messages_for 'user' %><br/>
   
-  <div class="form_field"><label for="user_email"><%= 'Email'.t %>:</label><br/>
+  <div class="form_field"><label for="user_email"><%= t(:email) %>:</label><br/>
   <%= text_field "user", "email", :size => 30 %></div>
   
-  <div class="form_field"><label for="user_login"><%= 'Desired login'.t %>:</label><br/>
+  <div class="form_field"><label for="user_login"><%= t(:desired_login) %>:</label><br/>
   <%= text_field "user", "login", :size => 30 %></div>
   
-  <div class="form_field"><label for="user_password"><%= 'Choose password'.t %>:</label><br/>
+  <div class="form_field"><label for="user_password"><%= t(:choose_password) %>:</label><br/>
   <%= password_field "user", "password", :size => 30 %></div>
 
-  <div class="form_field"><label for="user_password_confirmation"><%= 'Confirm password'.t %>:</label><br/>
+  <div class="form_field"><label for="user_password_confirmation"><%= t(:confirm_password) %>:</label><br/>
   <%= password_field "user", "password_confirmation", :size => 30 %></div>
 
-  <div class="form_field"><label for="user_time_zone"><%= 'Default timezone'.t %>:</label><br/>
-  <%= time_zone_select 'user', 'time_zone', TZInfo::Timezone.all.sort, :model => TZInfo::Timezone %></div>
+  <div class="form_field"><label for="user_time_zone"><%= t(:default_timezone) %>:</label><br/>
+  <%= time_zone_select 'user', 'time_zone', TZInfo::Timezone.all.sort, :model => ActiveSupport::TimeZone %></div>
 
-  <%= submit_tag "Join us".t + " &#187;" %> 
+  <%= submit_tag t(:join_us) + " &#187;" %> 
 
 </form>
 

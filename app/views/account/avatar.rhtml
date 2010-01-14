@@ -1,14 +1,14 @@
 <% content_for("title") do %>
-	<%= 'Upload an avatar'.t %>
+	<%= t(:upload_avatar) %>
 <% end %>
 
 <% content_for("sidebox") do %>
   <%- if @user.avatar -%>
-    <%= 'Your current avatar'.t %>:<br />
+    <%= t(:current_avatar) %>:<br />
     <%= avatar_for(@user) %>
   <%- else -%>
-    <%= 'You can upload your own avatar.'.t %><br />
-    <%= 'Just select a desired image file and submit it.'.t %>
+    <%= t(:upload_your_own_avatar) %><br />
+    <%= t(:select_image_file) %>
   <%- end -%>
 <% end %>
 
@@ -19,11 +19,11 @@
 <div class="form_field"><label for="user_avatar_file">Avatar:</label><br/>
   <%= file_field_tag :avatar_file %> 
   <span class="hint"> 
-  <%= 'We accept JPEG, GIF, or PNG files up to 500 KB.'.t %> 
+  <%= t(:accepted_file_formats) %> 
   </span> 
 </div>
 
-<%= submit_tag "Upload".t %> 
-<%= link_to "cancel".t, {:controller => "account", :action => "show", :id => @user} %>
+<%= submit_tag t(:upload) %> 
+<%= link_to t(:cancel), {:controller => "account", :action => "show", :id => @user} %>
 
 </form> 

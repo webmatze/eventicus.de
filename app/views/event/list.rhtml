@@ -7,9 +7,9 @@
 <% end %>
 
 <% content_for("title") do %>
-	<%= 'All'.t %> <%= active_category.name.t if active_category.short != "all" %> Events 
-	<%= 'in'.t + " " + metro_by_param(params[:place])[:name] if params[:place] != "world" %>
-	<%= 'within'.t + " " + range_by_short(params[:range])[:title].t if params[:range] != "all" %>
+	<%= t(:All) %> <%= active_category.name if active_category.short != "all" %> Events 
+	<%= t(:in) + " " + metro_by_param(params[:place])[:name] if params[:place] != "world" %>
+	<%= t(:within) + " " + range_by_short(params[:range])[:title] if params[:range] != "all" %>
 <% end %>
 
 <% content_for("icons") do %>
@@ -21,17 +21,17 @@
 
 <% content_for("sidebox") do %>
   <%= render :partial => 'sidebar_standard' %>
-	<h3><%= 'City Cloud'.t %></h3>
+	<h3><%= t(:city_cloud) %></h3>
 	<ul class="cloud">
 		<% for metro in @metros %>
 			<li class="size3"><%= link_to metro.name , events_url(:type => params[:type], :category => params[:category], :range => params[:range], :page => params[:page], :place => metro) %> </li>
 		<% end %>
 	</ul>
 	<br /><br />
-	<h3><%= 'Recent Visitors'.t %></h3>
+	<h3><%= t(:recent_visitors) %></h3>
 	<%= render :partial => 'recent_visitors' %>
 	<br /><br />
-	<h3><%= 'Recent Blog Posts'.t %></h3>
+	<h3><%= t(:recent_blog_posts) %></h3>
 	<%= render :partial => 'blog/recentposts' %>
 <% end %>
 
