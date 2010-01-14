@@ -15,8 +15,13 @@ ActionController::Routing::Routes.draw do |map|
 
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
-  map.connect ':controller/service.wsdl', :action => 'wsdl'
+  #map.connect ':controller/service.wsdl', :action => 'wsdl'
   
+  map.attend 'attend/:metro/:id',
+              :controller => 'event',
+              :action => 'attend',
+              :menu => 'events'
+
   map.connect 'sitemap.xml', :controller => 'event', :action => 'sitemap' 
 
 
@@ -59,6 +64,8 @@ ActionController::Routing::Routes.draw do |map|
                 :page => /\d+/
               }
               
+
+
   map.connect 'rss/search/:search',
               :controller => 'feed',
               :action => 'events',
@@ -171,7 +178,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect 'account/:action',
               :controller => 'account'
-
+              
   map.event ':metro/:id/:action',
               :controller => 'event',
               :action => 'show',
