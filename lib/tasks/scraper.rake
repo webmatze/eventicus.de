@@ -5,7 +5,7 @@ namespace :scrape do
     require 'nokogiri'
     require 'open-uri'
     
-    location = "germany"
+    location = "deutschland"
     url = "http://ws.audioscrobbler.com/2.0/geo/#{location}/events.rss"
     doc = Nokogiri::HTML(open(url))
     
@@ -24,8 +24,8 @@ namespace :scrape do
       
           title = (eventdoc.at_css(".summary") || eventdoc.at_css(".summary a")).text
           venue = eventdoc.at_css(".org").text
-          street = eventdoc.at_css(".street-address").text
-          zipcode = eventdoc.at_css(".postal-code").text
+          street = eventdoc.at_css(".street-address").text rescue 'nicht angegeben'
+          zipcode = eventdoc.at_css(".postal-code").text rescue 'NA'
           city = eventdoc.at_css(".locality").text
           country = eventdoc.at_css(".country-name").text
           phone = eventdoc.at_css(".tel").text rescue nil
@@ -80,14 +80,15 @@ namespace :scrape do
           end
         
         rescue Exception => e
-          puts "Fehler beim Scrapen von #{title} - #{guid}"
+          puts "Fehler beim Scrapen von #{title} - #{guid} - #{e.message} - #{e.backtrace}"
         end
+
+        sleep 2
       
       else
         puts "Event mit ID '#{guid}' bereits vorhanden"
       end
             
-      sleep 2
       
     end
   end
