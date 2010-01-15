@@ -111,6 +111,8 @@ de:
   where: Wo
   within: in
   zip: PLZ
+  date:
+    order: [:day, :month, :year]
   time:
     seconds_ago: "vor {{seconds}} Sekunden"
     one_second_ago: vor einer Sekunde
