@@ -1,0 +1,123 @@
+de:
+  All: Alle
+  accepted_file_formats: Wir akzeptieren JPEG, GIF, oder PNG bis zu 500 KB.
+  add_event: Event hinzufügen
+  add_metro: Metro hinzufügen
+  add_new_event_now: Neuen Event erstellen
+  add_own_photos: Füge deine eigenen Bilder hinzu!
+  about_and_contact: Über uns und Kontakt
+  attend: teilnehmen
+  attending: Bin dabei
+  avatar_uploaded: Avatar wurde erfolgreich geändert
+  back: Zurück
+  blog: Blog
+  city_cloud: City Cloud
+  cancel: Abbrechen
+  comment: Kommentar
+  comments: Kommentare
+  commented: kommentierte
+  country: Land
+  category: Kategorie
+  can_add_new_metro: Du kannst auch neue Städte anlegen und auswählen.
+  change_venue: Veranstaltungsort ändern
+  change_your_avatar: Avatar ändern
+  check_username_password: Bitte überprüfe deinen Benutzernamen und Passwort
+  choose_category: Kategorie auswählen
+  choose_a_category: Eine Kategorie auswählen...
+  choose_password: Password auswählen
+  confirm_password: Password bestätigen
+  create: Erstellen
+  create_new_event: Neue Veranstaltung anlegen
+  current_avatar: Dein aktueller Avatar
+  description: Beschreibung
+  desired_login: Gewünschter Benutzername
+  discussions: Diskussionen
+  default_timezone: Standart Zeitzone
+  email: Email
+  enter_username_password: Bitte gib deinen Benutzernamen und dein Passwort ein um dich anzumelden!
+  enter_username_and_password: Bitte gib deinen gewünschten Benutzernamen und Passwort ein!
+  end_date: Enddatum
+  end_date_error: kann nicht vor dem Startdatum liegen
+  edit: Bearbeiten
+  edit_event: Event bearbeiten
+  extra: Extra
+  event_successful_created: Event wurde erfolgreich angelegt
+  event_successful_updated: Event wurde erfolgreich geändert
+  events: Events
+  firstname: Vorname
+  find_a_venue: Veranstaltungsort finden
+  fill_venue_data: Gib dann deine Veranstalungsort Daten ein und speichere diesen.
+  i_am_going: Ich gehe
+  in: in
+  if_not_registerd_sign_up_here: "Wenn du noch nicht registriert bist kannst du dies hier tun:"
+  if_registerd: 'Wenn du bereits registriert bist, kannst du dich hier anmelden:'
+  is_required: wird benötigt
+  join_us: Registrieren
+  lastname: Nachname
+  leave_reply: Hinterlasse ein Kommentar
+  logout: Abmelden
+  logout_successful: Erfolgreich abgemeldet!
+  login: Anmelden
+  login_now: Jetzt anmelden
+  login_failed: Anmeldung fehlgeschlagen
+  login_successful: Anmeldung erfolgreich
+  login_name: Benutzername
+  location: Standort
+  more: mehr...
+  metro: Stadt
+  metro_name: Stadt Name
+  metro_not_listed: Nicht gefunden? Neue Stadt anlegen...
+  name: Name
+  next: Weiter
+  not_listed_venue: Nicht gefunden? Neuen Veranstaltungsort anlegen...
+  not_tagged_photos: Zu diesem Event wurden keine Bilder gefunden
+  no_comments: Es wurden noch keine Kommentare geschrieben
+  password: Passwort
+  previous: Zurück
+  prev: Zurück
+  popular: Populär
+  please_login: Bitte anmelden
+  photos: Fotos
+  phone: Telefon
+  recent_blog_posts: Neuste Blogbeiträge
+  recent_visitors: Neuste Besucher
+  recent_readers: Neuste Leser
+  save: Speichern
+  search: Suchen
+  search_events: Events suchen
+  selected_venue: Veranstaltungsort auswählen
+  select_metro_first: Um einen neuen Veranstaltungsort anzulegen muß erst eine Stadt ausgewählt werden.
+  select_image_file: Gewünschte Bilddatei auswählen und hochladen.
+  submitted_this_event: erstellte diesen Event
+  submit_comment: Kommentar abschicken
+  search_events: Events suchen
+  sign_up_now: Jetzt registrieren
+  signup_successful: Registrierung erfolgreich
+  state: Bundesland
+  start_date: Startdatum
+  street: Straße
+  submitted_this_post: schrieb diesen Beitrag
+  title: Titel
+  upcoming: Kommende
+  url: URL
+  user_details: Benutzerdetails
+  upload: Hochladen
+  upload_avatar: Einen Avatar hochladen
+  upload_your_own_avatar: Du kannst deinen eigenen Avatar hochladen.
+  venue: Veranstaltungsort
+  venue_error: muß ausgewählt sein. Oder einen neuen hinzufügen
+  when: Wann
+  what: Was
+  where: Wo
+  within: in
+  zip: PLZ
+  time:
+    seconds_ago: "vor {{seconds}} Sekunden"
+    one_second_ago: vor einer Sekunde
+    minutes_ago: "vor {{minutes}} Minuten"
+    one_minute_ago: vor 1 Minute
+    hours_ago: "vor {{hours}} Stunden"
+    one_hour_ago: vor einer Stunde
+    days_ago: "vor {{days}} Tagen"
+    one_day_ago: vor einem Tag
+    on_date: "am {{date}}"

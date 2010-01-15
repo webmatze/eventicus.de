@@ -32,6 +32,7 @@ en:
   description: Description
   desired_login: Desired Login
   discussions: Discussions
+  default_timezone: Default Timezone
   email: Email
   enter_username_password: Please enter your username and password to sign in.
   enter_username_and_password: Please enter your desired username and password.
@@ -92,7 +93,7 @@ en:
   search_events: Search Events
   sign_up_now: Sign up now
   signup_successful: Signup successful
-  state: Statte
+  state: State
   start_date: Start Date
   street: Street
   submitted_this_post: submitted this post
