@@ -5,7 +5,7 @@ namespace :scrape do
     require 'nokogiri'
     require 'open-uri'
     
-    location = "deutschland"
+    location = "hamburg"
     url = "http://ws.audioscrobbler.com/2.0/geo/#{location}/events.rss"
     doc = Nokogiri::HTML(open(url))
     
@@ -33,7 +33,7 @@ namespace :scrape do
       
           description = eventdoc.at_css("#wikiAbstract").text rescue "keine Beschreibung vorhanden"
         
-          user = User.find ["venti","webmatze","matze002"].rand
+          user = User.find ["venti","webmatze"].rand
         
           # Event speichern
           begin
