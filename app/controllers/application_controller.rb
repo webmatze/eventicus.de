@@ -129,13 +129,11 @@ class ApplicationController < ActionController::Base
     def set_locale
      default_locale = 'de-DE'
      request_language = request.env['HTTP_ACCEPT_LANGUAGE']
-     request_language = request_language.nil? ? nil : 
-       request_language[/[^,;]+/]
+     request_language = request_language.nil? ? nil : request_language[/[^,;]+/]
 
-    request_language = default_locale if request_language != "en-US"
+     request_language = default_locale if request_language != "en-US"
 
-     @locale = params[:locale] || session[:locale] ||
-               request_language || default_locale
+     @locale = (params[:locale] || session[:locale] || request_language || default_locale).split("-").first
      session[:locale] = @locale
      begin
        #Locale.set @locale
