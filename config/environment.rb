@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem "friendly_id"
   config.gem "RedCloth"
   config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
+  config.gem "nokogiri"
   
   # Skip frameworks you're not going to use (only works if using vendor/rails)
   # config.frameworks -= [ :action_web_service, :action_mailer ]
