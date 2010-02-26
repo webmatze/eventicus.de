@@ -14,6 +14,9 @@ Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
   
   # required gems
+  #config.gem "twitter"
+  #config.gem "twitter4r", :version => '0.3.2'
+  config.gem "tidy"
   config.gem "flickr"
   config.gem "icalendar"
   config.gem "mofo"
@@ -84,8 +87,7 @@ end
 #require 'flickr'
 #require 'icalendar'
 #require 'mofo'
-gem('twitter4r','0.3.1')
-require 'twitter'
+#require 'twitter'
 
 class Time
   def to_datetime
