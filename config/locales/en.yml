@@ -41,6 +41,7 @@ en:
   edit: Edit
   edit_event: Edit Event
   extra: Extra
+  event_created: Event created
   event_successful_created: Event was successfully created
   event_successful_updated: Event was successfully updated
   events: Events

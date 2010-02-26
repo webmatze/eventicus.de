@@ -74,10 +74,16 @@
 <div class="vevent vcalendar event">
 
 	<div class="event-user">
-	  <%= link_to avatar_for(@event.user, :small, {:style => "vertical-align: middle"}), user_url(:id => @event.user.login) %>
-		<%= link_to @event.user.login, user_url(:id => @event.user.login) %>
-		<%= t(:submitted_this_event) %>
-		<span class="small-date"><%= time_ago_or_time_stamp(@event.date_created) %></span>
+		<% if @event.scrapingid %>
+			<div id="source">
+				Event gefunden auf <%= link_to @event.scrapingid, @event.scrapingid %>
+			</div>
+		<% else %>
+		  	<%= link_to avatar_for(@event.user, :small, {:style => "vertical-align: middle"}), user_url(:id => @event.user.login) %>
+			<%= link_to @event.user.login, user_url(:id => @event.user.login) %>
+			<%= t(:submitted_this_event) %>
+			<span class="small-date"><%= time_ago_or_time_stamp(@event.date_created) %></span>
+		<% end %>
 	</div>
 	
 	<div class="event-time">

@@ -4,9 +4,13 @@
 	<div class="event-body">
 		<h3><%= link_to strip_tags(event.title), event_url(:metro => event.location.metro, :id => event) %></h3>
 		<p class="event-submitted">
-		  <%= link_to avatar_for(event.user, :mini), user_url(:id => event.user.login) %>
-			<%= link_to event.user.login, user_url(:id => event.user.login) %>
-			<%= t(:submitted_this_event) %>
+			<% if event.scrapingid %>
+				<%= t(:event_created) %>
+			<% else %>
+			  	<%= link_to avatar_for(event.user, :mini), user_url(:id => event.user.login) %>
+				<%= link_to event.user.login, user_url(:id => event.user.login) %>
+				<%= t(:submitted_this_event) %>
+			<% end %>
 			<span class="small-date"><%= time_ago_or_time_stamp(event.date_created) %></span>
 		</p>
 		<p>
