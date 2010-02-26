@@ -79,7 +79,7 @@ class AccountController < ApplicationController
   
   def show
   	@user = User.find_by_login params[:id]
-    @events = @user.events.paginate(:page => params[:page], :per_page => 10)
+    @events = @user.events.paginate(:conditions => { :scrapingid => nil }, :page => params[:page], :per_page => 10)
     #@event_pages = Paginator.new self, @events.length, 10, params[:page]
   end
   
