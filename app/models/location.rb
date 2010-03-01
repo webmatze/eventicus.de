@@ -16,4 +16,19 @@ class Location < ActiveRecord::Base
 		ical
 	end
 	
+	def geocode
+	  searchStr = ""
+    searchStr << self.street
+    searchStr << ", " + self.zip + " " + self.metro.name + ", " + self.metro.country if self.metro
+    loc = GeoKit::Geocoders::MultiGeocoder.geocode(searchStr)
+    if loc.success
+      self.lat = loc.lat
+      self.lng = loc.lng
+    end
+	end
+	
+	def geocoded?
+	 !self.lat.nil? && !self.lng.nil?
+	end
+	
 end

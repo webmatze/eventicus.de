@@ -32,14 +32,7 @@ class LocationController < ApplicationController
 
   def ajax_create
     @location = Location.new(params[:location])
-    searchStr = ""
-    searchStr << @location.street + ", "
-    searchStr << @location.zip + " " + @location.metro.name + ", " + @location.metro.country if @location.metro
-    loc = GeoKit::Geocoders::GoogleGeocoder.geocode(searchStr)
-    if loc.success
-      @location.lat = loc.lat
-      @location.lng = loc.lng
-    end
+    @location.geocode
     if @location.save
       render :partial => 'event/selectedvenue'
     else

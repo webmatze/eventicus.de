@@ -123,7 +123,7 @@ GeoKit::Geocoders::proxy_pass = nil
 # This is your yahoo application key for the Yahoo Geocoder.
 # See http://developer.yahoo.com/faq/index.html#appid
 # and http://developer.yahoo.com/maps/rest/V1/geocode.html
-GeoKit::Geocoders::yahoo = 'REPLACE_WITH_YOUR_YAHOO_KEY'
+GeoKit::Geocoders::yahoo = '2eahIrrV34FX4a7S8HMc248pHd31ba83qslIS8k108ahf09n3pKv4tII4gkSZo0-'
     
 # This is your Google Maps geocoder key. 
 # See http://www.google.com/apis/maps/signup.html
@@ -152,4 +152,4 @@ GeoKit::Geocoders::geocoder_ca = false
 # Be aware that there are Terms of Use restrictions on how you can use the 
 # various geocoders.  Make sure you read up on relevant Terms of Use for each
 # geocoder you are going to use.
-GeoKit::Geocoders::provider_order = [:google,:us]
+GeoKit::Geocoders::provider_order = [:google,:yahoo]

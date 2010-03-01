@@ -68,6 +68,7 @@ class EventController < ApplicationController
     store_location
     @event = Event.find(params[:id])
     @event.add_popularity(1)
+    @event.location.geocode if !@event.location.geocoded?
     params[:category] = @event.category.short
     @photos = @flickr.photos(:tags => "eventicus:event=" + @event.id.to_s) rescue []
   end
