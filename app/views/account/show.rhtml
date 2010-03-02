@@ -29,7 +29,7 @@
 				
 				<div>
 					<% if session['user'] != nil && @user.id == session['user'].id %>
-						<%= link_to(t(:edit_account), :controller => "account", :action => 'edit') %>
+						<p><%= link_to(t(:edit_account), :controller => "account", :action => 'edit') %></p>
 					<% end %>
 				</div>
 			

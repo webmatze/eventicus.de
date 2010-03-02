@@ -19,12 +19,15 @@
 
   <div class="form_field"><label for="user_name"><%= t(:lastname) %>:</label><br/>
   <%= text_field "user", "name", :size => 30 %></div>
+
+  <div class="form_field"><label for="user_url"><%= t(:url) %>:</label><br/>
+  <%= text_field "user", "url", :size => 30 %></div>
   
   <div class="form_field"><label for="user_password"><%= t(:choose_password) %>:</label><br/>
-  <input type="text" name="user[password]" value="" size="30" /></div>
+  <input type="password" name="user[password]" value="" size="30" /></div>
 
   <div class="form_field"><label for="user_password_confirmation"><%= t(:confirm_password) %>:</label><br/>
-  <input type="text" name="user[password_confirmation]" value="" size="30" /></div>
+  <input type="password" name="user[password_confirmation]" value="" size="30" /></div>
 
   <div class="form_field"><label for="user_time_zone"><%= t(:default_timezone) %>:</label><br/>
   <%= time_zone_select 'user', 'time_zone', ActiveSupport::TimeZone.all, :model => ActiveSupport::TimeZone %></div>

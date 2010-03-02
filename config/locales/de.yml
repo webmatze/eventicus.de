@@ -127,3 +127,23 @@ de:
     days_ago: "vor {{days}} Tagen"
     one_day_ago: vor einem Tag
     on_date: "am {{date}}"
+  activerecord:
+    errors:
+      template:
+        header: Es sind Fehler beim Speichern aufgetreten
+        body: Bitte beheben Sie folgende Punkte
+      models:
+        user:
+          attributes:
+            email:
+              blank: darf nicht leer sein
+              taken: wird bereits von einem anderen Nutzer verwendet
+            password: 
+              too_short: ist zu kurz
+              confirmation: muss bestätigt werden
+              blank: darf nicht leer sein
+            password_confirmation:
+              blank: darf nicht leer sein
+            login: 
+              too_short: ist zu kurz
+              blank: darf nicht leer sein

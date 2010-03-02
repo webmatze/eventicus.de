@@ -33,15 +33,19 @@ class AccountController < ApplicationController
   end  
   
   def update
+    @user = session['user']
     if params['user']['password'].empty? && params['user']['password_confirmation'].empty?
       params['user'].delete 'password'
       params['user'].delete 'password_confirmation'
     end
-    @user = session['user']
     @user.attributes = params['user']
-    if @user.save      
+    if @user.valid? && @user.save  
+      @user.reload
+      if params['user']['password'] && @user.password == params['user']['password']
+        @user.change_password(@user.password)
+      end
       flash[:notice]  = t(:update_successful)
-      redirect_back_or_default :controller => "account", :action => "show", :id => session['user']  
+      redirect_to :controller => "account", :action => "show", :id => session['user']  
     else              
       render :action => 'edit'
     end
