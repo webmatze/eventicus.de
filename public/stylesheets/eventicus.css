@@ -576,6 +576,7 @@ ul.recent-posts li a {
 	_right: 310px;
 	font-size: 75%;
 	color: #999999;
+	width: 150px;
 }
 #maincontent .event-summary .event-location .location-name {
 	color: #666666;

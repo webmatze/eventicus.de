@@ -72,7 +72,7 @@
 <div class="vevent vcalendar event" style="margin-top: -20px">
 
 	<div id="event-title">
-		<h1>
+		<h1 class="summary">
 			<%=h @event.title %>
 		</h1>
 	</div>
@@ -175,7 +175,6 @@
 
 	</div>
 
-	<span style="display:none" class="summary"><%=h @event.title %></span>
 	<span style="display:none" class="category"><%=h @event.category.name %></span>
 	<span style="display:none" class="dtstamp"><%=@event.date_created.iso8601 %></span>
 	<span style="display:none" class="dtstart"><%=@event.date_start.iso8601 %></span>
