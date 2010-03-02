@@ -22,32 +22,18 @@
 		  <%- end -%>
 		</div>
 		<div class="data">
-			<% if session['user'] != nil && @user.id == session['user'].id %>
 				
-			<div>
-				<label><%= t(:firstname) %></label><br />
-				<%= in_place_editor_field :user, 'firstname' %>
-			</div>				
-			<div>
-				<label><%= t(:lastname) %></label><br />
-				<%= in_place_editor_field :user, 'name' %>
-			</div>				
-			<div>
-				<label><%= t(:email) %></label><br />
-				<%= in_place_editor_field :user, 'email' %>
-			</div>				
-			<div>
-				<label><%= t(:url) %></label><br />
-				<%= in_place_editor_field :user, 'url' %>
-			</div>				
-			
-			<% else %>
-				
-				<b><%=h @user.firstname%> <%=h @user.name %></b><br />
+				<div><b><% if @user.firstname || @user.name %><%=h @user.firstname%> <%=h @user.name %><% else %><%=h @user.login %><% end %></b><br />
 				<%= link_to( @user.url, @user.url) + "<br />" if @user.url %>
-				Member since <%=h tz(@user.date_created).strftime('%A, %B %d, %Y') %>
+				Member since <%=h tz(@user.date_created).strftime('%A, %B %d, %Y') %></div>
+				
+				<div>
+					<% if session['user'] != nil && @user.id == session['user'].id %>
+						<%= link_to(t(:edit_account), :controller => "account", :action => 'edit') %>
+					<% end %>
+				</div>
 			
-			<% end %>
+
 		</div>
 	</div>
 	

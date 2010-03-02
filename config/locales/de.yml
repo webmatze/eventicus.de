@@ -33,6 +33,8 @@ de:
   desired_login: Gewünschter Benutzername
   discussions: Diskussionen
   default_timezone: Deine Zeitzone
+  edit_account: Profil bearbeiten
+  edit_your_account_here: Hier kannst du dein Profil bearbeiten und dein Passwort ändern.
   email: Email
   enter_username_password: Bitte gib deinen Benutzernamen und dein Passwort ein um dich anzumelden!
   enter_username_and_password: Bitte gib deinen gewünschten Benutzernamen und Passwort ein!
@@ -105,6 +107,7 @@ de:
   upload: Hochladen
   upload_avatar: Einen Avatar hochladen
   upload_your_own_avatar: Du kannst deinen eigenen Avatar hochladen.
+  update_successful: Profil erfolgreich gespeichert
   venue: Veranstaltungsort
   venue_error: muß ausgewählt sein. Oder einen neuen hinzufügen
   when: Wann

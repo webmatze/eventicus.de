@@ -33,6 +33,8 @@ en:
   desired_login: Desired Login
   discussions: Discussions
   default_timezone: Default Timezone
+  edit_account: Edit Profile
+  edit_your_account_here: You can edit your profile here.
   email: Email
   enter_username_password: Please enter your username and password to sign in.
   enter_username_and_password: Please enter your desired username and password.
@@ -105,6 +107,7 @@ en:
   upload: Upload
   upload_avatar: Upload an avatar
   upload_your_own_avatar: You can upload your own avatar.
+  update_successful: Profile saved
   venue: Venue
   venue_error: must be selected. Or add a new one
   when: When

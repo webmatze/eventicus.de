@@ -32,6 +32,22 @@ class AccountController < ApplicationController
     end      
   end  
   
+  def update
+    if params['user']['password'].empty? && params['user']['password_confirmation'].empty?
+      params['user'].delete 'password'
+      params['user'].delete 'password_confirmation'
+    end
+    @user = session['user']
+    @user.attributes = params['user']
+    if @user.save      
+      flash[:notice]  = t(:update_successful)
+      redirect_back_or_default :controller => "account", :action => "show", :id => session['user']  
+    else              
+      render :action => 'edit'
+    end
+  end  
+  
+  
   def delete
     if params['id'] and session['user']
       @user = User.find(params['id'])
@@ -71,6 +87,10 @@ class AccountController < ApplicationController
       @avatar = @service.avatar
       render :action => 'avatar'
     end
+  end
+  
+  def edit
+    @user = session['user']
   end
 
   in_place_edit_for :user, :firstname
