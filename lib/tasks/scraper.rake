@@ -74,8 +74,8 @@ namespace :scrape do
                     :scrapingid => guid,
                     :title => title, 
                     :description => description, 
-                    :date_start => datestart.to_time, 
-                    :date_end => dateend.to_time, 
+                    :date_start => Time.zone.utc_to_local(datestart.to_time), 
+                    :date_end => Time.zone.utc_to_local(dateend.to_time), 
                     :user_id => user.id, 
                     :category_id => 2
                   )

@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem "RedCloth"
   config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
   config.gem "nokogiri"
+  #config.gem "tzinfo"
   
   # Skip frameworks you're not going to use (only works if using vendor/rails)
   # config.frameworks -= [ :action_web_service, :action_mailer ]
@@ -89,6 +90,7 @@ end
 #require 'icalendar'
 #require 'mofo'
 #require 'twitter'
+#require 'tzinfo'
 
 class Time
   def to_datetime

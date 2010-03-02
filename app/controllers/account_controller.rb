@@ -28,6 +28,7 @@ class AccountController < ApplicationController
         end
       when :get
         @user = User.new
+        @user.time_zone = 'Berlin'
     end      
   end  
   

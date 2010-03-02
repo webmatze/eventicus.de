@@ -27,7 +27,7 @@
   <%= password_field "user", "password_confirmation", :size => 30 %></div>
 
   <div class="form_field"><label for="user_time_zone"><%= t(:default_timezone) %>:</label><br/>
-  <%= time_zone_select 'user', 'time_zone', TZInfo::Timezone.all.sort, :model => ActiveSupport::TimeZone %></div>
+  <%= time_zone_select 'user', 'time_zone', ActiveSupport::TimeZone.all, :model => ActiveSupport::TimeZone %></div>
 
   <%= submit_tag t(:join_us) + " &#187;" %> 
 

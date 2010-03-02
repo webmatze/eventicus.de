@@ -18,6 +18,9 @@ class Event < ActiveRecord::Base
 	before_create :initialize_datecreated
 	before_update :initialize_datemodified
 	
+	before_create :prepare_dates
+	before_update :prepare_dates
+	
 	def add_popularity(amount)
 		self.update_attributes :popularity => self.popularity + amount
 	end
@@ -56,7 +59,7 @@ class Event < ActiveRecord::Base
 		end
 		
 		def local_to_utc(time)
-			Time.zone.local_to_utc time.utc
+			Time.zone.local_to_utc(time)
 		end
 	
 		def initialize_datecreated

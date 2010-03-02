@@ -32,7 +32,7 @@ de:
   description: Beschreibung
   desired_login: Gewünschter Benutzername
   discussions: Diskussionen
-  default_timezone: Standart Zeitzone
+  default_timezone: Deine Zeitzone
   email: Email
   enter_username_password: Bitte gib deinen Benutzernamen und dein Passwort ein um dich anzumelden!
   enter_username_and_password: Bitte gib deinen gewünschten Benutzernamen und Passwort ein!

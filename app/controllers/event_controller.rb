@@ -82,7 +82,6 @@ class EventController < ApplicationController
   def create
     @event = Event.new(params[:event])
 	  @event.user = session['user']
-    @event.prepare_dates
     if @event.save
       flash[:notice] = t(:event_successful_created)
       redirect_to events_url(:category => @event.category.short)
@@ -123,7 +122,6 @@ class EventController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.attributes = params[:event]
-    @event.prepare_dates
     if @event.save
       flash[:notice] = t(:event_successful_updated)
       redirect_to :action => 'show', :metro => @event.location.metro, :id => @event

@@ -116,14 +116,11 @@ class ApplicationController < ActionController::Base
     end
   
     def set_timezone
-      Time.zone = @current_user.time_zone if @current_user
-      #if session['user'] && !session['user'].time_zone.nil?
-      #  TzTime.zone = session['user'].tz
-      #else
-      #  TzTime.zone = TZInfo::Timezone.new("Europe/Berlin")
-      #end
-      #yield
-      #TzTime.reset!
+      if session['user']
+        Time.zone = ActiveSupport::TimeZone.new(session['user'].time_zone)     
+      else
+        Time.zone = ActiveSupport::TimeZone.new("Berlin")
+      end
     end
      
     def set_locale
