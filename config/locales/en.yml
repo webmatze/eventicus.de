@@ -125,4 +125,23 @@ en:
     days_ago: "{{days}} days ago"
     one_day_ago: 1 day ago
     on_date: "on {{date}}"
-  
+  activerecord:
+    errors:
+      template:
+        header: There are some errors
+        body: Please correct the following errors
+      models:
+        user:
+          attributes:
+            email:
+              blank: cannot be blank
+              taken: is already in use
+            password: 
+              too_short: is too short
+              confirmation: must be confirmed
+              blank: cannot be blank
+            password_confirmation:
+              blank: cannot be blank
+            login: 
+              too_short: is too short
+              blank: cannot be blank
