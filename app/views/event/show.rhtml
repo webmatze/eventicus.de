@@ -43,6 +43,15 @@
 	</li>
 	<% end %>
 	</ul>
+	
+	<% if session['user'] %>
+	<span id="category_description">
+		<% if !@event.attendees.find_by_user_id(session['user'].id) %>
+			<%= link_to t(:attend), attend_path(:id => @event, :metro => @event.location.metro) %>
+		<% end %>
+	</span>
+	<% end %>
+	
 <% end %>
 
 <% content_for("tabs") do %>
