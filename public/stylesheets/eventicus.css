@@ -194,11 +194,13 @@ ul#mainmenu li.active a {
 #login ul li {
 	float: left;
 	padding: 0px 10px;
+	align: bottom;
 }
 #login ul li a {
 	color: #FFFFCC;
 	font-weight: bold;
 	font-size: 12px;
+	vertical-align: bottom;
 }
 #login ul li a:hover {
 	color: #FFFFFF;

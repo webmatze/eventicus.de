@@ -44,6 +44,8 @@
 					
 					<div id="login">
 						<ul>
+							<li><%= link_to(image_tag('de.png', :style => "vertical-align:bottom"), "?locale=de")%>
+							<%= link_to(image_tag('gb.png', :style => "vertical-align:bottom"), "?locale=en")%></li>
 						<% if session['user'] %>
 							<li><%= link_to session['user'].login, user_url(:id => session['user'].login) %></li>
 							<li><%= link_to t(:logout), { :controller => "account", :action => "logout"} %></li>
