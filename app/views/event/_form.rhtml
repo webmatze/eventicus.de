@@ -39,7 +39,7 @@
 	</script>
 	<div class="form_field" id="choose_category">
 		<label for="tmpevent_category_id"><%= t(:choose_category) %></label>
-		<%= select 'event', 'category_id', [[t(:choose_a_category),'']] + categories_for_select.collect {|cat| [cat.name, cat.id]}, {}, { :id => 'tmpevent_category_id', :class => 'full', :style => 'width:200px'} %>
+		<%= select 'event', 'category_id', [[t(:choose_a_category),'']] + categories_for_select.collect {|cat| [t(cat.name.downcase.to_sym, :scope => :categories), cat.id]}, {}, { :id => 'tmpevent_category_id', :class => 'full', :style => 'width:200px'} %>
 	</div>
 	<%= observe_field 'tmpevent_category_id' , { :function => 'updateCategoryId(element, value)' }%>
 	

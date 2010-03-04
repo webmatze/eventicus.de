@@ -29,7 +29,7 @@
 <% content_for("sidebox") do %>
   <%= render :partial => 'sidebar_standard' %>
 	<h3><%= t(:category) %></h3>
-	<p><%=h @event.category.name %></p>
+	<p><%=h t(@event.category.name.downcase.to_sym, :scope => :categories) %></p>
 	<h3><%= @event.attending_users.count %> <%= t(:attending) %></h3>
 	<ul class="userlist">
 	<% for user in @event.attending_users %>

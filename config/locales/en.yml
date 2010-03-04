@@ -115,6 +115,29 @@ en:
   where: Where
   within: within
   zip: ZIP
+  categories:
+    all categories: All Categories
+    music: Music
+    performing arts: Performing Arts
+    media: Media
+    social: Social
+    education: Education
+    commercial: Commercial
+    festivals: Festivals
+    sports: Sports
+    visual arts: Visual Arts
+    other: Other
+  ranges:
+    all: All
+    today: Today
+    this week: This Week
+    this month: This Month
+    this year: This Year
+    alternative:
+      today: for today
+      this week: for this week
+      this month: for this month
+      this year: for this year
   time:
     seconds_ago: "{{seconds}} seconds ago"
     one_second_ago: 1 second ago

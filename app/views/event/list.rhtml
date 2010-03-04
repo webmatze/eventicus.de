@@ -7,9 +7,9 @@
 <% end %>
 
 <% content_for("title") do %>
-	<%= t(:All) %> <%= active_category.name if active_category.short != "all" %> Events 
+	<%= t(:All) %> <%= t(active_category.name.downcase.to_sym, :scope => :categories) if active_category.short != "all" %> <%= t(:events) %> 
 	<%= t(:in) + " " + metro_by_param(params[:place])[:name] if params[:place] != "world" %>
-	<%= t(:within) + " " + range_by_short(params[:range])[:title] if params[:range] != "all" %>
+	<%= " " + t(range_by_short(params[:range])[:title].downcase.to_sym, :scope => [:ranges, :alternative]) if params[:range] != "all" %>
 <% end %>
 
 <% content_for("icons") do %>

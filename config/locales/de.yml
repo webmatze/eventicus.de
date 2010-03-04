@@ -115,6 +115,29 @@ de:
   where: Wo
   within: in
   zip: PLZ
+  categories:
+    all categories: Alle Kategorien
+    music: Musik
+    performing arts: Darstellende Kunst
+    media: Medien
+    social: Social
+    education: Bildung
+    commercial: Commerziell
+    festivals: Festivals
+    sports: Sport
+    visual arts: Bildende Kunst
+    other: Andere
+  ranges:
+    all: Alle
+    today: Heute
+    this week: Diese Woche
+    this month: Dieser Monat
+    this year: Dieses Jahr
+    alternative:
+      today: für heute
+      this week: in dieser Woche
+      this month: in diesem Monat
+      this year: in diesem Jahr
   date:
     order: [:day, :month, :year]
   time:
