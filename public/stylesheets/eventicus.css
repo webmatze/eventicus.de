@@ -507,7 +507,9 @@ ul.recent-posts li a {
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 }
-
+#maincontent .event-summary:hover {
+	border-color: #CCCC99;
+}
 #maincontent .event-summary .event-body {
 	padding-left: 75px;
 	padding-right: 110px;
