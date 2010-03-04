@@ -26,6 +26,7 @@
 		<% for metro in @metros %>
 			<li class="size3"><%= link_to metro.name , events_url(:type => params[:type], :category => params[:category], :range => params[:range], :page => params[:page], :place => metro) %> </li>
 		<% end %>
+		<li style="clear:both">&nbsp;</li>
 	</ul>
 	<br /><br />
 	<h3><%= t(:recent_visitors) %></h3>
