@@ -42,7 +42,8 @@ img {
 }
 
 #container {
-	margin: 0px 30px;
+	width: 972px;
+	margin: 0px auto;
 	padding: 0px;
 	background-color: transparent;
 }
