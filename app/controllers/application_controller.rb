@@ -151,8 +151,12 @@ class ApplicationController < ActionController::Base
     
     def login_facebook_user
       if facebook_session && session['user'].nil?
-        session['user'] = User.find_by_fb_user(facebook_session.user)
-        session['user'].count_login
+        begin
+          session['user'] = User.find_by_fb_user(facebook_session.user)
+          session['user'].count_login
+        rescue
+          session[:facebook_session] = nil
+        end
       end
     end
  
