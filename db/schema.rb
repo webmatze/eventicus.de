@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100111204804) do
+ActiveRecord::Schema.define(:version => 20100304225036) do
 
   create_table "attendees", :force => true do |t|
     t.integer  "user_id"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(:version => 20100111204804) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "events", :force => true do |t|
@@ -121,8 +121,8 @@ ActiveRecord::Schema.define(:version => 20100111204804) do
     t.string  "namespace"
   end
 
-  add_index "globalize_translations", ["tr_key", "language_id"], :name => "index_globalize_translations_on_tr_key_and_language_id"
   add_index "globalize_translations", ["table_name", "item_id", "language_id"], :name => "globalize_translations_table_name_and_item_and_language"
+  add_index "globalize_translations", ["tr_key", "language_id"], :name => "index_globalize_translations_on_tr_key_and_language_id"
 
   create_table "locations", :force => true do |t|
     t.string  "name",        :limit => 128,                                 :null => false
@@ -167,6 +167,8 @@ ActiveRecord::Schema.define(:version => 20100111204804) do
     t.datetime "last_login",                                         :null => false
     t.integer  "number_of_logins",                                   :null => false
     t.string   "time_zone",        :limit => 128, :default => "UTC", :null => false
+    t.integer  "fb_user_id",       :limit => 8
+    t.string   "email_hash"
   end
 
 end

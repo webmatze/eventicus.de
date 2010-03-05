@@ -26,5 +26,10 @@
   
   <%= submit_tag t(:login) + "&#187;" %> 
 
+	<hr />
+
+	<p><%= t(:or_login_using_facebook_connect) %></p>
+	<%= fb_login_button('window.location = "/account/link_user_accounts";')%>
+
 </form>
 

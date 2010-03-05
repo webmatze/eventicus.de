@@ -26,6 +26,7 @@ de:
   choose_a_category: Eine Kategorie auswählen...
   choose_password: Password auswählen
   confirm_password: Password bestätigen
+  connect_with_facebook: Verbinde jetzt dein Profil mit Facebook!
   create: Erstellen
   create_new_event: Neue Veranstaltung anlegen
   current_avatar: Dein aktueller Avatar
@@ -50,6 +51,7 @@ de:
   firstname: Vorname
   find_a_venue: Veranstaltungsort finden
   fill_venue_data: Gib dann deine Veranstalungsort Daten ein und speichere diesen.
+  go_to_facebook_profile: Gehe jetzt auf dein Facebook Profil
   i_am_going: Ich gehe
   in: in
   if_not_registerd_sign_up_here: "Wenn du noch nicht registriert bist kannst du dies hier tun:"
@@ -75,6 +77,8 @@ de:
   not_listed_venue: Nicht gefunden? Neuen Veranstaltungsort anlegen...
   not_tagged_photos: Zu diesem Event wurden keine Bilder gefunden
   no_comments: Es wurden noch keine Kommentare geschrieben
+  or_login_using_facebook_connect: Oder melden Sie sich über Facebook an...
+  or_signup_using_facebook_connect: Oder registrieren Sie sich über Facebook Connect...
   password: Passwort
   previous: Zurück
   prev: Zurück

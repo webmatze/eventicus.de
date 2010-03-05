@@ -10,10 +10,16 @@ class ApplicationController < ActionController::Base
   before_filter :set_timezone
 
   # Pick a unique cookie name to distinguish our session data from others'
-  #session :session_key => '_eventicus2_session_id'
+  # session :session_key => '_eventicus2_session_id'
   
   before_filter :set_charset
   before_filter :set_locale
+  
+  # for facebook connect
+  before_filter :set_facebook_session
+  helper_method :facebook_session
+  
+  before_filter :login_facebook_user
   
   protected
   
@@ -141,6 +147,12 @@ class ApplicationController < ActionController::Base
      end
      WillPaginate::ViewHelpers.pagination_options[:previous_label] =  '&lt;- ' + t(:previous)
      WillPaginate::ViewHelpers.pagination_options[:next_label] = t(:next) + ' -&gt;'
+    end
+    
+    def login_facebook_user
+      if facebook_session
+        session['user'] = User.find_by_fb_user(facebook_session.user) if session['user'].nil?
+      end
     end
  
 end

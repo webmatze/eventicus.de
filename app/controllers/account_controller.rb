@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   
-  before_filter :login_required, :except => [:login, :signup]
+  before_filter :login_required, :except => [:login, :signup, :link_user_accounts]
   layout  'eventicus'
 
   def login
@@ -62,6 +62,7 @@ class AccountController < ApplicationController
     
   def logout
     session['user'] = nil
+    session[:facebook_session] = nil
 	  flash[:notice] = t(:logout_successful)
 	  redirect_to events_url
   end
@@ -96,16 +97,22 @@ class AccountController < ApplicationController
   def edit
     @user = session['user']
   end
-
-  in_place_edit_for :user, :firstname
-  in_place_edit_for :user, :name
-  in_place_edit_for :user, :email
-  in_place_edit_for :user, :url
   
   def show
-  	@user = User.find_by_login params[:id]
+  	@user = User.find params[:id]
     @events = @user.events.paginate(:conditions => { :scrapingid => nil }, :page => params[:page], :per_page => 10)
     #@event_pages = Paginator.new self, @events.length, 10, params[:page]
+  end
+  
+  def link_user_accounts
+    if session['user'].nil?
+      #register with fb
+      User.create_from_fb_connect(facebook_session.user)
+    else
+      #connect accounts
+      session['user'].link_fb_connect(facebook_session.user.id) unless session['user'].fb_user_id == facebook_session.user.id
+    end
+    redirect_to '/'
   end
   
 end

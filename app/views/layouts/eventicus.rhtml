@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<meta name="y_key" content="13906d118df944d8" />
@@ -17,7 +17,8 @@
 		<![endif]-->
 	</head>
 	<body id="home">
-	
+		<%= fb_connect_javascript_tag %>
+		<%= init_fb_connect "XFBML"%>
 		<div id="container">
 		
 			<div id="header">
@@ -47,11 +48,19 @@
 							<li><%= link_to(image_tag('de.png', :style => "vertical-align:bottom", :alt => "deutsch", :title => "deutsch"), "?locale=de")%>
 							<%= link_to(image_tag('gb.png', :style => "vertical-align:bottom", :alt => "english", :title => "english"), "?locale=en")%></li>
 						<% if session['user'] %>
-							<li><%= link_to session['user'].login, user_url(:id => session['user'].login) %></li>
-							<li><%= link_to t(:logout), { :controller => "account", :action => "logout"} %></li>
+
+							<li><%= link_to session['user'].login, user_url(:id => session['user'].slug.name) %></li>
+						
+							<% if session['user'].facebook_user? %>
+								<li><a href="#" onclick='FB.Connect.logoutAndRedirect("/account/logout")'><%= t(:logout) %></a></li>
+							<% else %>
+								<li><%= link_to t(:logout), { :controller => "account", :action => "logout"} %></li>
+							<% end %>
+							
 						<% else %>
 							<li><%= link_to t(:join_us), { :controller => "account", :action => "signup"} %></li>
 							<li><%= link_to t(:login), { :controller => "account", :action => "login"} %></li>
+							<li><%= fb_login_button('window.location = "/account/link_user_accounts";')%></li>
 						<% end %>
 							<li>
 								<form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>"><input class="noborder" type="text" name="search" value="<%= t(:search_events) %>" id="search" onfocus="this.value=''" /></form>

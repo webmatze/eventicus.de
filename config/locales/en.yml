@@ -26,6 +26,7 @@ en:
   choose_a_category: Choose a category...
   choose_password: Choose Password
   confirm_password: Confirm Password
+  connect_with_facebook: Connect your account with Facebook!
   create: Create
   create_new_event: Create New Event
   current_avatar: Your current avatar
@@ -50,6 +51,7 @@ en:
   firstname: Firstname
   find_a_venue: Find a Venue
   fill_venue_data: Then fill in your venue data and save it.
+  go_to_facebook_profile: Go to your Facebook Profile
   i_am_going: I'm going
   in: in
   if_not_registerd_sign_up_here: "If you are not registered you can now sign up here:"
@@ -75,6 +77,8 @@ en:
   not_listed_venue: Not listet? Add a new venue...
   not_tagged_photos: There are no photos for this event yet!
   no_comments: No comments by now
+  or_login_using_facebook_connect: Or login using Facebook Connect...
+  or_signup_using_facebook_connect: Or sign up using Facebook Connect...
   password: Password
   previous: Previous
   prev: Prev

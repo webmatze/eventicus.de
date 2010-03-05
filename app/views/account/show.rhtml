@@ -27,11 +27,23 @@
 				<%= link_to( @user.url, @user.url) + "<br />" if @user.url %>
 				Member since <%=h tz(@user.date_created).strftime('%A, %B %d, %Y') %></div>
 				
-				<div>
-					<% if session['user'] != nil && @user.id == session['user'].id %>
-						<p><%= link_to(t(:edit_account), :controller => "account", :action => 'edit') %></p>
+				<% if session['user'] != nil && @user.id == session['user'].id %>
+					<div>
+							<p><%= link_to(t(:edit_account), :controller => "account", :action => 'edit') %></p>
+					</div>
+				
+					<% if session['user'].facebook_user? %>
+					<div>
+						<p><%= t(:go_to_facebook_profile) %></p>
+						<fb:profile-pic uid="<%= session['user'].fb_user_id%>" facebook-logo="true" size="thumb" ></fb:profile-pic>
+					</div>
+					<% else %>
+					<div>
+						<p><%= t(:connect_with_facebook) %></p>
+						<%= fb_login_button('window.location = "/account/link_user_accounts";')%>
+					</div>
 					<% end %>
-				</div>
+				<% end %>
 			
 
 		</div>
