@@ -57,7 +57,7 @@ class EventController < ApplicationController
   def list
     store_location
     @metros = metrolist(params)
-	  @events = eventlist(params, 6, params[:page].to_i)
+	  @events = eventlist(params, 10, params[:page].to_i)
   end
   
   def search
