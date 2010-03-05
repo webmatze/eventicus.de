@@ -85,18 +85,22 @@
 	<% end %>
 <% end %>
 
-<div class="vevent vcalendar event" style="margin-top: -20px">
+<div class="vevent vcalendar event" style="position:relative;margin-top: -20px">
 
+	
 	<div id="event-title">
 		<h1 class="summary">
 			<%=h @event.title %>
 		</h1>
+	<div id="share_on_facebook" style="float:right; width: 70px;text-align:right" title="">
+		<a name="fb_share" type="box_count" share_url="<%= "http://eventicus.de#{request.path}" %>" href="http://www.facebook.com/sharer.php"><%= t(:share) %></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+	</div>
 	</div>
 
 	<div class="event-user">
 		<% if @event.scrapingid %>
 			<div id="source">
-				Event gefunden auf <%= link_to @event.scrapingid, @event.scrapingid %>
+				<%= t(:event_found_on) %> <%= link_to @event.scrapingid, @event.scrapingid %>
 			</div>
 		<% else %>
 		  	<%= link_to avatar_for(@event.user, :small, {:style => "vertical-align: middle"}), user_url(:id => @event.user.login) %>

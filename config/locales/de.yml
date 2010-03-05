@@ -46,6 +46,7 @@ de:
   edit_event: Event bearbeiten
   extra: Extra
   event_created: Event erstellt
+  event_found_on: Event gefunden auf
   event_successful_created: Event wurde erfolgreich angelegt
   event_successful_updated: Event wurde erfolgreich geändert
   events: Events
@@ -99,6 +100,7 @@ de:
   submitted_this_event: erstellte diesen Event
   submit_comment: Kommentar abschicken
   search_events: Events suchen
+  share: Teilen
   sign_up_now: Jetzt registrieren
   signup_successful: Registrierung erfolgreich
   state: Bundesland
@@ -127,7 +129,7 @@ de:
     media: Medien
     social: Social
     education: Bildung
-    commercial: Commerziell
+    commercial: Kommerziell
     festivals: Festivals
     sports: Sport
     visual arts: Bildende Kunst

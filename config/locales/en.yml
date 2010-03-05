@@ -46,6 +46,7 @@ en:
   edit_event: Edit Event
   extra: Extra
   event_created: Event created
+  event_found_on: Event found on
   event_successful_created: Event was successfully created
   event_successful_updated: Event was successfully updated
   events: Events
@@ -93,6 +94,7 @@ en:
   save: Save
   search: Search
   search_events: Search Events
+  share: Share
   selected_venue: Selected Venue
   select_metro_first: To add a new venue select a metro first.
   select_image_file: Just select a desired image file and submit it.
