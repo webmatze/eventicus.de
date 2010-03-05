@@ -70,6 +70,7 @@ end
 desc 'Link shared directories and files'
 task :after_update_code, :roles => :app do
   run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+  run "ln -nfs #{shared_path}/facebooker.yml #{release_path}/config/facebooker.yml"
   run "ln -nfs #{shared_path}/avatars/ #{release_path}/public/avatars"
 end
 
