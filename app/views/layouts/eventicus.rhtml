@@ -54,12 +54,12 @@
 							<% if session['user'].facebook_user? %>
 								<li><a href="#" onclick='FB.Connect.logoutAndRedirect("/account/logout")'><%= t(:logout) %></a></li>
 							<% else %>
-								<li><%= link_to t(:logout), { :controller => "account", :action => "logout"} %></li>
+								<li><%= link_to t(:logout), "/account/logout" %></li>
 							<% end %>
 							
 						<% else %>
-							<li><%= link_to t(:join_us), { :controller => "account", :action => "signup"} %></li>
-							<li><%= link_to t(:login), { :controller => "account", :action => "login"} %></li>
+							<li><%= link_to t(:join_us), "/account/signup" %></li>
+							<li><%= link_to t(:login), "/account/login" %></li>
 							<li><%= fb_login_button('window.location = "/account/link_user_accounts";')%></li>
 						<% end %>
 							<li>
