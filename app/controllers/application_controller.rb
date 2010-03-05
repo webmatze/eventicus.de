@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_facebook_session
   helper_method :facebook_session
   
-  #before_filter :login_facebook_user
+  before_filter :login_facebook_user
   
   protected
   
@@ -150,8 +150,9 @@ class ApplicationController < ActionController::Base
     end
     
     def login_facebook_user
-      if facebook_session
-        session['user'] = User.find_by_fb_user(facebook_session.user) if session['user'].nil?
+      if facebook_session && session['user'].nil?
+        session['user'] = User.find_by_fb_user(facebook_session.user)
+        session['user'].count_login
       end
     end
  
