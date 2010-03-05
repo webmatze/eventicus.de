@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_facebook_session
   helper_method :facebook_session
   
-  before_filter :login_facebook_user
+  #before_filter :login_facebook_user
   
   protected
   

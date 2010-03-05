@@ -28,7 +28,7 @@ RewriteEngine On
 
 #RewriteRule ^$ index.html [QSA]
 #RewriteRule ^$ /events
-RewriteRule ^/$ /events [R]
+RewriteRule ^/$ /events [QSA]
 RewriteRule ^([^.]+)$ $1.html [QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ dispatch.cgi [QSA,L]

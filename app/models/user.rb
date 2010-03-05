@@ -17,8 +17,7 @@ class User < ActiveRecord::Base
 
   def self.authenticate(login, pass)
     if user = first(:conditions => ["login = ? AND password = ?", login, sha1(pass)])
-      user.increment :number_of_logins, 1
-      user.update_attribute "last_login", Time.zone.now.utc
+      user.count_login
       return user
 	  end
   end  
@@ -27,6 +26,10 @@ class User < ActiveRecord::Base
     update_attribute "password", self.class.sha1(pass)
   end
   
+  def count_login
+    user.increment :number_of_logins, 1
+    user.update_attribute "last_login", Time.zone.now.utc
+  end
   
 	#find the user in the database, first by the facebook user id and if that fails through the email hash
   def self.find_by_fb_user(fb_user)

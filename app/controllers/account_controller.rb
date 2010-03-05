@@ -107,11 +107,12 @@ class AccountController < ApplicationController
   def link_user_accounts
     if session['user'].nil?
       #register with fb
-      User.create_from_fb_connect(facebook_session.user)
+      session['user'] = User.create_from_fb_connect(facebook_session.user)
     else
       #connect accounts
       session['user'].link_fb_connect(facebook_session.user.id) unless session['user'].fb_user_id == facebook_session.user.id
     end
+    session['user'].count_login
     redirect_to '/'
   end
   
