@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
   end
   
   def count_login
-    user.increment :number_of_logins, 1
-    user.update_attribute "last_login", Time.zone.now.utc
+    self.increment :number_of_logins, 1
+    self.update_attribute "last_login", Time.zone.now.utc
   end
   
 	#find the user in the database, first by the facebook user id and if that fails through the email hash
