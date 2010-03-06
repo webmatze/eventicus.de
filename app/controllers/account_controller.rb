@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   
-  before_filter :login_required, :except => [:login, :signup, :link_user_accounts]
+  before_filter :login_required, :except => [:login, :signup, :show, :link_user_accounts]
   layout  'eventicus'
 
   def login
