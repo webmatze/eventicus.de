@@ -211,9 +211,9 @@ ul#mainmenu li.active a {
 	background-color: #CCCC33;
 	min-height: 25px;
 	width: 100%;
-	background-image: url(../images/arrow_down.gif);
+	/*background-image: url(../images/arrow_down.gif);
 	background-position: top right;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat;*/
 }
 #menu ul {
 	list-style-type: none;

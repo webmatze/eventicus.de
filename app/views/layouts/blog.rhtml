@@ -29,7 +29,7 @@
 			<div id="header">
 				
 				<div id="logo">
-					<div class="logo"><%= link_to 'Eventicus<sup>BETA</sup>', {:controller => 'events'} %></div>
+					<div class="logo"><%= link_to 'Eventicus', {:controller => 'events'} %></div>
 					
 					<ul id="mainmenu">
 						<li <%= 'class="active"' if params[:menu] == "events" %>>
@@ -51,18 +51,29 @@
 					
 					<div id="login">
 						<ul>
+							<li><%= link_to(image_tag('de.png', :style => "vertical-align:bottom", :alt => "deutsch", :title => "deutsch"), "?locale=de")%>
+							<%= link_to(image_tag('gb.png', :style => "vertical-align:bottom", :alt => "english", :title => "english"), "?locale=en")%></li>
 						<% if session['user'] %>
-							<li><%= link_to session['user'].login, user_url(:id => session['user'].login) %></li>
-							<li><%= link_to t(:logout), { :controller => "account", :action => "logout"} %></li>
+
+							<li><%= link_to session['user'].login, user_url(:id => session['user'].slug.name) %></li>
+						
+							<% if session['user'].facebook_user? %>
+								<li><a href="#" onclick='FB.Connect.logoutAndRedirect("/account/logout")'><%= t(:logout) %></a></li>
+							<% else %>
+								<li><%= link_to t(:logout), "/account/logout" %></li>
+							<% end %>
+							
 						<% else %>
-							<li><%= link_to t(:join_us), { :controller => "account", :action => "signup"} %></li>
-							<li><%= link_to t(:login), { :controller => "account", :action => "login"} %></li>
+							<li><%= link_to t(:join_us), "/account/signup" %></li>
+							<li><%= link_to t(:login), "/account/login" %></li>
+							<li><%= fb_login_button('window.location = "/account/link_user_accounts";')%></li>
 						<% end %>
 							<li>
-								<input class="noborder" type="text" name="search" value="Search Events" id="search" />
+								<form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>"><input class="noborder" type="text" name="search" value="<%= t(:search_events) %>" id="search" onfocus="this.value=''" /></form>
 							</li>
 						</ul>
 					</div>
+
 					<div style="clear:both"></div>
 				</div>
 			</div>

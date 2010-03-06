@@ -92,9 +92,6 @@
 								<%= link_to t(range[:title].downcase.to_sym, :scope => :ranges), events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => range[:key]) %>
 							</li>
 						<% end %>
-						<li class="newEvent">
-							<%= link_to t(:add_event), :controller => 'event', :action => 'new' %>
-						</li>
 					</ul>
 				</div>
 				
