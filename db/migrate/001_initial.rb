@@ -15,12 +15,12 @@ class Initial < ActiveRecord::Migration
       table.column :number_of_logins, :integer, { :limit => 11, :null => false }
     end
     User.create(:login => 'admin', 
-                :password => '123mat',
-				:password_confirmation => '123mat',
-				:firstname => 'Mathias',
-				:name => 'Karstädt', 
-                :email => 'mathias.karstaedt@gmail.com',
-				:url => 'http://eventicus.de',
+                :password => 'xxxx',
+        				:password_confirmation => 'xxxx',
+        				:firstname => 'Eventicus',
+        				:name => 'Admin', 
+                :email => 'admin@email.com',
+        				:url => 'http://eventicus.de',
                 :date_created => Time.now,
                 :last_login => Time.now,
                 :number_of_logins => 0)
