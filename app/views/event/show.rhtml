@@ -73,6 +73,10 @@
 	Event Info
 <% end %>
 
+<% content_for("page_title") do %>
+	<%=@event.title %>
+<% end %>
+
 <% content_for("icons") do %>
 	<% if session['user'] %>
 	<span id="category_description">
@@ -83,6 +87,10 @@
 		<% end %>
 	</span>
 	<% end %>
+<% end %>
+
+<% content_for("description") do %>
+	<%= @event.description.gsub("&amp;","&").gsub("\n","").gsub("\r","").strip_html.strip %>
 <% end %>
 
 <div class="vevent vcalendar event" style="position:relative;margin-top: -20px">
@@ -134,7 +142,7 @@
 	<div class="event-description">
 		<h2><%= t(:what) %></h2>
 		<div class="description data">
-			<%= nl2br(auto_link(textilize(@event.description.gsub("&amp;","&")))) %>
+			<%= nl2br(auto_link(textilize(@event.description.gsub("&amp;","&").strip))) %>
 		</div>
 	</div>
 	

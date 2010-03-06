@@ -5,7 +5,10 @@
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<meta name="y_key" content="13906d118df944d8" />
-		<title>Eventicus 2.0 - <%= yield :title %></title>
+		<meta name="title" content="<%= ((yield :page_title) || (yield :title)).strip %> <%= t(:onnn) %> Eventicus.de" />
+		<meta name="description" content="<%= (yield :description) ? truncate((yield :description), :length => 100) : "Eventicus.de - Social Event Community" %>" />
+		<link rel="image_src" href="http://eventicus.de/images/logo.gif" / >
+		<title><%= ((yield :page_title) || (yield :title)).strip %> - Eventicus.de</title>
 		<link rel="Shortcut Icon" href="/favicon.png" />
 		<%= javascript_include_tag :defaults %>
 		<%= javascript_auto_include_tags %>
