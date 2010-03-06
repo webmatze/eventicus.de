@@ -100,8 +100,8 @@
 		<h1 class="summary">
 			<%=h @event.title %>
 		</h1>
-	<div id="share_on_facebook" style="float:right; width: 70px;text-align:right" title="">
-		<a name="fb_share" type="box_count" share_url="<%= "http://eventicus.de#{request.path}" %>" href="http://www.facebook.com/sharer.php"><%= t(:share) %></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+	<div id="share_on_facebook" style="float:right; width: 70px;text-align:right">
+		<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php?u=<%= CGI.escape "http://eventicus.de#{request.path}" %>&t=<%= CGI.escape (yield :title) %>"><%= t(:share) %></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 	</div>
 	</div>
 
