@@ -139,6 +139,7 @@ img {
   -webkit-border-radius: 6px;
   border-radius: 6px;
   padding: 10px;
+	margin: 10px 0px 0px 10px;
 }
 
 ul#mainmenu {
