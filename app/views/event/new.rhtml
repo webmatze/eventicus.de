@@ -2,8 +2,13 @@
 	<%= t(:create_new_event) %>
 <% end %>
 
+<div>
+
 <% form_tag :action => 'create' do %>
   <%= render :partial => 'form' %>
   <%= submit_tag t(:create) %> 
   
 <% end %>
+
+</div>
+<div style="clear:both"></div>

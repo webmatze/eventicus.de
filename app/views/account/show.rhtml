@@ -7,58 +7,68 @@
   <%= render :partial => 'event/sidebar_standard' %>
 	<!--<h3>%= t(:friends) %></h3>
 	<p>here a list of all his friends</p>-->
-	
-	<br /><br />
-	<h3><%= t(:become_fan) %></h3>
-	<div>
-		<fb:fan profile_id="68339386368" stream="0" connections="10" logobar="1" width="230"></fb:fan><div style="font-size:8px; padding-left:10px"><a href="http://www.facebook.com/pages/Eventicusde/68339386368">Eventicus.de</a> on Facebook</div>
+
+	<div class="box">
+		<div class="box_header">
+	  	<h3><%= t(:become_fan) %></h3>
+		</div>
+		<div class="box_body">
+			<div>
+				<fb:fan profile_id="68339386368" stream="0" connections="10" logobar="1" width="270"></fb:fan><div style="font-size:8px; padding-left:10px"><a href="http://www.facebook.com/pages/Eventicusde/68339386368">Eventicus.de</a> on Facebook</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
 	</div>
 <% end %>
 
-<div class="user">
+<div class="grid_8 alpha omega">
 	
-	<div class="user-data">
-		<h2><%= t(:user_details) %></h2>
-		<div class="avatar">
-		  <%- if session['user'] != nil && @user.id == session['user'].id -%>
-  		  <%= link_to avatar_for(@user), { :controller => 'account', :action => 'avatar'} %>
-  		  <%= link_to(t(:change_your_avatar), :action => 'avatar') %>
-		  <%- else -%>
-    	  <%= avatar_for(@user) %>
-		  <%- end -%>
-		</div>
-		<div class="data">
+	<div class="user">
+	
+		<div class="user-data">
+			<h2><%= t(:user_details) %></h2>
+			<div class="avatar">
+			  <%- if session['user'] != nil && @user.id == session['user'].id -%>
+	  		  <%= link_to avatar_for(@user), { :controller => 'account', :action => 'avatar'} %>
+	  		  <%= link_to(t(:change_your_avatar), :action => 'avatar') %>
+			  <%- else -%>
+	    	  <%= avatar_for(@user) %>
+			  <%- end -%>
+			</div>
+			<div class="data">
 				
-				<div><b><% if @user.firstname || @user.name %><%=h @user.firstname%> <%=h @user.name %><% else %><%=h @user.login %><% end %></b><br />
-				<%= link_to( @user.url, @user.url) + "<br />" if @user.url %>
-				Member since <%=h tz(@user.date_created).strftime('%A, %B %d, %Y') %></div>
+					<div><b><% if @user.firstname || @user.name %><%=h @user.firstname%> <%=h @user.name %><% else %><%=h @user.login %><% end %></b><br />
+					<%= link_to( @user.url, @user.url) + "<br />" if @user.url %>
+					Member since <%=h tz(@user.date_created).strftime('%A, %B %d, %Y') %></div>
 				
-				<% if session['user'] != nil && @user.id == session['user'].id %>
-					<div>
-							<p><%= link_to(t(:edit_account), :controller => "account", :action => 'edit') %></p>
-					</div>
+					<% if session['user'] != nil && @user.id == session['user'].id %>
+						<div>
+								<p><%= link_to(t(:edit_account), :controller => "account", :action => 'edit') %></p>
+						</div>
 				
-					<% if session['user'].facebook_user? %>
-					<div>
-						<p><%= t(:go_to_facebook_profile) %></p>
-						<fb:profile-pic uid="<%= session['user'].fb_user_id%>" facebook-logo="true" size="thumb" ></fb:profile-pic>
-					</div>
-					<% else %>
-					<div>
-						<p><%= t(:connect_with_facebook) %></p>
-						<%= fb_login_button('window.location = "/account/link_user_accounts";')%>
-					</div>
+						<% if session['user'].facebook_user? %>
+						<div>
+							<p><%= t(:go_to_facebook_profile) %></p>
+							<fb:profile-pic uid="<%= session['user'].fb_user_id%>" facebook-logo="true" size="thumb" ></fb:profile-pic>
+						</div>
+						<% else %>
+						<div>
+							<p><%= t(:connect_with_facebook) %></p>
+							<%= fb_login_button('window.location = "/account/link_user_accounts";')%>
+						</div>
+						<% end %>
 					<% end %>
-				<% end %>
 			
 
+			</div>
 		</div>
-	</div>
 	
-	<div class="user-events" style="clear: left">
-	  <br /><br />
-		<h2>Events</h2>
-		<br />
+		<div class="user-events" style="clear: left">
+		  <br /><br />
+			<h2>Events</h2>
+			<br />
+		</div>
+
 	</div>
 
 </div>

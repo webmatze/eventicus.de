@@ -1,7 +1,7 @@
 class BlogController < ApplicationController
 
   before_filter :login_required, :except => [:index, :list, :show]
-  layout 'blog'
+  layout 'eventicus'
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :create, :update, :add_comment ],

@@ -1,9 +1,18 @@
-<h1>Editing location</h1>
+<% content_for("title") do %>
+	BlogPost bearbeiten
+<% end %>
 
-<% form_tag :action => 'update', :id => @location do %>
-  <%= render :partial => 'form' %>
+<% form_for :blog, @blogpost, :url => {:action => 'update'} do |blog| %>
+	<%= error_messages_for 'blogpost' %>
+
+	<p><label for="blog_title">Title</label><br/>
+	<%= blog.text_field 'title'  %></p>
+
+	<p><label for="blog_description">Description</label><br/>
+	<%= blog.text_area 'description'  %></p>
+	
   <%= submit_tag 'Edit' %>
 <% end %>
 
-<%= link_to 'Show', :action => 'show', :id => @location %> |
+<%= link_to 'Show', :action => 'show', :id => @blogpost %> |
 <%= link_to 'Back', :action => 'list' %>

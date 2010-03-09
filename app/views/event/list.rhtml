@@ -21,24 +21,60 @@
 
 <% content_for("sidebox") do %>
   <%= render :partial => 'sidebar_standard' %>
-	<h3><%= t(:city_cloud) %></h3>
-	<ul class="cloud">
-		<% for metro in @metros %>
-			<li class="size3"><%= link_to metro.name , events_url(:type => params[:type], :category => params[:category], :range => params[:range], :page => params[:page], :place => metro) %> </li>
-		<% end %>
-		<li style="clear:both">&nbsp;</li>
-	</ul>
-	<br /><br />
-	<h3><%= t(:recent_visitors) %></h3>
-	<%= render :partial => 'recent_visitors' %>
-	<br /><br />
-	<h3><%= t(:recent_blog_posts) %></h3>
-	<%= render :partial => 'blog/recentposts' %>
-	<br /><br />
-	<h3><%= t(:become_fan) %></h3>
-	<div>
-		<fb:fan profile_id="68339386368" stream="0" connections="10" logobar="1" width="230"></fb:fan><div style="font-size:8px; padding-left:10px"><a href="http://www.facebook.com/pages/Eventicusde/68339386368">Eventicus.de</a> on Facebook</div>
+
+	<div class="box">
+		<div class="box_header">
+	  	<h3><%= t(:city_cloud) %></h3>
+		</div>
+		<div class="box_body">
+			<div>
+				<ul class="cloud">
+					<% for metro in @metros %>
+						<li class="size3"><%= link_to metro.name , events_url(:type => params[:type], :category => params[:category], :range => params[:range], :page => params[:page], :place => metro) %> </li>
+					<% end %>
+				</ul>
+			</div>
+			<div style="clear:both"></div>
+		</div>
 	</div>
+
+
+	<div class="box">
+		<div class="box_header">
+	  	<h3><%= t(:recent_visitors) %></h3>
+		</div>
+		<div class="box_body">
+			<div>
+				<%= render :partial => 'recent_visitors' %>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+
+	<div class="box">
+		<div class="box_header">
+	  	<h3><%= t(:recent_blog_posts) %></h3>
+		</div>
+		<div class="box_body">
+			<div>
+				<%= render :partial => 'blog/recentposts' %>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+
+	<div class="box">
+		<div class="box_header">
+	  	<h3><%= t(:become_fan) %></h3>
+		</div>
+		<div class="box_body">
+			<div>
+				<fb:fan profile_id="68339386368" stream="0" connections="10" logobar="1" width="270"></fb:fan><div style="font-size:8px; padding-left:10px"><a href="http://www.facebook.com/pages/Eventicusde/68339386368">Eventicus.de</a> on Facebook</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+
 <% end %>
 
 <%= render :partial => 'events' %>

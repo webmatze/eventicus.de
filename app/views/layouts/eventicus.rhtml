@@ -14,7 +14,7 @@
 		<%= javascript_auto_include_tags %>
 		<%= yield :head %>
 		<%= stylesheet_auto_link_tags %>
-		<%= stylesheet_link_tag 'eventicus' %>
+		<%= stylesheet_link_tag 'eventicus', 'grid' %>
 		<!--[if lte IE 7]>
 			<%= stylesheet_link_tag 'eventicus_ie' %>
 		<![endif]-->
@@ -22,9 +22,9 @@
 	<body id="home">
 		<%= fb_connect_javascript_tag %>
 		<%= init_fb_connect "XFBML"%>
-		<div id="container">
+		<div id="container" class="container_12">
 		
-			<div id="header">
+			<div id="header" class="grid_12 alpha omega">
 				<div id="logo">
 				
 					<div class="logo"><%= link_to 'Eventicus', {:controller => 'events'} %></div>
@@ -74,7 +74,7 @@
 					<div style="clear:both"></div>
 				</div>
 				
-				<div id="menu">
+				<div id="menu" class="grid_12 alpha omega">
 					<ul>
 						<% for cat in categories %>
 							<li <%= 'class="active"' if params[:category] == cat.short %>>
@@ -85,7 +85,7 @@
 					<div style="clear:both"></div>
 				</div>
 				
-				<div id="submenu">
+				<div id="submenu" class="grid_12 alpha omega">
 					<ul>
 						<% ranges.each do |range| %>
 							<li <%= 'class="active"' if params[:range] == range[:key] %>>
@@ -97,7 +97,7 @@
 				
 			</div>
 			
-			<div id="ads">
+			<div id="ads" class="grid_12 alpha omega">
 				<% if false && !session['user'] && controller.controller_name != "account" %>
 				<div id="greeting">
 					<div class="signup-text">
@@ -132,9 +132,9 @@
 				<% end %>
 			</div>
 			
-			<div id="body">
+			<div id="body" class="grid_12 alpha omega">
 			
-				<div id="bodyheader">
+				<div id="bodyheader" class="grid_12 alpha omega">
 				
 					<div id="category_name">
 						<%= yield :title %> <%= yield :icons %>
@@ -143,32 +143,22 @@
 					
 					<div id="selection">
 						<%= yield :tabs %>
-						<div id="popular" <%= 'class="active"' if params[:type] == "popular" %>>
-							<%= link_to t(:popular), events_url(:place => params[:place], :type => "popular", :category => params[:category], :range => params[:range]) %>
-						</div>
-						<div id="timeline" <%= 'class="active"' if params[:type] == "upcoming" %>>
-							<%= link_to t(:upcoming), events_url(:place => params[:place], :type => "upcoming", :category => params[:category], :range => params[:range]) %>
-						</div>
+						<% if !controller.is_a? BlogController %>
+							<div id="popular" <%= 'class="active"' if params[:type] == "popular" %>>
+								<%= link_to t(:popular), events_url(:place => params[:place], :type => "popular", :category => params[:category], :range => params[:range]) %>
+							</div>
+							<div id="timeline" <%= 'class="active"' if params[:type] == "upcoming" %>>
+								<%= link_to t(:upcoming), events_url(:place => params[:place], :type => "upcoming", :category => params[:category], :range => params[:range]) %>
+							</div>
+						<% end %>
 					</div>
 					
 					
 				</div>
 				
-				<div id="bodycontent">
-				
-					<div id="rightcontent">
+				<div id="bodycontent" class="grid_12 alpha omega">
 					
-						<!-- Hier der rechte Content -->
-						
-						<div class="side-box">
-							<%= yield :sidebox %>
-						</div>
-						
-						<!-- Ende rechter Content -->
-					
-					</div>
-					
-					<div id="maincontent">
+					<div id="maincontent" class="grid_8 alpha">
 					
 						<!-- Hier der Hauptteil -->
 						<% if flash[:notice]%><div class="notice"><%= flash[:notice] %></div><% end %>
@@ -180,18 +170,32 @@
 						<!-- Ende Hauptteil -->
 						
 					</div>
+			
+					<div id="rightcontent" class="grid_4 omega">
+				
+						<!-- Hier der rechte Content -->
 					
-					<div style="clear:both"></div>
+						<div class="side-box">
+							<%= yield :sidebox %>
+						</div>
 					
+						<!-- Ende rechter Content -->
+				
+					</div>
+										
 				</div>
 				
 			</div>
 			
-			<div id="footer">
+			<div id="footer" class="grid_12 alpha omega">
 				Copyright 2007-<%= Date.today.year %> by eventicus.de - All rights reserved 
 				| <%= link_to t(:about_and_contact), :controller => 'event', :action => 'about' %> 
 				| <a href="http://groups.google.com/group/eventicus/topics"><%= t(:discussions) %></a>
 			</div>
+		
+		<div class="grid_12 alpha omega">
+		&nbsp;
+		</div>
 			
 		</div>	
 		

@@ -1,11 +1,19 @@
   <div id="add_event">
       <%= link_to t(:add_new_event_now), events_add_url %>
   </div>
-  <h3><%= t(:search_events) %></h3>
-  <form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>">
-    <ul class="searchform">
-      <li><label><%= t(:what) %></label><%= text_field_tag "search", params[:search] %></li>
-      <li><label><%= t(:where) %></label><%= text_field_tag "where", params[:where] %></li>
-      <li><label></label><input type="submit" value="<%= t(:search) %>"></li>
-    </ul>
-  </form>
+
+<div class="box">
+	<div class="box_header">
+  	<h3><%= t(:search_events) %></h3>
+	</div>
+	<div class="box_body">
+	  <form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>">
+	    <ul class="searchform">
+	      <li><label><%= t(:what) %></label><%= text_field_tag "search", params[:search] %></li>
+	      <li><label><%= t(:where) %></label><%= text_field_tag "where", params[:where] %></li>
+	      <li><label></label><input type="submit" value="<%= t(:search) %>"></li>
+	    </ul>
+	  </form>
+		<div style="clear:both"></div>
+	</div>
+</div>

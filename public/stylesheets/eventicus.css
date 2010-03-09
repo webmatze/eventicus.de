@@ -42,9 +42,6 @@ img {
 }
 
 #container {
-	width: 972px;
-	margin: 0px auto;
-	padding: 0px;
 	background-color: transparent;
 }
 
@@ -321,7 +318,7 @@ ul#mainmenu li.active a {
 	-moz-border-radius: 10px 10px 0px 0px;
 	-webkit-border-radius: 10px 10px 0px 0px;
 	border-radius: 10px 10px 0px 0px;
-	padding: 5px 5px 0px 10px;
+	padding: 5px 0px;
 }
 
 #category_name {
@@ -329,7 +326,7 @@ ul#mainmenu li.active a {
 	font-size: 22px;
 	font-weight: bold;
 	color: #CCCC33;
-	padding: 3px 0px;
+	padding: 3px 10px;
 }
 #bodyheader #selection {
 	float: right;
@@ -364,11 +361,20 @@ ul#mainmenu li.active a {
 }
 
 #bodycontent {
-	padding: 10px;
 	clear: both;
+	background-color: #FFFFCC;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background-image: url(/images/white_back.gif);
+	background-position: top left;
+	background-repeat: repeat-y;
 }
 #bodycontent #maincontent {
-	margin-right: 260px;
+	background-color: #fff;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
 #bodycontent #maincontent #event-title h1 {
 	margin: 0px 0px 10px;
@@ -377,21 +383,9 @@ ul#mainmenu li.active a {
 	color: #666600;
 }
 #bodycontent #rightcontent {
-	clear: left;
-	float: right;
-	width: 250px;
-	background: transparent url(../images/side-container.gif) no-repeat scroll 0px 0px;
 }
 #bodycontent #rightcontent .side-box {
-	padding: 10px;
-}
-#bodycontent #rightcontent .side-box h3 {
-	margin: 0px 0px 10px 0px;
-	padding: 0px;
-	font-size: 20px;
-	font-weight: bold;
-	color: #666600;
-	clear: both;
+	margin-right: 10px;
 }
 #bodycontent #rightcontent .side-box ul.cloud {
 	list-style-type: none;
@@ -405,6 +399,7 @@ ul#mainmenu li.active a {
 	line-height: 20px;
 }
 #bodycontent #rightcontent .side-box #add_event {
+  margin-bottom: 10px; 
 }
 #bodycontent #rightcontent .side-box #add_event a {
   display: block;
@@ -415,7 +410,6 @@ ul#mainmenu li.active a {
   background-color: rgb(204, 204, 51); 
   -moz-border-radius: 6px; 
   -webkit-border-radius: 6px;
-  margin-bottom: 10px; 
   text-align: center; 
   text-decoration: none;
   color: #666600;
@@ -495,24 +489,24 @@ ul.recent-posts li a {
 }
 
 #footer {
-	clear: both;
+	margin-bottom: 10px;
+}
+#maincontent #mainCont {
+	margin: 0px 0px 10px 10px;
 }
 
 #maincontent .event-summary {
 	position: relative;
-	padding: 10px;
 	margin-bottom: 10px;
-	border: 1px solid #F1F4F8;
+	/*border: 1px solid #F1F4F8;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-	border-radius: 10px;
+	border-radius: 10px;*/
 }
 #maincontent .event-summary:hover {
 	border-color: #CCCC99;
 }
 #maincontent .event-summary .event-body {
-	padding-left: 75px;
-	padding-right: 110px;
 }
 #maincontent .event-summary .event-body h3 {
 	font-size: 110%;
@@ -540,6 +534,7 @@ ul.recent-posts li a {
 	margin: 5px 0px;
 	font-size: 75%;
 	color: #999999;
+	display: none;
 }
 #maincontent .event-summary .event-body .event-submitted img {
   vertical-align: top;
@@ -551,7 +546,6 @@ ul.recent-posts li a {
 	color: #000000;
 }
 #maincontent .event-summary .event-body .event-submitted .small-date {
-	color: #C5060B;
 	font-weight: bold;
 }
 
@@ -575,13 +569,9 @@ ul.recent-posts li a {
 
 #maincontent .event-summary .event-location {
 	text-align: right;
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	_right: 310px;
 	font-size: 75%;
 	color: #999999;
-	width: 150px;
+	margin-right: 10px;
 }
 #maincontent .event-summary .event-location .location-name {
 	color: #666666;
@@ -594,16 +584,13 @@ ul.recent-posts li a {
 }
 
 #maincontent .event-summary .event-date {
-	position: absolute;
 	background-color: #CCCC33;
 	-moz-border-radius: 10px 10px 0px 0px;
 	-webkit-border-radius: 6px;
 	border-radius: 10px 10px 0px 0px;
-	width: 65px;
 	text-align: center;
 	font-size: 80%;
 	font-weight: normal;
-	top: 10px;
 	padding: 5px 0px;
 }
 #maincontent .event-summary .event-date .event-day {
@@ -611,7 +598,7 @@ ul.recent-posts li a {
 }
 #maincontent .event-summary .event-date .event-day .day {
 	font-weight: bold;
-	font-size: 140%;
+	font-size: 180%;
 }
 
 #maincontent .event-summary .event-date .event-time {
@@ -619,21 +606,19 @@ ul.recent-posts li a {
 	font-size: 10px;
 	font-weight: normal;
 	letter-spacing: .01em;
+	margin-top: 5px;
 }
 
 #maincontent .event-summary .event-push {
-	position: absolute;
-	width: 65px;
 	text-align: center;
-	font-size: 80%;
-	font-weight: bold;
-	top: 73px;
-	padding: 2px 0px;
+	font-size: 70%;
+	padding: 2px 2px;
 	background-color: #FFFFCC;
 	border: 1px solid #CCCC33;
 	-moz-border-radius: 0px 0px 10px 10px;
 	-webkit-border-radius: 6px;
 	border-radius: 0px 0px 10px 10px;
+	margin-left: 10px;
 }
 #maincontent .event-summary .event-push a {
 	text-decoration: none;
@@ -643,7 +628,6 @@ ul.recent-posts li a {
 }
 
 div.form_field {
-	display:block;
 	margin-bottom: 10px;
 }
 div.form_field label {
@@ -657,7 +641,8 @@ div.form_field textarea {
 	border: 1px solid #CCCC99;
 	width: 100%;
 	background-color: #FFFFCC;
-	padding: 4px;
+	padding: 4px 0px;
+	text-indent: 4px;
 	font-size: 100%;
 	color: #666600;
 }
@@ -860,6 +845,7 @@ div.errorExplanation ul {
 	-moz-border-radius: 0px 0px 0px 10px;
 	-webkit-border-radius: 0px 0px 0px 10px;
 	border-radius: 0px 0px 0px 10px;
+	margin: 10px 0px 10px 10px;
 }
 .newLocation .tabs {
 	list-style-type: none;
@@ -952,4 +938,26 @@ div.errorExplanation ul {
   border-color: #666600 #FFFFCC #FFFFCC #666600; 
   border-width: 1px 2px 2px 1px; 
   color: #ffffff;
+}
+
+.box {
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+.box .box_header {
+	background-color: #CCCC99;
+	padding: 2px 0px;
+	border-top: 2px solid #666600;
+	border-bottom: 1px dashed #666600;
+}
+#bodycontent #rightcontent .side-box .box .box_header h3 {
+	font-size: 16px;
+	color: #666600;
+	margin: 0px 10px;
+}
+.box .box_body {
+	padding: 10px 0px;
+}	
+.box .box_body > * {
+	margin: 0px 10px;
 }

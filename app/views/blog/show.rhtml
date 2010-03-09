@@ -7,8 +7,42 @@
 <% end %>
 
 <% content_for("sidebox") do %>
-	<h3><%= t(:recent_blog_posts) %></h3>
-	<%= render :partial => 'recentposts' %>
+	
+	<div class="box">
+		<div class="box_header">
+	  	<h3><%= t(:recent_blog_posts) %></h3>
+		</div>
+		<div class="box_body">
+			<div>
+				<%= render :partial => 'recentposts' %>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+	
+	<div class="box">
+		<div class="box_header">
+	  	<h3><%= t(:recent_readers) %></h3>
+		</div>
+		<div class="box_body">
+			<div>
+				<script type="text/javascript" src="http://pub.mybloglog.com/comm2.php?mblID=2006102008283848&amp;c_width=270&amp;c_sn_opt=y&amp;c_rows=5&amp;c_img_size=f&amp;c_heading_text=&amp;c_color_heading_bg=FFFFFF&amp;c_color_heading=666600&amp;c_color_link_bg=FFFFCC&amp;c_color_link=C5060B&amp;c_color_bottom_bg=FFFFFF"></script>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+	
+	<div class="box">
+		<div class="box_header">
+	  	<h3><%= t(:become_fan) %></h3>
+		</div>
+		<div class="box_body">
+			<div>
+				<fb:fan profile_id="68339386368" stream="0" connections="10" logobar="1" width="270"></fb:fan><div style="font-size:8px; padding-left:10px"><a href="http://www.facebook.com/pages/Eventicusde/68339386368">Eventicus.de</a> on Facebook</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
 <% end %>
 
 <% content_for("tabs") do %>

@@ -1,20 +1,26 @@
-<% for post in @blogposts %>
-<div id="post<%= post.id %>" class="event-summary">
-	<div class="event-body">
-		<h3><a href="#"><%= link_to strip_tags(post.title), :controller => 'blog', :action => 'show', :id => post %></h3>
-		<p class="event-submitted">
-			<%= link_to post.user.login, user_url(:id => post.user.login) %>
-			<%= t(:submitted_this_post) %>
-			<span class="small-date"><%= time_ago_or_time_stamp(post.created_at) %></span>
-		</p>
-		<p>
-			<%=h truncate(strip_tags(textilize(post.description.gsub("&amp;","&"))), 1024) %>
-			<%= link_to t(:more), {:controller => 'blog', :action => 'show', :id => post}, {:class => 'more'} %>
-		</p>
+<div style="margin-top: 10px">
+	<% for post in @blogposts %>
+	<div id="post<%= post.id %>" class="event-summary grid_8 alpha omega">
+		<div class="grid_1 alpha">
+			<div class="event-date">
+				<strong class="event-day"><span class="day"><%= post.created_at.in_time_zone.strftime('%d') %></span><br /><span class="month"><%= post.created_at.in_time_zone.strftime('%b<br />%Y') %></span></strong>
+				<div class="event-time"><%=h post.created_at.in_time_zone.strftime('%H:%M') %></div>
+			</div>
+		</div>
+		<div class="event-body grid_7 alpha omega">
+			<h3><a href="#"><%= link_to strip_tags(post.title), :controller => 'blog', :action => 'show', :id => post %></h3>
+			<p class="event-submitted">
+				<%= link_to post.user.login, user_url(:id => post.user.login) %>
+				<%= t(:submitted_this_post) %>
+				<span class="small-date"><%= time_ago_or_time_stamp(post.created_at) %></span>
+			</p>
+			<p>
+				<%=h truncate(strip_tags(textilize(post.description.gsub("&amp;","&"))), 1024) %>
+				<%= link_to t(:more), {:controller => 'blog', :action => 'show', :id => post}, {:class => 'more'} %>
+			</p>
+		</div>
+		<div style="clear:both;"></div>
+		<div style="margin: 10px 10px 0px 0px;border-bottom: 1px dashed #CCCC99;"></div>
 	</div>
-	<div class="event-date">
-		<strong class="event-day"><%= post.created_at.strftime('%m/%d/%y') %></strong>
-		<div class="event-time"><%=h post.created_at.strftime('%H:%M') %></div>
-	</div>
+	<% end %>
 </div>
-<% end %>

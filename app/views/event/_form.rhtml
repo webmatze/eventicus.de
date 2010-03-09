@@ -1,6 +1,9 @@
 ﻿<% require_bundle :dynarch_calendar, :language => 'en' %>
 
 <% content_for("sidebox") do %>
+
+<div class="box">
+	<div class="box_body">
 	<script type="text/javascript" charset="utf-8">
 		function updateCategoryId(element, value) {
 			$('event_category_id').value = value;
@@ -70,6 +73,8 @@
 		<%= t(:can_add_new_metro) %><br />
 		<%= t(:fill_venue_data) %>
 	</div>
+	</div>
+</div>
 <% end %>
 
 <%= error_messages_for 'event' %>
