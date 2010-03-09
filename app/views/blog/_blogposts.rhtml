@@ -10,7 +10,7 @@
 		<div class="event-body grid_7 alpha omega">
 			<h3><a href="#"><%= link_to strip_tags(post.title), :controller => 'blog', :action => 'show', :id => post %></h3>
 			<p class="event-submitted">
-				<%= link_to post.user.login, user_url(:id => post.user.login) %>
+				<%= link_to post.user.login, user_url(:id => post.user) %>
 				<%= t(:submitted_this_post) %>
 				<span class="small-date"><%= time_ago_or_time_stamp(post.created_at) %></span>
 			</p>

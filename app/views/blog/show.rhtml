@@ -55,7 +55,7 @@
 
 <div class="event">
 	<div class="event-user">
-		<%= link_to @blogpost.user.login, user_url(:id => @blogpost.user.login) %>
+		<%= link_to @blogpost.user.login, user_url(:id => @blogpost.user) %>
 		<%= t(:submitted_this_post) %>
 		<span class="small-date"><%= time_ago_or_time_stamp(@blogpost.created_at) %></span>
 	</div>
@@ -74,7 +74,7 @@
 				<% for comment in @blogpost.comments_ordered_by_submitted %>
 					<div class="comment">
 						<div class="comment_head">
-							<%= link_to comment.user.login, user_url(:id => comment.user.login) %> <%= t(:commented) %> <span class="small-date"><%= time_ago_or_time_stamp comment.created_at %></span>
+							<%= link_to comment.user.login, user_url(:id => comment.user) %> <%= t(:commented) %> <span class="small-date"><%= time_ago_or_time_stamp comment.created_at %></span>
 						</div>
 						<div class="comment_top">
 						</div>

@@ -137,7 +137,7 @@
 				</div>
 			<% else %>
 			  	<%= link_to avatar_for(@event.user, :small, {:style => "vertical-align: middle"}), user_url(:id => @event.user.login) %>
-				<%= link_to @event.user.login, user_url(:id => @event.user.login) %>
+				<%= link_to @event.user.login, user_url(:id => @event.user) %>
 				<%= t(:submitted_this_event) %>
 				<span class="small-date"><%= time_ago_or_time_stamp(@event.date_created) %></span>
 			<% end %>
