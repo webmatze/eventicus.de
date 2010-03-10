@@ -314,7 +314,6 @@ ul#mainmenu li.active a {
 
 
 #bodyheader {
-	height: 38px;
 	background-color: #FFFFCC;
 	-moz-border-radius: 10px 10px 0px 0px;
 	-webkit-border-radius: 10px 10px 0px 0px;
@@ -326,7 +325,7 @@ ul#mainmenu li.active a {
 	float: left;
 	font-size: 22px;
 	font-weight: bold;
-	color: #CCCC33;
+	color: #666600;
 	padding: 3px 10px;
 }
 #bodyheader #selection {
@@ -381,7 +380,7 @@ ul#mainmenu li.active a {
 	margin: 0px 0px 10px;
 	font-size: 26px;
 	font-weight: bold;
-	color: #666600;
+	color: #CC0033;
 }
 #bodycontent #rightcontent {
 }
