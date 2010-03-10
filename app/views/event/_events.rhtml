@@ -3,8 +3,9 @@
 <div id="event<%= event.id %>" class="event-summary grid_8 alpha omega">
 	<div class="grid_1 alpha">
 		<div class="event-date">
-			<strong class="event-day"><span class="day"><%= event.date_start.in_time_zone.strftime('%d') %></span><br /><span class="month"><%= event.date_start.in_time_zone.strftime('%b<br />%Y') %></span></strong>
-			<div class="event-time"><%=h event.date_start.in_time_zone.strftime('%H:%M') %></div>
+			<div class="month"><%= event.date_start.in_time_zone.strftime('%b') %></div>
+			<div class="day"><%= event.date_start.in_time_zone.strftime('%d') %></div>
+			<div class="time"><%=h event.date_start.in_time_zone.strftime('%H:%M') %></div>
 		</div>
 	</div>
 	<div class="event-body grid_5 alpha omega" style="width:400px">

@@ -585,29 +585,34 @@ ul.recent-posts li a {
 }
 
 #maincontent .event-summary .event-date {
-	background-color: #CCCC33;
-	-moz-border-radius: 10px 10px 0px 0px;
-	-webkit-border-radius: 6px;
-	border-radius: 10px 10px 0px 0px;
+	background-color: #666600;
+	border: 1px solid #666600;
 	text-align: center;
 	font-size: 80%;
 	font-weight: normal;
-	padding: 5px 0px;
+	padding: 0px;
 }
-#maincontent .event-summary .event-date .event-day {
-	font-weight: normal;
+#maincontent .event-summary .event-date .month {
+	background-color: #666600;
+	color: #fff;
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: bold;
 }
-#maincontent .event-summary .event-date .event-day .day {
+#maincontent .event-summary .event-date .day {
+	background-color: #CCCC99;
+	border-bottom: 1px dashed #666600;
 	font-weight: bold;
 	font-size: 180%;
 }
 
-#maincontent .event-summary .event-date .event-time {
-	color: #666666;
+#maincontent .event-summary .event-date .time {
+	background-color: #fff;
+	color: #666600;
 	font-size: 10px;
-	font-weight: normal;
+	font-weight: bold;
 	letter-spacing: .01em;
-	margin-top: 5px;
+	line-height: 16px;
 }
 
 #maincontent .event-summary .event-push {
