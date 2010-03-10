@@ -894,7 +894,7 @@ div.errorExplanation ul {
 /* End New Location Styles */
 
 .pagination {
-	margin: 10px 0px;
+	margin: 10px 0px 20px;
 }
 .pagination  a {
   border-style: solid;
