@@ -895,7 +895,7 @@ div.errorExplanation ul {
 /* End New Location Styles */
 
 .pagination {
-	margin: 20px 0px;
+	margin: 10px 0px;
 }
 .pagination  a {
   border-style: solid;
@@ -909,7 +909,7 @@ div.errorExplanation ul {
   text-align: center; 
   text-decoration: none;
   color: #666600;
-  font-weight: bold;
+  font-weight: normal;
 }
 .pagination span.disabled {
   border-style: solid;
@@ -923,7 +923,7 @@ div.errorExplanation ul {
   text-align: center; 
   text-decoration: none;
   color: #666600;
-  font-weight: bold;
+  font-weight: normal;
 }
 .pagination span.current {
   border-style: solid;
