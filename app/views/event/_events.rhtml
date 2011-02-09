@@ -6,9 +6,20 @@
     <div id="event<%= event.id %>" class="event-summary grid_8 alpha omega">
     	<div class="grid_1 alpha">
     		<div class="event-date">
-    			<div class="month"><%= event.date_start.in_time_zone.strftime('%b') %></div>
-    			<div class="day"><%= event.date_start.in_time_zone.strftime('%d') %></div>
     			<div class="time"><%=h event.date_start.in_time_zone.strftime('%H:%M') %></div>
+    			<div class="day">
+    			  <% if session['user'] %>
+      				<% if event.attendees.find_by_user_id session['user'].id %>
+      					<span>
+      						<%= t(:i_am_going) %>
+      					</span>
+      				<% else%>
+      					<span>
+      						<%= link_to t(:attend), attend_path(:id => event, :metro => event.location.metro) %>
+      					</span>
+      				<% end %>
+      			<% end %>
+      		</div>
     		</div>
     	</div>
     	<div class="event-body grid_5 alpha omega" style="width:400px">
@@ -37,18 +48,7 @@
     				<%= link_to event.category.name, events_url(:category => event.category.short, :place => params[:place], :type => params[:type], :range => params[:range]) %>
     			</span>
     			<% end %>
-    			<% if session['user'] %>
-    				<% if event.attendees.find_by_user_id session['user'].id %>
-    					<span class="event-push">
-    						<%= t(:i_am_going) %>
-    					</span>
-    				<% else%>
-    					<span class="event-push">
-    						<%= link_to t(:attend), attend_path(:id => event, :metro => event.location.metro) %>
-    					</span>
-    				<% end %>
-    			<% end %>
-    		</div>
+   		</div>
     	</div>
     	<div class="grid_2 omega">
     		<div class="event-location">

@@ -497,8 +497,7 @@ ul.recent-posts li a {
 
 #maincontent .event-day {
 	border: 0px solid #CC9;
-	border-top: 2px solid #660;
-	border-bottom: 1px dashed #660;
+	border-bottom: 1px solid #CC9;
 	margin-bottom: 10px;
 	padding: 0px;
 	clear: both;
@@ -507,8 +506,12 @@ ul.recent-posts li a {
 	font-size: 16px;
 	color: #660;
 	margin: 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 	background-color: #CC9;
 	padding: 2px 10px;
+	width: 50%;
 }
 #maincontent .event-summary {
 	position: relative;
@@ -616,9 +619,13 @@ ul.recent-posts li a {
 }
 #maincontent .event-summary .event-date .day {
 	background-color: #CCCC99;
-	border-bottom: 1px dashed #666600;
+	border-top: 1px dashed #666600;
 	font-weight: bold;
-	font-size: 180%;
+	font-size: 80%;
+	padding: 2px 0px;
+}
+#maincontent .event-summary .event-date .day a {
+	text-decoration: none;
 }
 
 #maincontent .event-summary .event-date .time {
