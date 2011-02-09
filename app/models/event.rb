@@ -43,6 +43,10 @@ class Event < ActiveRecord::Base
 		self.date_end = local_to_utc(self.date_end).to_time
 	end
 	
+	def day
+		self.date_start.strftime('%A, %d. %B %Y')
+	end
+	
 	protected
 
 		def validate

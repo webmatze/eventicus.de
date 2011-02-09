@@ -495,9 +495,25 @@ ul.recent-posts li a {
 	margin: 0px 0px 10px 10px;
 }
 
+#maincontent .event-day {
+	border: 0px solid #CC9;
+	border-top: 2px solid #660;
+	border-bottom: 1px dashed #660;
+	margin-bottom: 10px;
+	padding: 0px;
+	clear: both;
+}
+#maincontent .event-day h2 {
+	font-size: 16px;
+	color: #660;
+	margin: 0px;
+	background-color: #CC9;
+	padding: 2px 10px;
+}
 #maincontent .event-summary {
 	position: relative;
 	margin-bottom: 10px;
+	background-color: #FFF;
 	/*border: 1px solid #F1F4F8;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
