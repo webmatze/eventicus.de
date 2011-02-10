@@ -10,7 +10,7 @@
 		<link rel="image_src" href="http://eventicus.de/images/logo.gif" / >
 		<title><%= ((yield :page_title) || (yield :title)).strip %> - Eventicus.de</title>
 		<link rel="Shortcut Icon" href="/favicon.png" />
-		<%= javascript_include_tag :defaults %>
+		<%= javascript_include_tag :defaults,'simplegeo.all.min.js' %>
 		<%= javascript_auto_include_tags %>
 		<%= yield :head %>
 		<%= stylesheet_auto_link_tags %>
