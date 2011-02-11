@@ -18,6 +18,10 @@
       						<%= link_to t(:attend), attend_path(:id => event, :metro => event.location.metro) %>
       					</span>
       				<% end %>
+      			<% else %>
+  					<span>
+  						<%= link_to t(:attend), { :controller => "/account", :action => "login" } %>
+  					</span>
       			<% end %>
       		</div>
     		</div>
