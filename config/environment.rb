@@ -37,6 +37,7 @@ Rails::Initializer.run do |config|
   config.gem 'acts_as_commentable', :version => "2.1.1"
   config.gem "nokogiri", :version => "1.4.1"
   config.gem "tzinfo", :version => "0.3.24"
+	config.gem "facebooker", :version => "1.0.64"
   
   # Skip frameworks you're not going to use (only works if using vendor/rails)
   # config.frameworks -= [ :action_web_service, :action_mailer ]

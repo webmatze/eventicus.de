@@ -23,10 +23,10 @@ development:
     server_alive_interval: 0
 
 test:
-  api_key: 
-  secret_key: 
+  api_key: 8ab4ed7baa577cfa73212fbe21192c2e
+  secret_key: 24958a92f57797da088455300d433c1c
   canvas_page_name: 
-  callback_url:
+  callback_url: http://localhost:3000
   set_asset_host_to_callback_url: true
   tunnel:
     public_host_username: 
