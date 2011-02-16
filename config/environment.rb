@@ -34,7 +34,7 @@ Rails::Initializer.run do |config|
   config.gem "mofo", :version => "0.2.16"
   config.gem "friendly_id", :version => "2.3.2"
   config.gem "RedCloth", :version => "4.2.7"
-  config.gem 'acts_as_commentable', :version => "2.1.1"#, :source => "http://gems.github.com"
+  config.gem 'acts_as_commentable', :version => "2.1.1"
   config.gem "nokogiri", :version => "1.4.1"
   config.gem "tzinfo", :version => "0.3.24"
   
