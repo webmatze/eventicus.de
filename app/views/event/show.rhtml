@@ -126,7 +126,7 @@
 				<%=h @event.title %>
 			</h1>
 		<div id="share_on_facebook" style="float:right; width: 70px;text-align:right">
-			<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php?u=<%= CGI.escape "http://eventicus.de#{request.path}" %>&t=<%= CGI.escape (yield :title) %>"><%= t(:share) %></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+			<a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php?u=<%= CGI.escape "http://eventicus.de#{request.path}" %>&t=<%= CGI.escape(yield :title) %>"><%= t(:share) %></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 		</div>
 		</div>
 
@@ -198,7 +198,7 @@
 			<div class="data">
 				<div id="comments">
 					<% for comment in @event.comments_ordered_by_submitted %>
-					<%= render :partial => 'comment', :object => comment %>
+					<%= render :partial => 'comment', :locals => { :comment => comment} %>
 					<% end %>
 					<% if @event.comments.count == 0%><%= t(:no_comments) %><% end %>
 				</div>

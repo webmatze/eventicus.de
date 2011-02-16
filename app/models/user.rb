@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   
   composed_of :tz, :class_name => 'TZInfo::Timezone', :mapping => %w( time_zone time_zone )
   
-  has_friendly_id :login, :use_slug => true, :strip_diacritics => true, :reserved => ["new","index","show","delete","update"]
+  has_friendly_id :login, :use_slug => true, :approximate_ascii => true, :reserved_words => ["new","index","show","delete","update"]
 
   after_create :register_user_to_fb
 

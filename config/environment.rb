@@ -5,10 +5,21 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
+
+if Gem::VERSION >= "1.3.6" 
+  module Rails
+    class GemDependency
+      def requirement
+				super
+        #r = super(r == Gem::Requirement.default) ? nil : r
+      end
+    end
+  end
+end
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
@@ -16,15 +27,16 @@ Rails::Initializer.run do |config|
   # required gems
   #config.gem "twitter"
   #config.gem "twitter4r", :version => '0.3.2'
-  config.gem "tidy"
-  config.gem "flickr"
-  config.gem "icalendar"
-  config.gem "mofo"
-  config.gem "friendly_id"
-  config.gem "RedCloth"
-  config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
-  config.gem "nokogiri"
-  #config.gem "tzinfo"
+
+  config.gem "tidy", :version => "1.1.2"
+  config.gem "flickr", :version => "1.0.2"
+  config.gem "icalendar", :version => "1.1.5"
+  config.gem "mofo", :version => "0.2.16"
+  config.gem "friendly_id", :version => "2.3.2"
+  config.gem "RedCloth", :version => "4.2.7"
+  config.gem 'acts_as_commentable', :version => "2.1.1"#, :source => "http://gems.github.com"
+  config.gem "nokogiri", :version => "1.4.1"
+  config.gem "tzinfo", :version => "0.3.24"
   
   # Skip frameworks you're not going to use (only works if using vendor/rails)
   # config.frameworks -= [ :action_web_service, :action_mailer ]
@@ -40,7 +52,7 @@ Rails::Initializer.run do |config|
   config.log_level = :info
   
   config.action_controller.session = { 
-    :session_key => "_eventicus_session", 
+    :key => "_eventicus_session", 
     :secret => "16ba7ce50f987ce434dce51eefe2d0b5" 
   }
 

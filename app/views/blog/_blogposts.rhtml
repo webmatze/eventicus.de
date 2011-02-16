@@ -16,7 +16,7 @@
 				<span class="small-date"><%= time_ago_or_time_stamp(post.created_at) %></span>
 			</p>
 			<p>
-				<%=h truncate(strip_tags(textilize(post.description.gsub("&amp;","&"))), 1024) %>
+				<%=h truncate(strip_tags(textilize(post.description.gsub("&amp;","&"))), :length => 1024) %>
 				<%= link_to t(:more), {:controller => 'blog', :action => 'show', :id => post}, {:class => 'more'} %>
 			</p>
 		</div>
