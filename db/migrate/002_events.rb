@@ -1,6 +1,6 @@
 class Events < ActiveRecord::Migration
   def self.up
-	create_table :events, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+	create_table :events do |t|#, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
 	    t.column "title", :string, { :limit => 128, :null => false }
 		t.column "description", :text
 		t.column "date_start", :datetime, { :null => false }
@@ -10,12 +10,12 @@ class Events < ActiveRecord::Migration
 		t.column "user_id", :integer, { :null => false }
 		t.column "location_id", :integer, { :null => false }
 	end
-	create_table :metros, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+	create_table :metros do |t|#, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
 	    t.column "name", :string, { :limit => 128, :null => false }
 		t.column "state", :string, { :limit => 128, :null => false }
 		t.column "country", :string, { :limit => 128, :null => false }
 	end
-	create_table :locations, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+	create_table :locations do |t|#, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
 	    t.column "name", :string, { :limit => 128, :null => false }
 		t.column "street", :string, { :limit => 128 }
 		t.column "zip", :string, { :limit => 10 }

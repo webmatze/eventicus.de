@@ -1,6 +1,6 @@
 class CreateSlugs < ActiveRecord::Migration
   def self.up
-    create_table :slugs, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+    create_table :slugs do |t|#, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
       t.string :name
       t.integer :sluggable_id
       t.integer :sequence, :null => false, :default => 1

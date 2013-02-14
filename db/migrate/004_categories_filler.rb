@@ -1,7 +1,7 @@
 class CategoriesFiller < ActiveRecord::Migration
   def self.up
-	add_column :categories, "ordering", :integer, { :null => false }
-	
+	add_column :categories, "ordering", :integer, { :null => false, :default => 1 }
+
 	Category.create :name => "All Categories", :short => "all", :ordering => 1
 	Category.create :name => "Music", :short => "music", :ordering => 2
 	Category.create :name => "Performing Arts", :short => "performing", :ordering => 3
