@@ -16,11 +16,13 @@ development:
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
-  #adapter: mysql
-  #database: eventicus_development
-  #username: root
-  #password: 1q2w3e4r
-  #host: localhost
+  encoding: utf8
+
+staging:
+  adapter: sqlite3
+  database: db/staging.sqlite3
+  pool: 5
+  timeout: 5000
   encoding: utf8
 
 # Warning: The database defined as 'test' will be erased and
@@ -31,17 +33,11 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
-  #adapter: mysql
-  #database: eventicus_test
-  #username: root
-  #password: 1q2w3e4r
-  #host: localhost
   encoding: utf8
 
 production:
   adapter: mysql
-#  database: eventicus_production
-  database: eventicus_development
+  database: eventicus_production
   username: xxx
   password: xxx
   host: localhost
