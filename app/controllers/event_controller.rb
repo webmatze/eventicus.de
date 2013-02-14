@@ -41,10 +41,10 @@ class EventController < ApplicationController
     list
     render :action => 'list'
   end
-  
+
   def about
   end
-  
+
   def sitemap
     @events = Event.find(:all, :order => "date_start DESC")
     render :layout => false
@@ -59,9 +59,9 @@ class EventController < ApplicationController
     @metros = metrolist(params)
 	  @events = eventlist(params, 10, params[:page].to_i)
   end
-  
+
   def search
-    
+
   end
 
   def show
@@ -75,7 +75,7 @@ class EventController < ApplicationController
 
   def new
     @event = Event.new
-    @event.date_start = Time.zone.now 
+    @event.date_start = Time.zone.now
     @event.date_end = @event.date_start + 2.hours
   end
 
@@ -89,7 +89,7 @@ class EventController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def add_comment
     event = Event.find(params[:id])
   	@comment = Comment.new(params[:comment])
@@ -98,7 +98,7 @@ class EventController < ApplicationController
       render :partial => 'comment'
     end
   end
-  
+
   def attend
     event = Event.find(params[:id])
     attendee = Attendee.create
@@ -107,7 +107,7 @@ class EventController < ApplicationController
     attendee.save
     redirect_back_or_default events_url
   end
-  
+
   def notattending
     event = Event.find(params[:id])
     attendee = event.attendees.find_by_user_id session['user'].id
@@ -134,13 +134,13 @@ class EventController < ApplicationController
     Event.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
-  
+
   def import
     url = params[:url]
     if url
       if url.starts_with? "http://"
         begin
-          
+
           hCal = hCalendar.find url
 
           if hCal == nil
@@ -152,28 +152,28 @@ class EventController < ApplicationController
              flash[:notice] = 'Event has already been imported by someone else'
              redirect_to :action => "import"
           end
-          
+
           if hCal.properties.index("location")
             hLoc = hCal.location
           else
             cards = hCard.find url
             hLoc = (cards.class.name == "HCard") ? cards : cards.first
           end
-          
+
           @event = Event.new
           @event.title = hCal.summary if hCal.properties.index("summary")
           @event.description = hCal.description if hCal.properties.index("description")
           @event.date_start = hCal.dtstart if hCal.properties.index("dtstart")
           @event.date_end = hCal.properties.index("dtend") ? hCal.dtend : hCal.dtstart + 2.hours
-          
+
           @location = Location.find_by_name hLoc.fn if hLoc
 
           if @location.nil?
-          
+
             @location = Location.new
-            
+
             if hLoc
-            
+
               @location.name = hLoc.fn
               @location.url = hLoc.properties.index("url") ? hLoc.url : ""
               @location.description = ""
@@ -181,12 +181,12 @@ class EventController < ApplicationController
               @location.street = hLoc.adr.street_address
               @location.zip = hLoc.adr.properties.index("postal_code") ? hLoc.adr.postal_code : ""
               @location.phone = ""
-  
+
               if hLoc.properties.index("geo")
                 @location.lat = hLoc.geo.latitude.to_s
                 @location.lng = hLoc.geo.longitude.to_s
               end
-  
+
               @metro = Metro.find_by_name hLoc.adr.locality
               if @metro == nil
                   @metro = Metro.new
@@ -194,41 +194,41 @@ class EventController < ApplicationController
                   @metro.country = hLoc.properties.index("country_name") ? hLoc.country_name : ""
                   @metro.state = hLoc.adr.region if hLoc.adr.properties.index("region")
               end
-              
+
             else
-              
+
               @metro = Metro.new
-              
+
             end
-            
+
             @location.metro = @metro
-            
+
           else
-          
+
             @metro = @location.metro
-           
+
           end
-          
+
           @event.location = @location
-          
+
         rescue Timeout::Error
           flash[:notice] = 'Timeout on reading url'
         rescue Exception => e
           flash[:notice] = 'Event could not be imported: ' + e
         end
-        
+
       else
         flash[:notice] = "URL has to start with 'http://'"
       end
-      
+
     end
   end
-  
+
   def save_import
     save_event = true
 
     @event = Event.new(params[:event])
-    
+
     if params[:metro][:id] != nil
       @metro = Metro.find params[:metro][:id]
     else
@@ -245,13 +245,13 @@ class EventController < ApplicationController
         save_event = @location.save
       end
     end
-    
+
     @event.location = @location
-  
+
     if save_event
       @event.user = session['user']
       @event.location = @location
-      
+
       @event.date_start = Time.zone.local_to_utc(@event.date_start)
       @event.date_end = Time.zone.local_to_utc(@event.date_end)
 
@@ -264,17 +264,17 @@ class EventController < ApplicationController
     else
       render :action => 'import'
     end
-      
+
   end
 
   private
-  
+
     def metrolist(params)
       Metro.find_by_sql("SELECT m.*
                         FROM metros m, events e, locations l
                         WHERE e.location_id = l.id
                         AND l.metro_id = m.id
-                        AND (e.date_start > NOW() OR e.date_end > NOW())
+                        AND (e.date_start > date() OR e.date_end > date())
 						GROUP BY m.id ORDER BY m.name ASC;");
     end
 end
