@@ -1,6 +1,6 @@
 # Be sure to restart your web server when you modify this file.
 
-# Uncomment below to force Rails into production mode when 
+# Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
 
@@ -10,7 +10,7 @@ RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-if Gem::VERSION >= "1.3.6" 
+if Gem::VERSION >= "1.3.6"
   module Rails
     class GemDependency
       def requirement
@@ -23,22 +23,11 @@ end
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here
-  
+
   # required gems
   #config.gem "twitter"
   #config.gem "twitter4r", :version => '0.3.2'
 
-  config.gem "tidy", :version => "1.1.2"
-  config.gem "flickr", :version => "1.0.2"
-  config.gem "icalendar", :version => "1.1.5"
-  config.gem "mofo", :version => "0.2.16"
-  config.gem "friendly_id", :version => "2.3.2"
-  config.gem "RedCloth", :version => "4.2.7"
-  config.gem 'acts_as_commentable', :version => "2.1.1"
-  config.gem "nokogiri", :version => "1.4.1"
-  config.gem "tzinfo", :version => "0.3.24"
-	config.gem "facebooker", :version => "1.0.64"
-  
   # Skip frameworks you're not going to use (only works if using vendor/rails)
   # config.frameworks -= [ :action_web_service, :action_mailer ]
 
@@ -48,13 +37,13 @@ Rails::Initializer.run do |config|
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
 
-  # Force all environments to use the same logger level 
+  # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
   config.log_level = :info
-  
-  config.action_controller.session = { 
-    :key => "_eventicus_session", 
-    :secret => "16ba7ce50f987ce434dce51eefe2d0b5" 
+
+  config.action_controller.session = {
+    :key => "_eventicus_session",
+    :secret => "16ba7ce50f987ce434dce51eefe2d0b5"
   }
 
   # Use the database for sessions instead of the file system
@@ -63,7 +52,7 @@ Rails::Initializer.run do |config|
   config.action_controller.session_store = :mem_cache_store
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
-  # This is necessary if your schema can't be completely dumped by the schema dumper, 
+  # This is necessary if your schema can't be completely dumped by the schema dumper,
   # like if you have constraints or database-specific column types
   # config.active_record.schema_format = :sql
 
@@ -72,20 +61,20 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   config.active_record.default_timezone = :utc
-  
+
   # See Rails::Configuration for more options
   config.cache_store = :mem_cache_store
-  
+
   #set Timezone
   config.time_zone = "Berlin"
-  
+
   #set locale
   config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'config', 'locales', '*.{rb,yml}')]
   config.i18n.default_locale = :en
-  
+
 end
 
-# Add new inflection rules using the following format 
+# Add new inflection rules using the following format
 # (all these examples are active by default):
 # Inflector.inflections do |inflect|
 #   inflect.plural /^(ox)$/i, '\1en'
@@ -123,11 +112,11 @@ GeoKit::default_formula = :sphere
 
 # This is the timeout value in seconds to be used for calls to the geocoder web
 # services.  For no timeout at all, comment out the setting.  The timeout unit
-# is in seconds. 
+# is in seconds.
 GeoKit::Geocoders::timeout = 3
 
 # These settings are used if web service calls must be routed through a proxy.
-# These setting can be nil if not needed, otherwise, addr and port must be 
+# These setting can be nil if not needed, otherwise, addr and port must be
 # filled in at a minimum.  If the proxy requires authentication, the username
 # and password can be provided as well.
 GeoKit::Geocoders::proxy_addr = nil
@@ -139,22 +128,22 @@ GeoKit::Geocoders::proxy_pass = nil
 # See http://developer.yahoo.com/faq/index.html#appid
 # and http://developer.yahoo.com/maps/rest/V1/geocode.html
 GeoKit::Geocoders::yahoo = '2eahIrrV34FX4a7S8HMc248pHd31ba83qslIS8k108ahf09n3pKv4tII4gkSZo0-'
-    
-# This is your Google Maps geocoder key. 
+
+# This is your Google Maps geocoder key.
 # See http://www.google.com/apis/maps/signup.html
 # and http://www.google.com/apis/maps/documentation/#Geocoding_Examples
 #GeoKit::Geocoders::google='ABQIAAAAzYiE310tgcY5QZhQEIyGZhT2-lGWNTHPHWCMZ9AMSEMDVBArExQ8YrjKjacebRgBebqRqalxBjvixQ'
 GeoKit::Geocoders::google = 'ABQIAAAAzYiE310tgcY5QZhQEIyGZhT-7GguMMIpO2xrd5xIgKN697deXxQ_YkplR0HlrnzSAs547EMtU_jOUQ'
-    
+
 # This is your username and password for geocoder.us.
-# To use the free service, the value can be set to nil or false.  For 
+# To use the free service, the value can be set to nil or false.  For
 # usage tied to an account, the value should be set to username:password.
 # See http://geocoder.us
 # and http://geocoder.us/user/signup
-GeoKit::Geocoders::geocoder_us = false 
+GeoKit::Geocoders::geocoder_us = false
 
 # This is your authorization key for geocoder.ca.
-# To use the free service, the value can be set to nil or false.  For 
+# To use the free service, the value can be set to nil or false.  For
 # usage tied to an account, set the value to the key obtained from
 # Geocoder.ca.
 # See http://geocoder.ca
@@ -164,7 +153,7 @@ GeoKit::Geocoders::geocoder_ca = false
 # This is the order in which the geocoders are called in a failover scenario
 # If you only want to use a single geocoder, put a single symbol in the array.
 # Valid symbols are :google, :yahoo, :us, and :ca.
-# Be aware that there are Terms of Use restrictions on how you can use the 
+# Be aware that there are Terms of Use restrictions on how you can use the
 # various geocoders.  Make sure you read up on relevant Terms of Use for each
 # geocoder you are going to use.
 GeoKit::Geocoders::provider_order = [:google,:yahoo]
