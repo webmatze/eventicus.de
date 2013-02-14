@@ -1,7 +1,7 @@
 # The api key, secret key, and canvas page name are required to get started
 # Tunnel configuration is only needed if you are going to use the facebooker:tunnel Rake tasks
 # Your callback url in Facebook should be set to http://public_host:public_port
-# If you're building a Facebook connect site, 
+# If you're building a Facebook connect site,
 #    change the value of set_asset_host_to_callback_url to false
 # To develop for the new profile design, add the following key..
 # api: new
@@ -14,10 +14,10 @@ development:
   canvas_page_name:
   callback_url: http://localhost:3000
   pretty_errors: true
-  set_asset_host_to_callback_url: true
+  set_asset_host_to_callback_url: false
   tunnel:
-    public_host_username: 
-    public_host: 
+    public_host_username:
+    public_host:
     public_port: 4007
     local_port: 3000
     server_alive_interval: 0
@@ -25,25 +25,25 @@ development:
 test:
   api_key: 8ab4ed7baa577cfa73212fbe21192c2e
   secret_key: 24958a92f57797da088455300d433c1c
-  canvas_page_name: 
+  canvas_page_name:
   callback_url: http://localhost:3000
   set_asset_host_to_callback_url: true
   tunnel:
-    public_host_username: 
-    public_host: 
+    public_host_username:
+    public_host:
     public_port: 4007
     local_port: 3000
     server_alive_interval: 0
 
 production:
-  api_key: 
-  secret_key: 
-  canvas_page_name: 
-  callback_url: 
-  set_asset_host_to_callback_url: true   
+  api_key:
+  secret_key:
+  canvas_page_name:
+  callback_url:
+  set_asset_host_to_callback_url: true
   tunnel:
-    public_host_username: 
-    public_host: 
+    public_host_username:
+    public_host:
     public_port: 4007
     local_port: 3000
     server_alive_interval: 0
