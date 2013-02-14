@@ -2,3 +2,5 @@ log/*.log
 public/avatars
 .DS_Store
 tmp/attachment_fu/
+rails_best_practices_output.html
+.rvmrc
