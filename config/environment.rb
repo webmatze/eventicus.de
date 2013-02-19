@@ -133,7 +133,7 @@ GeoKit::Geocoders::yahoo = '2eahIrrV34FX4a7S8HMc248pHd31ba83qslIS8k108ahf09n3pKv
 # See http://www.google.com/apis/maps/signup.html
 # and http://www.google.com/apis/maps/documentation/#Geocoding_Examples
 #GeoKit::Geocoders::google='ABQIAAAAzYiE310tgcY5QZhQEIyGZhT2-lGWNTHPHWCMZ9AMSEMDVBArExQ8YrjKjacebRgBebqRqalxBjvixQ'
-GeoKit::Geocoders::google = 'ABQIAAAAzYiE310tgcY5QZhQEIyGZhT-7GguMMIpO2xrd5xIgKN697deXxQ_YkplR0HlrnzSAs547EMtU_jOUQ'
+GeoKit::Geocoders::google = 'AIzaSyClfCCfwYZ29XR3gDraVwmmpu-wLF6l9VM'
 
 # This is your username and password for geocoder.us.
 # To use the free service, the value can be set to nil or false.  For
