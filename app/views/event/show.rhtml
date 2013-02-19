@@ -8,7 +8,7 @@
 	<% end %>
 	<script type="text/javascript">
 	//<![CDATA[
-	
+
 		Event.observe(window, 'load', function() {
 			if (GBrowserIsCompatible()) {
 				<% if @event.location.lat %>
@@ -22,7 +22,7 @@
 		});
 
 	//]]>
-	</script>		
+	</script>
 <% end %>
 
 
@@ -54,8 +54,8 @@
 			    <div class="username"><%= link_to(user.login, user_url(:id => user.login)) %>
 			      <% if user == session['user']%>
 			  			<%= link_to "[x]", :action => "notattending", :id => @event, :metro => @event.location.metro %>
-			  		<% end %>  
-			    </div>		
+			  		<% end %>
+			    </div>
 				</li>
 				<% end %>
 				</ul>
@@ -71,7 +71,7 @@
 			<div style="clear:both"></div>
 		</div>
 	</div>
-	
+
 	<div class="box">
 		<div class="box_header">
 	  	<h3><%= t(:become_fan) %></h3>
@@ -83,8 +83,8 @@
 			<div style="clear:both"></div>
 		</div>
 	</div>
-	
-	
+
+
 <% end %>
 
 <% content_for("tabs") do %>
@@ -116,11 +116,11 @@
 <% end %>
 
 <% content_for("description") do %>
-	<%= @event.description.gsub("&amp;","&").gsub("\n","").gsub("\r","").strip_html.strip %>
+	<%= strip_tags(@event.description.gsub("&amp;","&").gsub("\n","").gsub("\r","")).strip %>
 <% end %>
 
 <div class="vevent vcalendar event" class="grid_8 alpha omega" style="position:relative;margin-top: -10px">
-	
+
 		<div id="event-title">
 			<h1 class="summary">
 				<%=h @event.title %>
@@ -151,7 +151,7 @@
 		</div>
 
 		<div class="event-location">
-		
+
 			<h2><%= t(:where) %></h2>
 			<div class="location vcard data">
 				<div id="map" style="width:300px;height:150px"></div>
@@ -170,7 +170,7 @@
 				<%= nl2br(auto_link(textilize(@event.description.gsub("&amp;","&").strip))) %>
 			</div>
 		</div>
-	
+
 		<div class="event-pictures">
 			<h2><%= t(:photos) %></h2>
 			<div id="photohelp" class="data help" style="display:none">
@@ -179,8 +179,8 @@
 			</div>
 			<div class="data">
 				<% if @photos.size == 0 %><%= t(:not_tagged_photos) %><% end %>
-				<%=link_to_function(t(:add_own_photos), nil, :id => "photohelpshow") do |page| 
-					page.visual_effect :toggle_slide, 'photohelp' 
+				<%=link_to_function(t(:add_own_photos), nil, :id => "photohelpshow") do |page|
+					page.visual_effect :toggle_slide, 'photohelp'
 					page[:photohelpshow].hide
 				end %>
 				<div>
@@ -191,7 +191,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 		<div class="event-comments">
 			<a name="comments"></a>
 			<h2><%= t(:comments) %></h2>
@@ -203,26 +203,26 @@
 					<% if @event.comments.count == 0%><%= t(:no_comments) %><% end %>
 				</div>
 			</div>
-		
+
 			<% if session['user'] %>
 			<h2><%= t(:leave_reply) %></h2>
 			<div class="data">
-			
+
 					<div id="addComment">
-						<% form_remote_tag  :html => {:action => 'add_comment', :id => 'comment_form'}, 
+						<% form_remote_tag  :html => {:action => 'add_comment', :id => 'comment_form'},
 											:url => { :action => 'add_comment', :id => @event, :metro => @event.location.metro},
 											:update => { :success => 'comments'},
 											:position => :top,
 											:success => "Form.reset('comment_form')" do %>
-					
+
 							<div class="form_field"><label for="comment_comment"><%= t(:comment) %></label><br/>
 							<%= text_area 'comment', 'comment', 'rows' => 5  %></div>
-					
-							<%= submit_tag t(:submit_comment) %> 
-					  
+
+							<%= submit_tag t(:submit_comment) %>
+
 						<% end %>
 					</div>
-			
+
 			</div>
 			<% end %>
 
@@ -232,5 +232,5 @@
 		<span style="display:none" class="dtstamp"><%=@event.date_created.iso8601 %></span>
 		<span style="display:none" class="dtstart"><%=@event.date_start.iso8601 %></span>
 		<span style="display:none" class="dtend"><%=@event.date_end.iso8601 %></span>
-	
+
 </div>
