@@ -6,6 +6,7 @@ You are free to help developing this project! Just ask me.
 
 == Prerequisites
 
+  * Ruby 1.9.3
   * Rails 2.3.8
   * MySQL or SQLite
   * memcached
