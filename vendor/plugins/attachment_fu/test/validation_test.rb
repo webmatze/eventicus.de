@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), 'test_helper'))
 
-class ValidationTest < ActiveSupport::TestCase
+class ValidationTest < Test::Unit::TestCase
   def test_should_invalidate_big_files
     @attachment = SmallAttachment.new
     assert !@attachment.valid?

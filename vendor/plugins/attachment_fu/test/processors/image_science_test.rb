@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'test_helper'))
 
-class ImageScienceTest < ActiveSupport::TestCase
+class ImageScienceTest < Test::Unit::TestCase
   attachment_model ImageScienceAttachment
 
   if Object.const_defined?(:ImageScience)

@@ -1,6 +1,6 @@
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'test_helper'))
 
-class CoreImageTest < ActiveSupport::TestCase
+class CoreImageTest < Test::Unit::TestCase
   attachment_model CoreImageAttachment
 
   if Object.const_defined?(:OSX)
@@ -22,6 +22,12 @@ class CoreImageTest < ActiveSupport::TestCase
       # test geometry string
       assert_equal 31, geo.width
       assert_equal 41, geo.height
+      
+      # This makes sure that we didn't overwrite the original file
+      # and will end up with a thumbnail instead of the original
+      assert_equal 42, attachment.width
+      assert_equal 55, attachment.height
+      
     end
   else
     def test_flunk
