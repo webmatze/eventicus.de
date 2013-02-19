@@ -1,6 +1,6 @@
 en:
   All: All
-  accepted_file_formats: We accept JPEG, GIF, or PNG files up to 500 KB.
+  accepted_file_formats: 'We accept JPEG, GIF, or PNG files up to 500 KB.'
   add_event: Add Event
   add_metro: Add Metro
   add_new_event_now: Add New Event Now
@@ -167,12 +167,12 @@ en:
             email:
               blank: cannot be blank
               taken: is already in use
-            password: 
+            password:
               too_short: is too short
               confirmation: must be confirmed
               blank: cannot be blank
             password_confirmation:
               blank: cannot be blank
-            login: 
+            login:
               too_short: is too short
               blank: cannot be blank

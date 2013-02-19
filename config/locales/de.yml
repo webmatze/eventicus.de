@@ -1,6 +1,6 @@
 de:
   All: Alle
-  accepted_file_formats: Wir akzeptieren JPEG, GIF, oder PNG bis zu 500 KB.
+  accepted_file_formats: 'Wir akzeptieren JPEG, GIF, oder PNG bis zu 500 KB.'
   add_event: Event hinzufügen
   add_metro: Metro hinzufügen
   add_new_event_now: Neuen Event erstellen
@@ -147,7 +147,10 @@ de:
       this month: in diesem Monat
       this year: in diesem Jahr
   date:
-    order: [:day, :month, :year]
+    order:
+      - :year
+      - :month
+      - :day
   time:
     seconds_ago: "vor {{seconds}} Sekunden"
     one_second_ago: vor einer Sekunde
@@ -169,12 +172,12 @@ de:
             email:
               blank: darf nicht leer sein
               taken: wird bereits von einem anderen Nutzer verwendet
-            password: 
+            password:
               too_short: ist zu kurz
               confirmation: muss bestätigt werden
               blank: darf nicht leer sein
             password_confirmation:
               blank: darf nicht leer sein
-            login: 
+            login:
               too_short: ist zu kurz
               blank: darf nicht leer sein
