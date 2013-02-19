@@ -16,7 +16,6 @@ You are free to help developing this project! Just ask me.
   * git clone git@github.com:webmatze/eventicus.de.git
   * bundle
   * edit config/database.yml to your connection details
-  * edit config/facebooker.yml
   * edit config/deploy.rb
   * rake db:migration
 
@@ -29,7 +28,7 @@ http://eventicus.de (not running anymore)
 
 == LICENSE
 
-Copyright (c) 2011 Mathias Karstädt
+Copyright (c) 2013 Mathias Karstädt
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

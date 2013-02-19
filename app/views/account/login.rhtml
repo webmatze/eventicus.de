@@ -10,7 +10,7 @@
 <% end %>
 
 <%= form_tag :action=> "login" %>
-    
+
   <% if @message %>
     <div id="errorExplanation" class="errorExplanation">
       <h2><%= t(:login_failed) %></h2>
@@ -20,16 +20,12 @@
 
   <div class="form_field"><label for="user_login"><%= t(:login_name) %>:</label><br/>
   <input type="text" name="user_login" id="user_login" size="30" value=""/></div>
-  
+
   <div class="form_field"><label for="user_password"><%= t(:password) %>:</label><br/>
   <input type="password" name="user_password" id="user_password" size="30"/></div>
-  
-  <%= submit_tag t(:login) + "&#187;" %> 
 
-	<hr />
+  <%= submit_tag t(:login) + "&#187;" %>
 
-	<p><%= t(:or_login_using_facebook_connect) %></p>
-	<%= fb_login_button('window.location = "/account/link_user_accounts";')%>
 
 </form>
 

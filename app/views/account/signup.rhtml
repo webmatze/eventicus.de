@@ -13,13 +13,13 @@
 <%= form_tag :action=> "signup" %>
 
   <%= error_messages_for 'user' %><br/>
-  
+
   <div class="form_field"><label for="user_email"><%= t(:email) %>:</label><br/>
   <%= text_field "user", "email", :size => 30 %></div>
-  
+
   <div class="form_field"><label for="user_login"><%= t(:desired_login) %>:</label><br/>
   <%= text_field "user", "login", :size => 30 %></div>
-  
+
   <div class="form_field"><label for="user_password"><%= t(:choose_password) %>:</label><br/>
   <%= password_field "user", "password", :size => 30 %></div>
 
@@ -29,12 +29,7 @@
   <div class="form_field"><label for="user_time_zone"><%= t(:default_timezone) %>:</label><br/>
   <%= time_zone_select 'user', 'time_zone', ActiveSupport::TimeZone.all, :model => ActiveSupport::TimeZone %></div>
 
-  <%= submit_tag t(:join_us) + " &#187;" %> 
-
-	<hr />
-
-	<p><%= t(:or_signup_using_facebook_connect) %></p>
-	<%= fb_login_button('window.location = "/account/link_user_accounts";')%>
+  <%= submit_tag t(:join_us) + " &#187;" %>
 
 </form>
 

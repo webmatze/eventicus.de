@@ -23,14 +23,14 @@
 		</script>
 	</head>
 	<body id="home">
-	
+
 		<div id="container">
-		
+
 			<div id="header">
-				
+
 				<div id="logo">
 					<div class="logo"><%= link_to 'Eventicus', {:controller => 'events'} %></div>
-					
+
 					<ul id="mainmenu">
 						<li <%= 'class="active"' if params[:menu] == "events" %>>
 							<% #link_to "Events", events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>
@@ -48,7 +48,7 @@
 							<%= link_to t(:blog), blogposts_url() %>
 						</li>
 					</ul>
-					
+
 					<div id="login">
 						<ul>
 							<li><%= link_to(image_tag('de.png', :style => "vertical-align:bottom", :alt => "deutsch", :title => "deutsch"), "?locale=de")%>
@@ -56,17 +56,12 @@
 						<% if session['user'] %>
 
 							<li><%= link_to session['user'].login, user_url(:id => session['user'].slug.name) %></li>
-						
-							<% if session['user'].facebook_user? %>
-								<li><a href="#" onclick='FB.Connect.logoutAndRedirect("/account/logout")'><%= t(:logout) %></a></li>
-							<% else %>
-								<li><%= link_to t(:logout), "/account/logout" %></li>
-							<% end %>
-							
+
+							<li><%= link_to t(:logout), "/account/logout" %></li>
+
 						<% else %>
 							<li><%= link_to t(:join_us), "/account/signup" %></li>
 							<li><%= link_to t(:login), "/account/login" %></li>
-							<li><%= fb_login_button('window.location = "/account/link_user_accounts";')%></li>
 						<% end %>
 							<li>
 								<form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>"><input class="noborder" type="text" name="search" value="<%= t(:search_events) %>" id="search" onfocus="this.value=''" /></form>
@@ -78,36 +73,36 @@
 				</div>
 			</div>
 			<div id="menu" style="background-image: none">
-				
+
 			</div>
 			<div id="submenu">
-				
+
 			</div>
-			
+
 			<div id="ads">
-				
+
 			</div>
-			
+
 			<div id="body">
-			
+
 				<div id="bodyheader">
-				
+
 					<div id="category_name">
 						<%= yield :title %>
 					</div>
-					
+
 				</div>
-				
+
 				<div id="bodycontent">
-				
+
 					<div id="rightcontent">
-					
+
 						<!-- Hier der rechte Content -->
-						
+
 						<div class="side-box">
 							<%= yield :sidebox %>
 						</div>
-						
+
 						<!-- Ende rechter Content -->
 
 						<div class="side-box">
@@ -134,35 +129,35 @@
 						</div>
 
 					</div>
-					
+
 					<div id="maincontent">
-					
+
 						<!-- Hier der Hauptteil -->
-						
+
 						<% if flash[:notice]%><div class="notice"><%= flash[:notice] %></div><% end %>
-						
+
 						<div id="mainCont"><%= yield  %></div>
-						
+
 						<%= yield :more %>
-												
+
 						<!-- Ende Hauptteil -->
-						
+
 					</div>
-					
+
 					<div style="clear:both"></div>
-					
+
 				</div>
-				
+
 			</div>
-			
+
 			<div id="footer">
-				Copyright 2007-<%= Date.today.year %> by eventicus.de - All rights reserved 
-				| <%= link_to t(:about_and_contact), :controller => 'event', :action => 'about' %> 
+				Copyright 2007-<%= Date.today.year %> by eventicus.de - All rights reserved
+				| <%= link_to t(:about_and_contact), :controller => 'event', :action => 'about' %>
 				| <a href="http://groups.google.com/group/eventicus/topics"><%= t(:discussions) %></a>
 			</div>
-			
-		</div>	
-		
+
+		</div>
+
 		<div id="mask"></div>
 	</body>
 </html>

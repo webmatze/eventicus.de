@@ -11,18 +11,12 @@ class ApplicationController < ActionController::Base
 
   # Pick a unique cookie name to distinguish our session data from others'
   # session :session_key => '_eventicus2_session_id'
-  
+
   before_filter :set_charset
   before_filter :set_locale
-  
-  # for facebook connect
-  before_filter :set_facebook_session
-  helper_method :facebook_session
-  
-  before_filter :login_facebook_user
-  
+
   protected
-  
+
     def get_eventlist_conditions( params )
       conditions = Array.new
       condParams = Hash.new
@@ -34,7 +28,7 @@ class ApplicationController < ActionController::Base
       if params[:place] != 'world'
         metro_id = params[:place]
         metro = Metro.find(metro_id)
-        metro_id = metro.id 
+        metro_id = metro.id
         place = "l.metro_id = " + metro_id.to_s + " AND "
       end
       #category
@@ -79,9 +73,9 @@ class ApplicationController < ActionController::Base
 
     def count_events( params )
       Event.count(
-        :all, 
+        :all,
         :select => "events e",
-        :joins => "LEFT JOIN locations l ON l.id = e.location_id LEFT JOIN metros m ON m.id = l.metro_id " , 
+        :joins => "LEFT JOIN locations l ON l.id = e.location_id LEFT JOIN metros m ON m.id = l.metro_id " ,
         :conditions => get_eventlist_conditions(params)
       )
     end
@@ -99,36 +93,36 @@ class ApplicationController < ActionController::Base
       #find
       if conditions.length > 0
         Event.paginate(
-          :all, 
-          :order => order, 
-          :select => "e.*", 
-          :from => "events e", 
-          :conditions => conditions, 
-          :joins => "LEFT JOIN locations l ON l.id = e.location_id LEFT JOIN metros m ON m.id = l.metro_id" , 
-          :per_page => per_page, 
+          :all,
+          :order => order,
+          :select => "e.*",
+          :from => "events e",
+          :conditions => conditions,
+          :joins => "LEFT JOIN locations l ON l.id = e.location_id LEFT JOIN metros m ON m.id = l.metro_id" ,
+          :per_page => per_page,
           :page => page)
       else
         Event.paginate(:all, :order => order, :per_page => per_page, :page => page)
       end
     end
-    
+
   private
-  
+
     def set_charset
-        content_type = headers["Content-Type"] || "text/html" 
+        content_type = headers["Content-Type"] || "text/html"
         if /^text\//.match(content_type)
-          headers["Content-Type"] = "#{content_type}; charset=utf-8" 
+          headers["Content-Type"] = "#{content_type}; charset=utf-8"
         end
     end
-  
+
     def set_timezone
       if session['user']
-        Time.zone = ActiveSupport::TimeZone.new(session['user'].time_zone)     
+        Time.zone = ActiveSupport::TimeZone.new(session['user'].time_zone)
       else
         Time.zone = ActiveSupport::TimeZone.new("Berlin")
       end
     end
-     
+
     def set_locale
      default_locale = 'de-DE'
      request_language = request.env['HTTP_ACCEPT_LANGUAGE']
@@ -148,16 +142,5 @@ class ApplicationController < ActionController::Base
      WillPaginate::ViewHelpers.pagination_options[:previous_label] =  '&lt;- ' + t(:previous)
      WillPaginate::ViewHelpers.pagination_options[:next_label] = t(:next) + ' -&gt;'
     end
-    
-    def login_facebook_user
-      if facebook_session && session['user'].nil?
-        begin
-          session['user'] = User.find_by_fb_user(facebook_session.user)
-          session['user'].count_login
-        rescue
-          session[:facebook_session] = nil
-        end
-      end
-    end
- 
+
 end

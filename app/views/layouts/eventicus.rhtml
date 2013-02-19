@@ -20,15 +20,13 @@
 		<![endif]-->
 	</head>
 	<body id="home">
-		<%= fb_connect_javascript_tag %>
-		<%= init_fb_connect "XFBML"%>
 		<div id="container" class="container_12">
-		
+
 			<div id="header" class="grid_12 alpha omega">
 				<div id="logo">
-				
+
 					<div class="logo"><%= link_to 'Eventicus', {:controller => 'events'} %></div>
-					
+
 					<ul id="mainmenu">
 						<li <%= 'class="active"' if params[:menu] == "events" %>>
 							<%= link_to t(:events), events_url() %>
@@ -45,7 +43,7 @@
 							<%= link_to t(:blog), blogposts_url() %>
 						</li>
 					</ul>
-					
+
 					<div id="login">
 						<ul>
 							<li><%= link_to(image_tag('de.png', :style => "vertical-align:bottom", :alt => "deutsch", :title => "deutsch"), "?locale=de")%>
@@ -53,27 +51,22 @@
 						<% if session['user'] %>
 
 							<li><%= link_to session['user'].login, user_url(:id => session['user'].slug.name) %></li>
-						
-							<% if session['user'].facebook_user? %>
-								<li><a href="#" onclick='FB.Connect.logoutAndRedirect("/account/logout")'><%= t(:logout) %></a></li>
-							<% else %>
-								<li><%= link_to t(:logout), "/account/logout" %></li>
-							<% end %>
-							
+
+							<li><%= link_to t(:logout), "/account/logout" %></li>
+
 						<% else %>
 							<li><%= link_to t(:join_us), "/account/signup" %></li>
 							<li><%= link_to t(:login), "/account/login" %></li>
-							<li><%= fb_login_button('window.location = "/account/link_user_accounts";')%></li>
 						<% end %>
 							<li>
 								<form action="<%= events_url(:place => params[:place], :type => params[:type], :category => params[:category], :range => params[:range]) %>"><input class="noborder" type="text" name="search" value="<%= t(:search_events) %>" id="search" onfocus="this.value=''" /></form>
 							</li>
 						</ul>
 					</div>
-					
+
 					<div style="clear:both"></div>
 				</div>
-				
+
 				<div id="menu" class="grid_12 alpha omega">
 					<ul>
 						<% for cat in categories %>
@@ -84,7 +77,7 @@
 					</ul>
 					<div style="clear:both"></div>
 				</div>
-				
+
 				<div id="submenu" class="grid_12 alpha omega">
 					<ul>
 						<% ranges.each do |range| %>
@@ -94,9 +87,9 @@
 						<% end %>
 					</ul>
 				</div>
-				
+
 			</div>
-			
+
 			<div id="ads" class="grid_12 alpha omega">
 				<% if false && !session['user'] && controller.controller_name != "account" %>
 				<div id="greeting">
@@ -109,7 +102,7 @@
 								<input type="text" name="user_login" id="user_login" size="30" value=""/></div>
 								<div class="form_field"><label for="user_password">Password:</label><br/>
 								<input type="password" name="user_password" id="user_password" size="30"/></div>
-								<%= submit_tag "Login &#187;" %> 
+								<%= submit_tag "Login &#187;" %>
 							</form>
 						</div>
 					</div>
@@ -124,23 +117,23 @@
 							<li>...do all this <strong>and much more</strong>!</li>
 						</ul>
 						<div>
-							<small><%= link_to_function "Hide this message!", "Effect.Fade('greeting')" %></small> 
+							<small><%= link_to_function "Hide this message!", "Effect.Fade('greeting')" %></small>
 						</div>
 					</div>
 					<div style="clear:both"></div>
 				</div>
 				<% end %>
 			</div>
-			
+
 			<div id="body" class="grid_12 alpha omega">
-			
+
 				<div id="bodyheader" class="grid_12 alpha omega">
-				
+
 					<div id="category_name">
 						<%= yield :title %> <%= yield :icons %>
 						<!-- Music <span id="category_description">(Concerts, Nightlive, Raves)</span>-->
 					</div>
-					
+
 					<div id="selection">
 						<%= yield :tabs %>
 						<% if !controller.is_a? BlogController %>
@@ -152,54 +145,54 @@
 							</div>
 						<% end %>
 					</div>
-					
+
 					<div style="clear:both"></div>
-					
+
 				</div>
-				
+
 				<div id="bodycontent" class="grid_12 alpha omega">
-					
+
 					<div id="maincontent" class="grid_8 alpha">
-					
+
 						<!-- Hier der Hauptteil -->
 						<% if flash[:notice]%><div class="notice"><%= flash[:notice] %></div><% end %>
-						
+
 						<div id="mainCont"><%= yield %></div>
-						
+
 						<%= yield :more %>
-												
+
 						<!-- Ende Hauptteil -->
-						
+
 					</div>
-			
+
 					<div id="rightcontent" class="grid_4 omega">
-				
+
 						<!-- Hier der rechte Content -->
-					
+
 						<div class="side-box">
 							<%= yield :sidebox %>
 						</div>
-					
+
 						<!-- Ende rechter Content -->
-				
+
 					</div>
-										
+
 				</div>
-				
+
 			</div>
-			
+
 			<div id="footer" class="grid_12 alpha omega">
-				Copyright 2007-<%= Date.today.year %> by eventicus.de - All rights reserved 
-				| <%= link_to t(:about_and_contact), :controller => 'event', :action => 'about' %> 
+				Copyright 2007-<%= Date.today.year %> by eventicus.de - All rights reserved
+				| <%= link_to t(:about_and_contact), :controller => 'event', :action => 'about' %>
 				| <a href="http://groups.google.com/group/eventicus/topics"><%= t(:discussions) %></a>
 			</div>
-		
+
 		<div class="grid_12 alpha omega">
 		&nbsp;
 		</div>
-			
-		</div>	
-		
+
+		</div>
+
 		<div id="mask"></div>
 		<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
 		</script>

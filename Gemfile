@@ -12,7 +12,7 @@ gem "RedCloth", "4.2.9"
 gem 'acts_as_commentable', "2.1.1"
 gem "nokogiri", "1.4.1"
 gem "tzinfo", "0.3.24"
-gem "facebooker", "1.0.64"
+#gem "facebooker", "1.0.64"
 gem "net-ssh"
 
 group :development do
