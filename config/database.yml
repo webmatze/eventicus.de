@@ -36,9 +36,8 @@ test:
   encoding: utf8
 
 production:
-  adapter: mysql
-  database: eventicus_production
-  username: xxx
-  password: xxx
-  host: localhost
-  socket: /var/run/mysqld/mysqld.sock
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+  encoding: utf8

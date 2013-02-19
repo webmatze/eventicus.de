@@ -1,18 +1,19 @@
 source :rubygems
 
-gem "rails", "2.3.8"
+gem "rails", "2.3.17"
 gem "sqlite3"
 
-gem "tidy", "1.1.2"
+#gem "tidy"
 gem "flickr", "1.0.2"
 gem "icalendar", "1.1.5"
-gem "mofo", "0.2.16"
+#gem "mofo", "~> 0.2.16"
 gem "friendly_id", "2.3.2"
 gem "RedCloth", "4.2.9"
 gem 'acts_as_commentable', "2.1.1"
 gem "nokogiri", "1.4.1"
 gem "tzinfo", "0.3.24"
 gem "facebooker", "1.0.64"
+gem "net-ssh"
 
 group :development do
   gem "rdoc"
