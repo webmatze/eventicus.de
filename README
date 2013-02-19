@@ -7,7 +7,7 @@ You are free to help developing this project! Just ask me.
 == Prerequisites
 
   * Rails 2.3.8
-  * MySQL
+  * MySQL or SQLite
   * memcached
   * Passenger + nginx
 
