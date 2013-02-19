@@ -4,3 +4,4 @@ public/avatars
 tmp/attachment_fu/
 rails_best_practices_output.html
 .rvmrc
+db/development.sqlite3
