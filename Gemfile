@@ -18,6 +18,7 @@ gem "capistrano"
 gem 'rvm-capistrano'
 gem 'rdoc'
 gem 'json', "1.7.7"
+gem 'mini_magick'
 
 group :production do
     gem "passenger", "3.0.19"
