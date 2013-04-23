@@ -16,3 +16,5 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+GeoKit::Geocoders::google='AIzaSyBuQ0YLTqresVscr-r1cXbYaV_W0gms83E'

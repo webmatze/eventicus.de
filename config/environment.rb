@@ -132,7 +132,7 @@ GeoKit::Geocoders::yahoo = '2eahIrrV34FX4a7S8HMc248pHd31ba83qslIS8k108ahf09n3pKv
 # This is your Google Maps geocoder key.
 # See http://www.google.com/apis/maps/signup.html
 # and http://www.google.com/apis/maps/documentation/#Geocoding_Examples
-#GeoKit::Geocoders::google='ABQIAAAAzYiE310tgcY5QZhQEIyGZhT2-lGWNTHPHWCMZ9AMSEMDVBArExQ8YrjKjacebRgBebqRqalxBjvixQ'
+#GeoKit::Geocoders::google='AIzaSyBuQ0YLTqresVscr-r1cXbYaV_W0gms83E'
 GeoKit::Geocoders::google = 'AIzaSyClfCCfwYZ29XR3gDraVwmmpu-wLF6l9VM'
 
 # This is your username and password for geocoder.us.
