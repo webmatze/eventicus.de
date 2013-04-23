@@ -158,4 +158,4 @@ GeoKit::Geocoders::geocoder_ca = false
 # geocoder you are going to use.
 GeoKit::Geocoders::provider_order = [:google,:yahoo]
 
-Encoding.default_internal = 'UTF-8'
+#Encoding.default_internal = 'UTF-8'
