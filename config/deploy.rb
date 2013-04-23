@@ -19,6 +19,7 @@ set :repository, "git@github.com:webmatze/eventicus.de.git"
 
 set :rvm_ruby_string, 'ruby-1.9.3-p392@eventicus'
 set :rvm_type, :system
+set :rvm_path, "/usr/local/rvm"
 
 # =============================================================================
 # ROLES
