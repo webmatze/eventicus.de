@@ -4,6 +4,7 @@
 
 #require 'mongrel_cluster/recipes'
 require 'bundler/capistrano'
+require 'rvm/capistrano'
 
 # =============================================================================
 # REQUIRED VARIABLES
@@ -15,6 +16,9 @@ require 'bundler/capistrano'
 
 set :application, "eventicus"
 set :repository, "git@github.com:webmatze/eventicus.de.git"
+
+set :rvm_ruby_string, 'ruby-1.9.3-p392@eventicus'
+set :rvm_type, :system
 
 # =============================================================================
 # ROLES
@@ -33,7 +37,7 @@ role :db,  "eventicus.de", :primary => true
 # OPTIONAL VARIABLES
 # =============================================================================
 set :deploy_to, "/webapps/#{application}" # defaults to "/u/apps/#{application}"
-set :user, "root"            # defaults to the currently logged in user
+set :user, "deploy"            # defaults to the currently logged in user
 set :scm, :git               # defaults to :subversion
 set :scm_username, "webmatze"
 set :use_sudo, false

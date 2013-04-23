@@ -15,6 +15,7 @@ gem "tzinfo", "0.3.24"
 #gem "facebooker", "1.0.64"
 gem "net-ssh"
 gem "capistrano"
+gem 'rvm-capistrano'
 
 group :development do
   gem "rdoc"
