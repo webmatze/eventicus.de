@@ -77,6 +77,7 @@ desc 'Link shared directories and files'
 task :after_update_code, :roles => :app do
   run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
   run "ln -nfs #{shared_path}/avatars/ #{release_path}/public/avatars"
+  run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/production.sqlite3"
 end
 
 # Define tasks that run on all (or only some) of the machines. You can specify
