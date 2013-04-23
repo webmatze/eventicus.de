@@ -16,6 +16,7 @@ gem "tzinfo", "0.3.24"
 gem "net-ssh"
 gem "capistrano"
 gem 'rvm-capistrano'
+gem 'rdoc'
 
 group :production do
     gem "passenger", "3.0.19"
