@@ -17,6 +17,10 @@ gem "net-ssh"
 gem "capistrano"
 gem 'rvm-capistrano'
 
+group :production do
+    gem "passenger", "3.0.19"
+end
+
 group :development do
   gem "rdoc"
   gem "pry"

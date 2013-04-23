@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     RedCloth (4.2.9)
     actionmailer (2.3.17)
@@ -20,6 +20,8 @@ GEM
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
     coderay (1.0.8)
+    daemon_controller (1.1.2)
+    fastthread (1.0.7)
     flickr (1.0.2)
       xml-simple (>= 1.0.7)
     friendly_id (2.3.2)
@@ -37,6 +39,11 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     nokogiri (1.4.1)
+    passenger (3.0.19)
+      daemon_controller (>= 1.0.0)
+      fastthread (>= 1.0.1)
+      rack
+      rake (>= 0.8.1)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -71,6 +78,7 @@ DEPENDENCIES
   icalendar (= 1.1.5)
   net-ssh
   nokogiri (= 1.4.1)
+  passenger
   pry
   rails (= 2.3.17)
   rdoc
