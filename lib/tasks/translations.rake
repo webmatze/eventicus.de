@@ -1,10 +1,11 @@
+# encoding: UTF-8
 namespace :eventicus do
   desc "Translate all texts from eventicus"
   task :translations => :environment do
     include Globalize
-    
+
     Locale.set_base_language("en-US")
-    
+
     Locale.set("de-DE")
 
     # Allgemeines
@@ -72,23 +73,23 @@ namespace :eventicus do
     Locale.set_translation("To add a new venue select a metro first.", "Um eine neue Location anzulegen zuerst einen Ort auswählen.")
     Locale.set_translation("You can also add new metros and select one of them.", "Du kannst auch einen neuen Ort anlegen und diesen auswählen.")
     Locale.set_translation("Then fill in your venue data and save it.", "Dann die Location Daten ausfüllen und speichern.")
-    
+
     # Events
     Locale.set_translation("Event was successfully created", "Das Event wurde erfolgreich erstellt")
     Locale.set_translation("Event was successfully updated", "Das Event wurde erfolgreich geändert")
     Locale.set_translation("cannot be set to before the start date", "kann vor dem Startdatum liegen")
     Locale.set_translation("must be selected. Or add a new one", "muss ausgewählt sein. Oder erstellen Sie einen Neuen.")
     Locale.set_translation("is required", "muss ausgewählt sein")
-    
+
     # Location
     Locale.set_translation("Location was successfully created", "Die Location wurde erfolgreich erstellt")
     Locale.set_translation("Location was successfully updated", "Die Location wurde erfolgreich geändert")
-    
+
     # Metro
     Locale.set_translation("Metro was successfully created", "Der Ort wurde erfolgreich erstellt")
     Locale.set_translation("Metro was successfully updated", "Der Ort wurde erfolgreich geändert")
-    
-    
+
+
     # Login
     Locale.set_translation("Please login", "Bitte anmelden")
     Locale.set_translation("Sign up now", "Jetzt registrieren")
@@ -97,7 +98,7 @@ namespace :eventicus do
     Locale.set_translation("Password", "Passwort")
     Locale.set_translation("Please enter your username and password to sign in.", "Zum Anmelden bitte den Benutzernamen und das Passwort angeben.")
     Locale.set_translation("If you are not registered you can now sign up here:", "Wenn Du noch nicht registriert bist, kannst du dies hier tun:")
-    
+
     # Registrieren
     Locale.set_translation("Desired login", "Gewünschter Benutzername")
     Locale.set_translation("Choose password", "Passwort auswählen")
@@ -122,7 +123,7 @@ namespace :eventicus do
     Locale.set_translation("Signup successful", "Du hast dich erfolgreich registriert")
     Locale.set_translation("Avatar was successfully updated", "Du hast deinen Avatar erfolgreich geändert")
     Locale.set_translation("Avatar was successfully uploaded", "Du hast deinen Avatar erfolgreich hochgeladen")
-    
+
     # Zeitangaben
     Locale.set_translation("1 minute ago", "vor einer Minute")
     Locale.set_translation("%d seconds ago", "vor %d Sekunden")
@@ -132,7 +133,7 @@ namespace :eventicus do
     Locale.set_translation("%d hours ago", "vor %d Stunden")
     Locale.set_translation("%d days ago", "vor %d Tagen")
     Locale.set_translation("on %s", "am %s")
-    
+
 
     # Startseitentext
     Locale.set_translation("Login", "Anmelden")
@@ -144,7 +145,7 @@ namespace :eventicus do
     Locale.set_translation("Add Event", "Event erstellen")
     Locale.set_translation("About and Contact", "Über uns und Kontakt")
     Locale.set_translation("Discussions", "Diskussionen")
-    
+
     # Kategorien
     Locale.set_translation("All Categories", "Alle Kategorien")
     Locale.set_translation("Music", "Musik")
@@ -157,14 +158,14 @@ namespace :eventicus do
     Locale.set_translation("Sports", "Sport")
     Locale.set_translation("Visual Arts", "Ausstellungen")
     Locale.set_translation("Other", "Andere")
-    
+
     # Zeiträume
     Locale.set_translation("All", "Alle")
     Locale.set_translation("Today", "Heute")
     Locale.set_translation("This week", "diese Woche")
     Locale.set_translation("This month", "diesen Monat")
     Locale.set_translation("This year", "dieses Jahr")
-    
+
     # Fehlermeldungen
     Locale.set_translation("%d errors prohibited this user from being saved","Beim Speichern des Nutzers ist ein Fehler aufgetreten","Beim Speichern des Nutzers sind %d Fehler aufgetreten")
     Locale.set_translation("There were problems with the following fields:","Es gab Probleme mit den folgenden Feldern:")
