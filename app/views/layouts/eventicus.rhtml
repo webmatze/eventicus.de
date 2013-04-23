@@ -25,7 +25,7 @@
 			<div id="header" class="grid_12 alpha omega">
 				<div id="logo">
 
-					<div class="logo"><%= link_to 'Eventicus', {:controller => 'events'} %></div>
+					<div class="logo"><%= link_to 'Eventicus', events_url() %></div>
 
 					<ul id="mainmenu">
 						<li <%= 'class="active"' if params[:menu] == "events" %>>
