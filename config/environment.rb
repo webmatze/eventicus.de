@@ -4,8 +4,6 @@
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
 
-Encoding.default_internal = 'UTF-8'
-
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.17' unless defined? RAILS_GEM_VERSION
 
@@ -159,3 +157,5 @@ GeoKit::Geocoders::geocoder_ca = false
 # various geocoders.  Make sure you read up on relevant Terms of Use for each
 # geocoder you are going to use.
 GeoKit::Geocoders::provider_order = [:google,:yahoo]
+
+Encoding.default_internal = 'UTF-8'
