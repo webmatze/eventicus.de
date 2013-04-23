@@ -78,7 +78,7 @@ DEPENDENCIES
   icalendar (= 1.1.5)
   net-ssh
   nokogiri (= 1.4.1)
-  passenger
+  passenger (= 3.0.19)
   pry
   rails (= 2.3.17)
   rdoc
