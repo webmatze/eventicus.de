@@ -3,6 +3,7 @@
 # (among other things) the deployment of your application.
 
 #require 'mongrel_cluster/recipes'
+require 'bundler/capistrano'
 
 # =============================================================================
 # REQUIRED VARIABLES
@@ -31,12 +32,12 @@ role :db,  "eventicus.de", :primary => true
 # =============================================================================
 # OPTIONAL VARIABLES
 # =============================================================================
-set :deploy_to, "/srv/rails/#{application}" # defaults to "/u/apps/#{application}"
-set :user, "rails"            # defaults to the currently logged in user
+set :deploy_to, "/webapps/#{application}" # defaults to "/u/apps/#{application}"
+set :user, "root"            # defaults to the currently logged in user
 set :scm, :git               # defaults to :subversion
 set :scm_username, "webmatze"
 set :use_sudo, false
-set :mongrel_conf, "#{current_path}/config/mongrel_cluster.yml"
+#set :mongrel_conf, "#{current_path}/config/mongrel_cluster.yml"
 # set :svn, "/path/to/svn"       # defaults to searching the PATH
 # set :darcs, "/path/to/darcs"   # defaults to searching the PATH
 # set :cvs, "/path/to/cvs"       # defaults to searching the PATH
