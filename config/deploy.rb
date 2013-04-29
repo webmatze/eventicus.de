@@ -78,8 +78,6 @@ task :after_update_code, :roles => :app do
   run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
   run "ln -nfs #{shared_path}/avatars/ #{release_path}/public/avatars"
   run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/production.sqlite3"
-  run "rm -rf #{release_path}/public/bundles" #remove path first
-  run "ln -nfs #{shared_path}/bundled_resources/ #{release_path}/public/bundles"
 end
 after "deploy:update_code", "after_update_code"
 
