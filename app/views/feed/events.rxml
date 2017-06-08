@@ -15,7 +15,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1" do
 				xml.title event.title
 				xml.link event_url(:metro => event.location.metro, :id => event)
 				xml.description h(event.description)
-				xml.pubDate CGI.rfc1123_date(tz(event.date_created))
+				xml.pubDate CGI.rfc1123_date(tz(event.created_at))
 				xml.guid event_url(:metro => event.location.metro, :id => event)
 				xml.author h(event.user.login)
 			

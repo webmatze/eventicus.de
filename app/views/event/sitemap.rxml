@@ -3,10 +3,10 @@ xml.urlset(:xmlns=>'http://www.google.com/schemas/sitemap/0.84') {
 	for event in @events
 		xml.url {
 			xml.loc(event_url(:id => event, :metro => event.location.metro))
-			if event.date_modified
-				xml.lastmod(event.date_modified.strftime('%Y-%m-%d'))
+			if event.updated_at
+				xml.lastmod(event.updated_at.strftime('%Y-%m-%d'))
 			else
-				xml.lastmod(event.date_created.strftime('%Y-%m-%d'))
+				xml.lastmod(event.created_at.strftime('%Y-%m-%d'))
 			end
 		}
 	end

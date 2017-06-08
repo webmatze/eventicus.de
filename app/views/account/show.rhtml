@@ -39,7 +39,7 @@
 
 					<div><b><% if @user.firstname || @user.name %><%=h @user.firstname%> <%=h @user.name %><% else %><%=h @user.login %><% end %></b><br />
 					<%= link_to( @user.url, @user.url) + "<br />" if @user.url %>
-					Member since <%=h tz(@user.date_created).strftime('%A, %B %d, %Y') %></div>
+					Member since <%=h tz(@user.created_at).strftime('%A, %B %d, %Y') %></div>
 
 					<% if session['user'] != nil && @user.id == session['user'].id %>
 						<div>

@@ -3,7 +3,7 @@ require 'digest/sha1'
 # this model expects a certain database layout and its based on the name/login pattern.
 class User < ActiveRecord::Base
 
-	has_many :events, :order => 'date_created DESC'
+	has_many :events, :order => 'created_at DESC'
   has_many :attendees
   has_many :attended_events, :through => :attendees, :source => :event
 
@@ -42,7 +42,6 @@ class User < ActiveRecord::Base
   end
 
 	def init_user
-		write_attribute("date_created", Time.zone.now.utc)
 		write_attribute("last_login", Time.zone.now.utc)
 		write_attribute("number_of_logins", 0)
 	end

@@ -10,18 +10,17 @@ class Initial < ActiveRecord::Migration
       table.column :email, :string, { :limit => 255, :null => false }
       table.column :url, :string, { :limit => 255, :null => true }
       table.column :avatar_url, :string, { :limit => 255, :null => true }
-      table.column :date_created, :datetime, { :null => false }
-      table.column :last_login, :datetime, { :null => false }
+      table.column :last_login, :datetime, { :null => true }
       table.column :number_of_logins, :integer, { :limit => 11, :null => false }
+      table.timestamps
     end
     User.create(:login => 'admin',
                 :password => 'xxxx',
         				:password_confirmation => 'xxxx',
         				:firstname => 'Eventicus',
         				:name => 'Admin',
-                :email => 'admin@email.com',
+                :email => 'admin@eventicus.de',
         				:url => 'http://eventicus.de',
-                :date_created => Time.now,
                 :last_login => Time.now,
                 :number_of_logins => 0)
 

@@ -36,7 +36,7 @@
     				<%= link_to event.user.login, user_url(:id => event.user) %>
     				<%= t(:submitted_this_event) %>
     			<% end %>
-    			<span class="small-date"><%= time_ago_or_time_stamp(event.date_created) %></span>
+    			<span class="small-date"><%= time_ago_or_time_stamp(event.created_at) %></span>
     		</p>
     		<p>
     			<%= truncate(strip_tags(textilize(event.description).gsub(/></,"> <").gsub(/<br[^>]*>/," ")), {:length => 128}) %>
