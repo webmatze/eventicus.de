@@ -147,15 +147,15 @@ en:
       this month: for this month
       this year: for this year
   time:
-    seconds_ago: "{{seconds}} seconds ago"
+    seconds_ago: "%{seconds} seconds ago"
     one_second_ago: 1 second ago
-    minutes_ago: "{{minutes}} minutes ago"
+    minutes_ago: "%{minutes} minutes ago"
     one_minute_ago: 1 minute ago
-    hours_ago: "{{hours}} hours ago"
+    hours_ago: "%{hours} hours ago"
     one_hour_ago: 1 hour ago
-    days_ago: "{{days}} days ago"
+    days_ago: "%{days} days ago"
     one_day_ago: 1 day ago
-    on_date: "on {{date}}"
+    on_date: "on %{date}"
   activerecord:
     errors:
       template:

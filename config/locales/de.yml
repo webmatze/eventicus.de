@@ -152,15 +152,15 @@ de:
       - :month
       - :day
   time:
-    seconds_ago: "vor {{seconds}} Sekunden"
+    seconds_ago: "vor %{seconds} Sekunden"
     one_second_ago: vor einer Sekunde
-    minutes_ago: "vor {{minutes}} Minuten"
+    minutes_ago: "vor %{minutes} Minuten"
     one_minute_ago: vor 1 Minute
-    hours_ago: "vor {{hours}} Stunden"
+    hours_ago: "vor %{hours} Stunden"
     one_hour_ago: vor einer Stunde
-    days_ago: "vor {{days}} Tagen"
+    days_ago: "vor %{days} Tagen"
     one_day_ago: vor einem Tag
-    on_date: "am {{date}}"
+    on_date: "am %{date}"
   activerecord:
     errors:
       template:
