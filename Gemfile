@@ -24,7 +24,6 @@ end
 
 group :development do
   gem "rdoc"
-  gem "pry"
   gem "capistrano", require: false
   gem 'rvm-capistrano', require: false
   # bundler requires these gems in development
@@ -35,4 +34,8 @@ group :test do
   # bundler requires these gems while running tests
   # gem "rspec"
   # gem "faker"
+end
+
+group :test, :development do
+  gem "pry"
 end

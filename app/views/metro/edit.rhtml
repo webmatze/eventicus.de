@@ -7,3 +7,7 @@
 
 <%= link_to 'Show', :action => 'show', :id => @metro %> |
 <%= link_to 'Back', :action => 'list' %>
+
+<% content_for("page_title") do %>
+	<%= @metro.name %>
+<% end %>

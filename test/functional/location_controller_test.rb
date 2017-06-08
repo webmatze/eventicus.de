@@ -12,7 +12,7 @@ class LocationControllerTest < ActionController::TestCase
     request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
 
-    @first_id = locations(:first).id
+    @first_id = locations(:one).id
   end
 
   def test_index
@@ -37,7 +37,7 @@ class LocationControllerTest < ActionController::TestCase
     assert_template 'show'
 
     assert_not_nil assigns(:location)
-    assert assigns(:location).valid?
+    assert assigns(:location).valid?, 'Location not valid'
   end
 
   def test_new
@@ -67,7 +67,7 @@ class LocationControllerTest < ActionController::TestCase
     assert_template 'edit'
 
     assert_not_nil assigns(:location)
-    assert assigns(:location).valid?
+    assert assigns(:location).valid?, 'Location not valid'
   end
 
   def test_update

@@ -5,7 +5,7 @@ class MetroTest < ActiveSupport::TestCase
 
   def test_should_create_record
     metro = create
-    assert metro.valid?, "Metro was invalid:\n#{metro.errors.to_yaml}"
+    assert metro.valid?, "Metro was invalid"
   end
   
 private

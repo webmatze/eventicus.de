@@ -5,7 +5,7 @@ require 'metro_controller'
 class MetroController; def rescue_action(e) raise e end; end
 
 class MetroControllerTest < ActionController::TestCase
-  fixtures :metros, :users
+  fixtures :metros, :users, :slugs
 
   def setup
     @controller = MetroController.new

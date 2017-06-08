@@ -1,0 +1,5 @@
+one:
+  name: bob
+  sluggable_id: 1000001
+  sluggable_type: User
+  sequence: 1

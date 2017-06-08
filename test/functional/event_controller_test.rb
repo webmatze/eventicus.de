@@ -12,7 +12,7 @@ class EventControllerTest < ActionController::TestCase
     request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
 
-    @first_id = events(:first).id
+    @first_id = events(:one).id
   end
 
   def test_index

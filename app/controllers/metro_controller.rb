@@ -54,7 +54,7 @@ class MetroController < ApplicationController
   def update
     @metro = Metro.find(params[:id])
     if @metro.update_attributes(params[:metro])
-      flash[:notice] = 'Metro was successfully updated'.t
+      flash[:notice] = t 'Metro was successfully updated'
       redirect_to :action => 'show', :id => @metro
     else
       render :action => 'edit'
