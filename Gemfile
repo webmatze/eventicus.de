@@ -14,19 +14,19 @@ gem "nokogiri", "1.4.1"
 gem "tzinfo", "0.3.24"
 #gem "facebooker", "1.0.64"
 gem "net-ssh"
-gem "capistrano"
-gem 'rvm-capistrano'
 gem 'rdoc'
 gem 'json', "1.7.7"
 gem 'mini_magick', "1.2.5"
 
 group :production do
-    gem "passenger", "3.0.19"
+    #gem "passenger", "3.0.21"
 end
 
 group :development do
   gem "rdoc"
   gem "pry"
+  gem "capistrano", require: false
+  gem 'rvm-capistrano', require: false
   # bundler requires these gems in development
   # gem "rails-footnotes"
 end
