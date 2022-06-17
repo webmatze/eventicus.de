@@ -21,7 +21,7 @@ gem 'json', "1.7.7"
 gem 'mini_magick', "1.2.5"
 
 group :production do
-    gem "passenger", "3.0.19"
+    gem "passenger", "5.3.2"
 end
 
 group :development do
